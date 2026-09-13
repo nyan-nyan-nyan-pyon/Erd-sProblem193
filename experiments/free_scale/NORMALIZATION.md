@@ -1,159 +1,95 @@
-# FS0 — free-scale normalization notes
+# FS0 — free-scale normalization and closure
 
-Status: **active derivation**. The scale-independent linear/rank reduction below is established; the remaining rank-6 normalization is still open.
+Status: **COMPLETE / frozen unless an audit bug is found**.
 
-We study
+We study the four-state valuation-certified tagged lifts
 
 \[
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with \(A=a+bi\in\mathbb Z[i]\setminus\{0\}\), \(M\in\mathbb Z_{>0}\), and four state tags \(d_j\in\mathbb Z[i]\), \(c_j\in\mathbb Z\).
-
-For a state transition \(j\to k\),
+with \(A\in\mathbb Z[i]\setminus\{0\}\), \(M>0\), integer tags, positive adjacent height increments, and the pairwise certificate
 
 \[
-S_{j,k}=\bigl(Ai^j+d_k-d_j,\;M+c_k-c_j\bigr).
+\nu_2(|W_n-W_m|^2)=\nu_2(H_n-H_m)\qquad(m<n).
 \]
 
-The target is at most five distinct physical step vectors.
+The free-scale stage is now closed: no construction in this family can use at most five distinct adjacent step vectors.
 
-## Established normalization facts
+## N1. Same-state 2-adic scale condition
 
-### N1. Same-state 2-adic scale condition
-
-For endpoint pairs with the same state, the tags cancel:
-
-\[
-W_n-W_m=A(Z_n-Z_m),\qquad H_n-H_m=M(n-m).
-\]
-
-Using
-
-\[
-\nu_2(|Z_n-Z_m|^2)=\nu_2(n-m)
-\]
-
-forces
+For same-state endpoints the tags cancel, so the base valuation identity forces
 
 \[
 \boxed{\nu_2(|A|^2)=\nu_2(M)}.
 \]
 
-If
+If \(A=(1+i)^rB\) with \((1+i)\nmid B\), then \(M=2^r m\) with \(m\) odd.
+
+## N2. Gaussian units are geometric symmetries
+
+Multiplying \(A\) and every horizontal tag by a Gaussian unit rotates/refects the horizontal lattice and preserves integrality, step equality, collinearity, and horizontal squared norms.
+
+## N3. Height tags have a theorem-derived bound for fixed M
+
+Positive adjacent height increments and directed transition diameter 2 imply, after \(c_0=0\),
 
 \[
-A=(1+i)^r B,\qquad (1+i)\nmid B,
+\boxed{|c_j|\le2(M-1)}.
 \]
 
-then
+This is useful for fixed-scale computations, although the final free-scale proof below does not require an \((A,M)\) box.
 
-\[
-\nu_2(|A|^2)=r,
-\]
+## N4. Exact-5 step-equality rank is scale-independent
 
-so necessarily
-
-\[
-\boxed{M=2^r m,\qquad m\text{ odd}.}
-\]
-
-The known fixed-scale construction has \(A=4\), hence \(r=4\), and \(M=16\).
-
-### N2. Gaussian units are geometric symmetries
-
-Replacing \(A\) and every horizontal tag \(d_j\) by
-
-\[
-u(A,d_j),\qquad u\in\{1,-1,i,-i\},
-\]
-
-rotates/refects the horizontal plane by a lattice automorphism. It preserves integrality, equality and number of step vectors, collinearity, and horizontal squared norms. Therefore Gaussian associates of \(A\) are equivalent.
-
-### N3. Height tags have a theorem-derived finite bound once M is fixed
-
-Every adjacent height step satisfies
-
-\[
-M+c_k-c_j\ge1.
-\]
-
-The directed four-state transition graph has diameter 2. With gauge \(c_0=0\),
-
-\[
-\boxed{|c_j|\le2(M-1).}
-\]
-
-Thus no artificial height-tag box is needed for a fixed \(M\).
-
-### N4. Exact-5 step-equality rank is completely scale-independent
-
-This is stronger than the earlier plan to classify exceptional projective directions \([a:b]\).
-
-If two transition edges \((j,k)\) and \((r,s)\) are assigned the same physical step, their horizontal equality is
+If transitions \((j,k)\) and \((r,s)\) have the same physical step, horizontally
 
 \[
 A(i^j-i^r)+(d_k-d_j)-(d_s-d_r)=0.
 \]
 
-Over \(\mathbb Q(i)\), since \(A\ne0\), put
+Over \(\mathbb Q(i)\), divide by nonzero \(A\) and set \(\delta_j=d_j/A\). The scale disappears.
 
-\[
-\delta_j=d_j/A.
-\]
-
-Dividing by \(A\) removes the scale entirely:
-
-\[
-(i^j-i^r)+(\delta_k-\delta_j)-(\delta_s-\delta_r)=0.
-\]
-
-The vertical equality is even simpler:
+Vertically,
 
 \[
 (M+c_k-c_j)-(M+c_s-c_r)=0,
 \]
 
-so \(M\) cancels identically and
+so \(M\) cancels identically.
+
+Thus rational consistency and rank of every exact-5 equality partition are independent of \(A,M\). Exact row reduction gives
 
 \[
-c_k-c_j-c_s+c_r=0.
+\boxed{1050=184+839+27}:
 \]
 
-Therefore rational consistency and rank of every exact-5 step-equality partition are independent of both \(A\) and \(M\).
+- 184 rationally inconsistent partitions;
+- 839 rank-9 partitions;
+- 27 rank-6 partitions.
 
-The exact standard-library checker `verify_rank_reduction.py` gives, for every nonzero \(A\) and every \(M>0\), the same classification as at the reference scale:
+There are no exceptional horizontal projective directions \([a:b]\) at this level.
+
+## N5. All 839 rank-9 partitions are free-scale impossible
+
+For rank 9, the homogeneous vertical system forces
 
 \[
-\boxed{1050=184+839+27}.
+c=0,
 \]
 
-- 184 partitions are rationally inconsistent;
-- 839 consistent partitions have rank 9;
-- 27 consistent partitions have rank 6.
-
-There are no exceptional horizontal slopes \([a:b]\) at the rational step-equality consistency/rank level.
-
-### N5. All 839 rank-9 partitions are impossible at every admissible free scale
-
-For a rank-9 partition the height equality block is homogeneous and full rank, hence
+and the horizontal tags are uniquely
 
 \[
-\boxed{c_0=c_1=c_2=c_3=0}.
+d=A\delta
 \]
 
-The horizontal tags are uniquely of the form
+for a partition-dependent rational Gaussian vector \(\delta\).
+
+For a pair \(m<n\), put
 
 \[
-d_j=A\delta_j,
-\]
-
-with fixed \(\delta_j\in\mathbb Q(i)\) determined only by the partition.
-
-For a pair \(m<n\), define
-
-\[
-R_{m,n}:=Z_n-Z_m+\delta_{j_n}-\delta_{j_m}.
+R_{m,n}=Z_n-Z_m+\delta_{j_n}-\delta_{j_m}.
 \]
 
 Then
@@ -162,139 +98,121 @@ Then
 W_n-W_m=A R_{m,n},\qquad H_n-H_m=M(n-m).
 \]
 
-Extending \(\nu_2\) to nonzero rationals in the usual way, the necessary scale condition N1 cancels from the pair valuation identity:
+Using N1, the common scale cancels and the required condition is
 
 \[
 \nu_2(|R_{m,n}|^2)=\nu_2(n-m).
 \]
 
-Thus any rank-9 obstruction expressed in normalized rational tags is automatically free-scale; it does not matter whether the reference-scale tags themselves are integral.
-
-Exact enumeration of all 839 rank-9 partitions shows that just two pair conditions suffice:
-
-\[
-P_{0,4},\qquad P_{3,7}.
-\]
-
-The exact counts are:
+Only \(P_{0,4}\) and \(P_{3,7}\) are needed for all 839 cases:
 
 - both fail: 509;
 - only \(P_{0,4}\) fails: 165;
 - only \(P_{3,7}\) fails: 165;
 - survive both: 0.
 
-Hence
+## N6. Common affine form of the 27 rank-6 families
 
-\[
-\boxed{\text{every free-scale 5-step candidate lies among the 27 rank-6 partitions}.}
-\]
-
-This is independently checked by `experiments/free_scale/verify_rank_reduction.py`, using only the Python standard library and exact `Fraction` arithmetic.
-
-### N6. The remaining 27 rank-6 families have one common affine shape
-
-The same exact checker verifies that each rank-6 partition has three free directions, one in each of the horizontal-real, horizontal-imaginary, and height blocks, and that the three blocks share the same state vector \(v\).
-
-Over \(\mathbb Q(i)\) / \(\mathbb Q\), after gauge \(d_0=c_0=0\), every remaining family can therefore be written
+The 27 rank-6 partitions form 8 \(C_4\)-rotation orbits. Every one has the exact rational form
 
 \[
 \boxed{d=A\delta+Xv,\qquad c=Cv},
 \]
 
-where
+with fixed \(\delta\in\mathbb Q(i)^3\), common null vector \(v\in\mathbb Q^3\), and free parameters \(X,C\).
 
-- \(\delta\in\mathbb Q(i)^3\) is fixed by the partition;
-- \(v\in\mathbb Q^3\) is the common null vector;
-- \(X\in\mathbb Q(i)\) and \(C\in\mathbb Q\) are free at the rational-linear level.
-
-Actual constructions additionally require all tags to be integral.
-
-The 27 partitions form only
+For each endpoint pair define
 
 \[
-\boxed{8}
+R_{m,n}=Z_n-Z_m+\delta_{j_n}-\delta_{j_m},
 \]
 
-orbits under the \(C_4\) state rotation.
-
-It is useful to introduce scale-free ratios
-
 \[
-\xi=X/A\in\mathbb Q(i),\qquad \eta=C/M\in\mathbb Q.
-\]
-
-For a pair \(m<n\), let
-
-\[
-\Delta v_{m,n}=v_{j_n}-v_{j_m},
-\]
-
-and
-
-\[
-R^0_{m,n}=Z_n-Z_m+\delta_{j_n}-\delta_{j_m}.
+q_{m,n}=v_{j_n}-v_{j_m},\qquad t_{m,n}=n-m.
 \]
 
 Then
 
 \[
-W_n-W_m=A\bigl(R^0_{m,n}+\xi\Delta v_{m,n}\bigr),
+W_n-W_m=A R_{m,n}+Xq_{m,n},
 \]
 
 \[
-H_n-H_m=M\bigl((n-m)+\eta\Delta v_{m,n}\bigr).
+H_n-H_m=M t_{m,n}+Cq_{m,n}.
 \]
 
-Using N1, the common scale again cancels from the valuation equation. Therefore the core remaining problem is a 2-adic/rational classification in \((\xi,\eta)\), followed by the integrality and positive-height constraints that determine which ratios can actually arise from integer \((A,M,d,c)\).
+## N7. Two elementary obstructions eliminate all rank-6 orbits
 
-### N7. Common scaling symmetries exist, but reverse normalization requires divisibility
+### Fixed-pair mismatch
 
-Let \(\lambda\in\mathbb Z[i]\setminus\{0\}\) and \(t\in\mathbb Z_{>0}\) satisfy
+If \(q_{m,n}=0\), the free parameters disappear. N1 reduces the pair condition to
 
 \[
-\nu_2(|\lambda|^2)=\nu_2(t).
+\nu_2(|R_{m,n}|^2)=\nu_2(t_{m,n}).
 \]
 
-The forward transformation
+A mismatch kills the entire orbit.
+
+### Scalar-pair mismatch
+
+If two normalized triples satisfy
 
 \[
-A\mapsto\lambda A,\quad d_j\mapsto\lambda d_j,
+(R_2,q_2,t_2)=s(R_1,q_1,t_1)
 \]
+
+with \(\nu_2(s)\ne0\), then the two actual horizontal differences differ by the factor \(s\), so their squared-norm valuations differ by \(2\nu_2(s)\), whereas their height valuations differ by only \(\nu_2(s)\). The two pair certificates therefore cannot both hold.
+
+The eight orbit representatives are eliminated as follows:
+
+| representative | certificate |
+|---|---|
+| `00102343` | fixed pair `(1,5)`: `1 != 2` |
+| `00123240` | fixed pair `(0,2)`: zero horizontal normalized difference vs height valuation `1` |
+| `01012343` | `(0,1)` and `(3,5)` scale by `s=2` |
+| `01023241` | `(0,1)` and `(3,5)` scale by `s=2` |
+| `01123241` | fixed pair `(0,4)`: `1 != 2` |
+| `01203041` | `(0,1)` and `(0,2)` scale by `s=2` |
+| `01213141` | fixed pair `(0,5)`: `1 != 0` |
+| `01213424` | fixed pair `(0,5)`: `-1 != 0` |
+
+Hence all 27 rank-6 partitions are impossible for every scale.
+
+## N8. Free-scale four-state conclusion
+
+All exact-5 partitions are eliminated:
 
 \[
-M\mapsto tM,\quad c_j\mapsto tc_j
+184+839+27=1050.
 \]
 
-preserves the number/equality pattern of physical steps and preserves the valuation identity, because the horizontal squared norm and vertical difference acquire the same 2-adic shift. Geometrically it is an injective linear transformation of \(\mathbb R^3\), so it also preserves collinearity.
+Therefore
 
-However, one may divide by \((\lambda,t)\) only when all relevant horizontal parameters are divisible by \(\lambda\) and all relevant vertical parameters are divisible by \(t\) after gauge. Thus factors of \(A\) or \(M\) alone cannot simply be discarded.
+\[
+\boxed{\text{no valuation-certified four-state free-scale lift uses }\le5\text{ steps}.}
+\]
 
-Every actual construction can be reduced until no further such common division is possible, but this primitive condition does **not** yet produce a finite list of scale classes.
+The audited \(A=4,M=16\) construction uses six, so six is optimal inside this entire free-scale valuation-certified four-state family.
 
-## Important non-normalizations
+Canonical proof/checker:
 
-The following remain unjustified and must not be assumed:
+- `docs/proofs/free_scale_four_state_optimality.md`
+- `scripts/certificates/verify_free_scale_four_state.py`
 
-- odd factors of \(A\) can be discarded solely because they divide \(A\);
-- the odd factor of \(M\) can always be set to 1;
-- arbitrary common factors can be divided from \((A,M)\) without checking tag divisibility;
-- the condition \(\nu_2(|A|^2)=\nu_2(M)\) is sufficient for the full valuation identity;
-- only finitely many ordinary integer values of \(A,M\) need be searched.
+The checker uses only the Python standard library and exact `Fraction` arithmetic.
 
-## Next derivation — rank-6 2-adic ratio classification
+## Scope warning
 
-The symbolic partition-classification stage is now reduced to the 27 rank-6 partitions / 8 rotation orbits.
+This does **not** prove that every four-state tagged lift with no collinear triple must use six steps: a hypothetical lift certified by a different invariant is outside this theorem. It also does not give a global lower bound for Erdős Problem 193.
 
-For each orbit representative:
+## Scaling note
 
-1. export the exact \(\delta\) and common null vector \(v\);
-2. express a small set of pair valuation conditions as functions of \((\xi,\eta)\);
-3. first study the relaxed problem in \(\mathbb Q_2(i)\times\mathbb Q_2\), ignoring integrality and positivity — if even the relaxed system is impossible, the orbit is eliminated globally;
-4. for any 2-adic survivors, reintroduce the integer-lattice conditions needed for \(A\delta+Xv\in\mathbb Z[i]^3\), \(Cv\in\mathbb Z^3\), and the positive-height inequalities;
-5. only after this classification decide whether a substantial Codex computation is needed.
+Forward common scalings remain valid: if \(\lambda\in\mathbb Z[i]\setminus\{0\}\) and \(t>0\) satisfy
 
-Do **not** start a box search in \((A,M)\). The active variables are now the eight rank-6 orbit types and their scale-free 2-adic ratios.
+\[
+\nu_2(|\lambda|^2)=\nu_2(t),
+\]
 
-## FS0 completion criterion
+then scaling all horizontal parameters by \(\lambda\) and all vertical parameters by \(t\) preserves the valuation certificate. Reverse normalization requires actual divisibility of the tags and is not a justification for discarding factors of \(A\) or \(M\) in isolation.
 
-FS0 is complete when the rank-6 ratio/integrality problem has a proved canonical classification sufficient to define an exhaustive 5-step search, or when all eight rank-6 orbits are ruled out directly.
+No further scale normalization is needed for the <=5 impossibility result because the rank argument above eliminates all scales symbolically.
