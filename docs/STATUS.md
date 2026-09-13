@@ -22,7 +22,7 @@ For free-scale four-state tagged lifts
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-the physical-step equality problem has the frozen exact-five split
+with nonzero Gaussian `A`, `M>0`, and integral state tags, the frozen exact-five physical-step equality classification is
 
 \[
 1050=184+839+27,
@@ -30,33 +30,63 @@ the physical-step equality problem has the frozen exact-five split
 
 with 184 rationally inconsistent systems, 839 rank-9 / dimension-0 systems, and 27 rank-6 / dimension-3 systems.
 
-The old all-pairs valuation certificate gives minimum six in its certificate-defined family. RHO1/RHO2 strengthen this to the weaker triangle-local rho certificate
+The older valuation and rho stages are retained for provenance, but GEO1 now gives the strongest four-state result.
 
-\[
-\rho_{mn}=\nu_2(|W_n-W_m|^2)-2\nu_2(H_n-H_m),
-\]
+## 3. GEO1 direct four-state geometry — COMPLETE / AUDITED
 
-because collinearity implies a rho-monochromatic triangle. Audited RHO counts are
+Issue #7 result commit:
 
 ```text
-rank-9 rho-triangle failures              : 839
-rank-6 parameter-independent rho triangle :  27
-survivors                                 :   0
+68ddd331d0a0ead6c5b8105705d9bf79ac3fc0b4
 ```
 
-Hence
+GEO1 removes all non-collinearity-certificate assumptions and tests the feasible equality systems by genuine geometric collinearity.
+
+Audited counts:
+
+```text
+rank-9 exact geometric collinearity                  : 839
+rank-6 parameter-independent geometric collinearity :  27
+survivors                                            :   0
+unresolved/error                                     :   0
+maximum witness endpoint                             :  64
+```
+
+Canonical classification SHA-256:
+
+```text
+f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
+```
+
+For rank 9, normalized points
+
+\[
+U_n=(\Re(Z_n+\delta_{j_n}),\Im(Z_n+\delta_{j_n}),n)
+\]
+
+are related to actual points by an invertible real-linear map, so exact normalized collinearity is equivalent to actual collinearity for every nonzero horizontal scale and positive vertical scale.
+
+For rank 6, a proportional relation
+
+\[
+\Xi_{bc}=s\Xi_{ab},\qquad s>0,
+\]
+
+forces the full actual normalized three-dimensional displacement on `bc` to be `s` times that on `ab` for every free horizontal/vertical parameter choice. Hence these are genuine collinear triples, not merely rho-certificate failures.
+
+Therefore every at-most-five-step lift in the complete free-scale four-state triangular tagged-lift family contains a collinear triple. The audited six-step construction supplies the upper bound, so
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside the free-scale four-state triangle-local rho-certified family.
+inside the full free-scale four-state triangular tagged-lift family.
 
-Canonical proof: `docs/proofs/four_state_rho_triangle_optimality.md`.
+The lower-bound proof does not use positivity of adjacent height increments.
 
-Important scope: a rho-monochromatic triangle need not itself be geometrically collinear, so this theorem is still certificate-defined.
+Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
-## 3. Hidden-state structure
+## 4. Hidden-state structure
 
 For binary hidden state
 
@@ -72,7 +102,7 @@ phi = 0x0042
 
 The next transition count is 18, attained by 8 gauge classes.
 
-## 4. `phi=0x0042` exact-five classification
+## 5. `phi=0x0042` exact-five classification
 
 HS1 exhaustively covers
 
@@ -96,64 +126,29 @@ HS1 feasible-stream SHA-256:
 
 HS2 eliminated all 59,254 under the old valuation certificate.
 
-## 5. HS3R triangle-local rho certificate — COMPLETE / AUDITED
-
-Issue #6 result commit:
-
-```text
-e68a65b64eaf9932f1d96516d3f8e14fbe8422eb
-```
-
-HS3R replayed HS1 exactly and applied the weaker triangle-local rho certificate without reimposing the old HS2 valuation identity.
-
-Audited reason counts:
+HS3R then eliminated all 59,254 under the weaker triangle-local rho certificate:
 
 ```text
 rank21 rho triangle                        : 59,135
 rank18 parameter-independent rho triangle :    119
-positive-height infeasible                 :      0
 survivors                                  :      0
 unresolved/error                           :      0
 maximum witness endpoint                   :     69
 ```
 
-Canonical classification SHA-256:
+Thus six steps are optimal inside the `phi=0x0042` rho-certified family. Canonical proof: `docs/proofs/hidden_state_phi0042_rho_optimality.md`.
 
-```text
-2b73b525182fbda07747ee6fadac7e2d34b45e1009499dad7f2ae5c0ddc968db
-```
+## 6. New active direction — direct hidden-state geometry
 
-Thus
+Before launching the much larger 18-edge searches, ask whether the certificate caveat can also be removed for `phi=0x0042`.
 
-\[
-\boxed{\min |S|=6}
-\]
-
-inside the `phi=0x0042` free-scale eight-state triangle-local rho-certified tagged-lift family. The six-step upper bound embeds by ignoring the hidden bit.
-
-Canonical proof: `docs/proofs/hidden_state_phi0042_rho_optimality.md`.
-
-## 6. New active direction — direct four-state geometry
-
-Before launching the much larger 18-edge searches, test whether the remaining four-state certificate caveat can be removed entirely.
-
-The rank-6 RHO2 proportional-`Xi` witnesses are stronger than rho failure: they make the actual normalized three-dimensional displacement vectors proportional, hence force genuine geometric collinearity for every free-parameter choice.
-
-For each rank-9 system the normalized tags are unique and vertical normalized tags vanish. Actual points are an invertible real-linear image of
+The 119 rank-18 HS3R proportional-`Xi` witnesses already imply genuine geometric collinearity for every free-parameter choice. The substantive remaining target is the 59,135 rank-21 systems. Their normalized tags are unique, so actual points are an invertible real-linear image of exact normalized three-dimensional points
 
 \[
-U_n=(\Re(Z_n+\delta_{j_n}),\Im(Z_n+\delta_{j_n}),n).
+V_n=(\Re(Z_n+\delta_{\sigma_n}),\Im(Z_n+\delta_{\sigma_n}),n+\gamma_{\sigma_n}).
 \]
 
-Therefore geometric collinearity is scale-independent. For `a<b<c`, it is equivalent to equality of exact rational slope signatures
-
-\[
-\frac{R_{ab}}{b-a}=\frac{R_{bc}}{c-b}.
-\]
-
-The next task is GEO1: search exact finite collinear witnesses for all 839 rank-9 systems, while replaying the 27 rank-6 proportional witnesses as true collinearity. If all feasible exact-five systems are covered, six-step optimality upgrades to the complete free-scale four-state triangular tagged-lift family with positive heights, with no non-collinearity-certificate assumption.
-
-The 18-edge binary-cocycle expansion remains paused until GEO1 is audited.
+The next task, GEO2, should search these systems for exact finite collinear triples, reusing the rank-18 proportional witnesses directly. It must replay HS1 exactly and stop for audit before any 18-edge expansion.
 
 ## 7. Scope warning
 
