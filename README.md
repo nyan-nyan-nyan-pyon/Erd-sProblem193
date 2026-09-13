@@ -49,57 +49,66 @@ These are family-specific results, not a global six-step lower bound for Erdős 
 
 ## Structural reduction
 
-CYCLE1 replaces the state-tag equality system exactly by a five-step cycle-space system. For cycle basis `Y` and exact-five color matrix `C`,
+For reduced incidence matrix `D`, five-color matrix `C`, and a cycle-space matrix `Y`, physical-step equality reduces exactly to
 
 \[
-M=YC.
+YCx=Yb.
 \]
 
-For the current 16/18-edge eight-state targets, the audited short-cycle argument gives
+The 16/18-edge work showed that this reduction can replace large state-tag systems by small exact cycle-space calculations and can feed direct geometry without parameter grids.
+
+## Current active direction — BIN0 to BIN3
+
+The project now treats the **4095 fully reachable binary-hidden cocycle gauge classes as one finite program**, rather than advancing by transition count.
+
+The four stages are:
+
+- **BIN0** — exact structural census and equality quotient;
+- **BIN1** — equality-existence sieve on the quotient graph types, with a dedicated exact rank15 / `h=2` binary-subspace test;
+- **BIN2** — complete equality census only on BIN1 survivors;
+- **BIN3** — return to actual indexed cocycles and run direct geometry for every feasible system.
+
+The planned BIN0 quotient is deliberately split into two notions:
+
+- equality is expected to collapse the 4095 cocycles to 1061 distinct labeled edge sets and then 129 equality graph types;
+- indexed geometry retains the finer sequence-level quarter-turn orbit structure, expected to have 1947 orbits.
+
+These numbers are frozen as BIN0 audit targets, not yet promoted results.
+
+For every BIN0 equality graph the runner will independently check
 
 \[
-\boxed{h=5-\operatorname{rank}M\le1},
+\operatorname{rank}D=7,
+\qquad
+\operatorname{rank}[D\ B]=10,
 \]
 
-so only rank21 (`h=0`) and rank18 (`h=1`) exact-five families can occur. Rank15 is impossible.
+which would give projected RHS rank three and the universal binary-hidden exact-five bound
 
-The eight 18-edge representatives split for equality feasibility into two exact quarter-turn classes:
+\[
+\boxed{h\le2}.
+\]
 
-```text
-{0x0002,0x0020,0x0046,0x0200}
-{0x0004,0x0040,0x0062,0x0242}
-```
+If `h=2/rank15` occurs, it is a genuinely new structure absent from the audited 16/18-edge families and receives highest downstream priority.
 
-CYCLE2 searches only representatives `0x0002` and `0x0004`; GEO3 uses the stronger indexed sequence transport to cover all eight canonical cocycles exactly as `2 representatives x 4 initial states`.
+Active task/runner:
 
-Key proofs:
+- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK.md`
+- `experiments/binary_hidden/analyze_bin0_structural_census.py`
 
-- `docs/proofs/cycle_space_reduction.md`
-- `docs/proofs/rank15_cycle_exclusion.md`
-- `docs/proofs/five_step_step_space_normal_form.md`
-- `docs/proofs/quarter_turn_equality_equivalence.md`
-- `docs/proofs/quarter_turn_indexed_geometry_transport.md`
-- `docs/proofs/eighteen_edge_geometric_optimality.md`
+New theory:
 
-## Current active direction — post-18-edge theory
+- `docs/proofs/binary_hidden_equality_graph_quotient.md`
+- `docs/proofs/rank15_binary_subspace_sieve.md`
 
-The four-state family, the unique 16-edge hidden class, and all eight 18-edge hidden classes are now geometrically closed at five steps.
-
-Do not automatically brute-force the next transition count. The next decision is to compare:
-
-1. an all-4095-binary-cocycle algebraic five-step-feasibility sieve in cycle space;
-2. transition-count-ordered expansion with symmetry reduction;
-3. changing the triangular radix-4 base walk;
-4. extracting a general obstruction theorem from the repeated short-cycle/radix-cycle and rank21/rank18 collinearity mechanisms.
-
-See `docs/STATUS.md` and `docs/ROADMAP.md` for exact scope.
+See `docs/STATUS.md` and `docs/ROADMAP.md` for exact scope and stop conditions.
 
 ## Compute workflow
 
-Substantial computation uses GitHub as the synchronization boundary: ChatGPT commits the exact mathematical task and runner; Codex syncs and runs self-tests/main computation, pushes only requested small canonical outputs, and reports hashes/counts/environment in the issue; ChatGPT audits before theorem promotion or the next search.
+Substantial computation uses GitHub as the synchronization boundary: ChatGPT commits the exact mathematical task and runner; Codex syncs and runs self-tests/main computation, pushes only requested small canonical outputs, and reports hashes/counts/environment in the issue; ChatGPT audits before theorem promotion or the next stage.
 
 See `AGENTS.md`.
 
 ## Claim discipline
 
-Always distinguish a finite candidate, a family-specific computational result, an audited family-specific theorem/construction, and a genuinely global result.
+Always distinguish a frozen expected regression, a finite candidate, a family-specific computational result, an audited family-specific theorem/construction, and a genuinely global result.
