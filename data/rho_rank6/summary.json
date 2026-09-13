@@ -1,0 +1,30 @@
+{
+  "classification_sha256": "d356ebfb100bb84df5766c1ba8b6b23bb097bc50108209b1888764a9e333e1e3",
+  "counts": {
+    "parameter_independent_rho_triangle": 27
+  },
+  "dependencies": "standard library only",
+  "exact5_replay": {
+    "linear_inconsistent": 184,
+    "rank6": 27,
+    "rank6_rotation_orbits": 8,
+    "rank9": 839,
+    "total": 1050
+  },
+  "max_n": 127,
+  "max_n_semantics": "finite exact witness search only; each proportional triangle is parameter-independent, while prefix survival proves nothing global",
+  "max_witness_endpoint": 61,
+  "python": "3.14.3",
+  "rho1_replay": {
+    "classification_sha256": "1888a9c7937eb10a13de8e361a1b116a58db93ba9f8e1d9e07b8255bf56a4272",
+    "triangle_local_fail": 839,
+    "triangle_prefix_survivor_count": 0
+  },
+  "scope": "four-state free-scale exact-5 rank-6 equality families; parameter-independent triangle-local rho obstruction",
+  "starting_git_sha": "15da0a2c6f7e93922205183c2987dd759a51c825",
+  "status": "PASS",
+  "survivor_count": 0,
+  "survivor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 1.8695569999981672
+}
