@@ -40,19 +40,15 @@ Survivors and unresolved cases are zero. Maximum witness endpoint is 64. Canonic
 f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
 ```
 
-For rank 6, proportional-`Xi` forces the two three-dimensional displacement vectors to be proportional for every free-parameter choice; positive adjacent height increments ensure these vectors are nonzero and the three visited points are distinct.
-
 Therefore every at-most-five-step positive-height free-scale four-state triangular tagged lift contains three distinct collinear visited points. The audited six-step construction supplies the upper bound, hence
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside this complete positive-height four-state triangular tagged-lift family. The lower bound no longer depends on valuation/rho or any other non-collinearity certificate.
+inside this complete positive-height four-state triangular tagged-lift family.
 
-Canonical proof:
-
-- `docs/proofs/four_state_geometric_optimality.md`
+Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
 ## G2. Direct geometry for hidden cocycle `phi=0x0042`
 
@@ -77,9 +73,7 @@ maximum witness endpoint                              :    124
 
 Therefore six steps are optimal inside the complete positive-height `phi=0x0042` free-scale eight-state tagged-lift family, with no valuation/rho/non-collinearity-certificate assumption.
 
-Canonical proof:
-
-- `docs/proofs/hidden_state_phi0042_geometric_optimality.md`
+Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
 ---
 
@@ -89,57 +83,97 @@ Canonical proof:
 
 Status: **ACTIVE**.
 
-Before any exhaustive 18-edge exact-five search, replace state tags by the exact cycle-space formulation.
+Replace state tags by the exact cycle-space formulation before any exhaustive 18-edge exact-five search.
 
-For reduced incidence matrix `D`, color-indicator matrix `C`, and a full cycle-space matrix `Y`, define
+For reduced incidence matrix `D`, color-indicator matrix `C`, and full cycle-space matrix `Y`, define
 
 \[
 M=YC.
 \]
 
-Then physical-step equality feasibility is exactly equivalent to the small cycle system
+Then physical-step equality feasibility is exactly equivalent to
 
 \[
 Mx=Yb.
 \]
 
-For the current 16/18-edge hidden graphs the cycle-space right-hand sides for real horizontal, imaginary horizontal, and height coordinates have rank three. Hence every feasible five-coloring satisfies
+For the current 16/18-edge hidden graphs the cycle-space RHS space has rank three. This first gives
 
 \[
-\operatorname{rank}M\ge3,
-\qquad
 h=5-\operatorname{rank}M\le2.
 \]
 
-Thus the only possible eight-state tag-RREF ranks are
+A stronger short-cycle argument then excludes `h=2` for every current exact-five target. In the 18-edge classes, if `h=2`, the two zero-horizontal 2-cycles force all radix-cycle Parikh vectors into the support of a 2-edge count vector, hence at most two colors; the eight radix cycles cover all 18 edges, contradicting exact five colors. The analogous 16-edge argument uses its zero-horizontal 4-cycle.
+
+Therefore
 
 \[
-\boxed{21,18,15}.
+\boxed{h\le1}
 \]
 
-The 16-edge and all eight 18-edge canonical representatives also share eight independent radix three-cycles. The 16-edge graph needs one additional four-cycle; every 18-edge graph can be completed by cycles of lengths `2,2,4`.
+for all current 16/18-edge exact-five targets, and only tag ranks
+
+\[
+\boxed{21\text{ or }18}
+\]
+
+can occur. Rank 15 is ruled out before the 18-edge search starts.
+
+The 16-edge and all eight 18-edge canonical representatives share eight independent radix three-cycles. The 16-edge graph needs one additional 4-cycle; every 18-edge graph can be completed by cycles of lengths `2,2,4`.
 
 CYCLE1 must independently verify these facts and replay all 59,254 audited `phi=0x0042` HS1 survivors, checking record-by-record that cycle nullity reproduces the old tag rank:
 
 ```text
 h=0 <-> rank 21 : 59135
 h=1 <-> rank 18 :   119
-h=2 <-> rank 15 :     0   (for phi=0x0042 only)
 ```
 
-Canonical theory/task/checker:
+Canonical theory/task/checkers:
 
 - `docs/proofs/cycle_space_reduction.md`
+- `docs/proofs/rank15_cycle_exclusion.md`
+- `docs/proofs/five_step_step_space_normal_form.md`
 - `experiments/cycle_space/CYCLE1_TASK.md`
+- `experiments/cycle_space/CYCLE1_RANK15_ADDENDUM.md`
 - `experiments/cycle_space/analyze_cycle_space.py`
+- `experiments/cycle_space/verify_rank15_exclusion.py`
 
 Do not start an exhaustive 18-edge exact-five search before CYCLE1 is audited.
 
-## C2. Intended 18-edge engine
+## C2. Intended 18-edge equality engine
 
-After CYCLE1 audit, formulate each exact-five coloring as five bin sums of edge cycle-incidence vectors in an 11-dimensional cycle space.  Work modulo color permutation and exploit graph/base/hidden symmetries before branching.
+After CYCLE1 audit, formulate each exact-five coloring as five bin sums of edge cycle-incidence vectors in an 11-dimensional cycle space. Work modulo color permutation and exploit graph/base/hidden structural symmetries before branching.
 
-If a rank-15 / `h=2` family appears, do not use a continuous parameter grid.  The generalized `Xi` map is then invertible on the five-dimensional color-count space, so parameter-independent collinearity is equivalent to proportional Parikh vectors of two consecutive intervals.
+The search only needs to classify feasible outputs into:
+
+- `rank(M)=5`, equivalently tag rank 21;
+- `rank(M)=4`, equivalently tag rank 18.
+
+No rank-15 branch or two-parameter implementation is needed.
+
+## C3. Intended downstream geometry
+
+Once a feasible coloring is known, remain in physical five-step space rather than reconstructing state tags.
+
+### Rank 21
+
+The five horizontal step values are unique and normalized height steps are all one. Generate the indexed five-color edge word and test exact 3D direction equality directly.
+
+### Rank 18
+
+Let `n` span `ker M`. Then
+
+\[
+z=z^0+u n,\qquad r=\mathbf1+\lambda n.
+\]
+
+Positive height is exactly `1+lambda*n_k>0` for all five colors. The interval geometry uses
+
+\[
+\Xi(p)=\bigl(\Re(p\cdot z^0),\Im(p\cdot z^0),p\cdot n,|p|\bigr),
+\]
+
+so the same parameter-independent proportional-`Xi` method already validated in GEO2 applies.
 
 ---
 
@@ -154,6 +188,8 @@ S(18,5)=28,958,095,545
 \]
 
 partitions per graph is not the preferred starting point.
+
+At the graph/base structural level the eight representatives split into two quarter-turn quartets, which should be exploited for equality-search design. Any transfer to indexed geometry must still replay the state-sequence correspondence explicitly rather than assume graph isomorphism alone.
 
 # Stage 4 — alternative base walks
 
