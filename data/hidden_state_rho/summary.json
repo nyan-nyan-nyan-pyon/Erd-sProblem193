@@ -1,0 +1,32 @@
+{
+  "audited_four_state_rho_hashes": {
+    "rank6": "d356ebfb100bb84df5766c1ba8b6b23bb097bc50108209b1888764a9e333e1e3",
+    "rank9": "1888a9c7937eb10a13de8e361a1b116a58db93ba9f8e1d9e07b8255bf56a4272"
+  },
+  "classification_sha256": "2b73b525182fbda07747ee6fadac7e2d34b45e1009499dad7f2ae5c0ddc968db",
+  "counts": {
+    "rank18_parameter_independent_rho_triangle": 119,
+    "rank21_rho_triangle": 59135
+  },
+  "dependencies": "standard library only",
+  "hs1_replay": {
+    "feasible": 59254,
+    "rank_distribution": {
+      "18/3": 119,
+      "21/0": 59135
+    },
+    "stream_sha256": "6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b"
+  },
+  "max_n": 127,
+  "max_n_semantics": "finite exact witness search only; prefix survival is not a global rho certificate or construction",
+  "max_witness_endpoint": 69,
+  "python": "3.14.3",
+  "scope": "phi=0x0042 free-scale exact-5 equality survivors; triangle-local rho certificate sieve",
+  "starting_git_sha": "2ec843d399ae5cecb5e7fcc864ca2c3b058c208a",
+  "status": "PASS",
+  "survivor_count": 0,
+  "survivor_records_committed_if_small": true,
+  "survivor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 709.7600267999806
+}

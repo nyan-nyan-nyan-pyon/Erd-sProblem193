@@ -1,0 +1,1657 @@
+[
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      1,
+      3,
+      4
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      1,
+      4,
+      1
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      4,
+      3,
+      1
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      2,
+      3,
+      4,
+      3,
+      4
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      3,
+      4,
+      1,
+      4,
+      1
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      2,
+      4,
+      1,
+      4,
+      1
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      2,
+      4,
+      1,
+      4,
+      3
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      2,
+      4,
+      3,
+      4,
+      1
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      2,
+      4,
+      3,
+      4,
+      3
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      2,
+      2,
+      3,
+      2,
+      3,
+      4,
+      2
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            3
+          ],
+          "r": [
+            "1",
+            "0"
+          ],
+          "t": "3"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            3,
+            5
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            5
+          ],
+          "r": [
+            "1",
+            "2"
+          ],
+          "t": "5"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        3,
+        5
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3,
+      2,
+      3,
+      4,
+      2,
+      4,
+      2
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      3,
+      2,
+      4,
+      0,
+      4,
+      3
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "1/3"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "1/3"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "2/3"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      0,
+      2,
+      3,
+      1,
+      3,
+      4
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "-2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      0,
+      2,
+      3,
+      1,
+      4,
+      0
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "-2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      0,
+      2,
+      3,
+      4,
+      3,
+      0
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "-2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      0,
+      3,
+      4,
+      1,
+      4,
+      0
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "-2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      3,
+      2,
+      4,
+      1,
+      4,
+      0
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "-2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      2,
+      3,
+      2,
+      4,
+      1,
+      4,
+      3
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "0",
+            "-1"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "0",
+            "-2"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      1,
+      3,
+      1,
+      4,
+      2,
+      4,
+      3
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": -1,
+      "edges": [
+        {
+          "color": -1,
+          "height_v2": 0,
+          "norm_v2": -1,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "1/2",
+            "3/2"
+          ],
+          "t": "1"
+        },
+        {
+          "color": -1,
+          "height_v2": 0,
+          "norm_v2": -1,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "1/2",
+            "3/2"
+          ],
+          "t": "1"
+        },
+        {
+          "color": -1,
+          "height_v2": 1,
+          "norm_v2": 1,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "1",
+            "3"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      2,
+      3,
+      2,
+      4,
+      2,
+      4,
+      3
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": null,
+      "upper": null
+    },
+    "rank": 21,
+    "reason": "rank21_rho_triangle",
+    "witness": {
+      "color": 0,
+      "edges": [
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            0,
+            1
+          ],
+          "r": [
+            "1/3",
+            "2/3"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 0,
+          "norm_v2": 0,
+          "pair": [
+            1,
+            2
+          ],
+          "r": [
+            "1/3",
+            "2/3"
+          ],
+          "t": "1"
+        },
+        {
+          "color": 0,
+          "height_v2": 1,
+          "norm_v2": 2,
+          "pair": [
+            0,
+            2
+          ],
+          "r": [
+            "2/3",
+            "4/3"
+          ],
+          "t": "2"
+        }
+      ],
+      "kind": "rank21_rho_monochromatic_triangle",
+      "vertices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "labels": [
+      0,
+      1,
+      0,
+      2,
+      3,
+      2,
+      3,
+      1,
+      1,
+      4,
+      1,
+      4,
+      2,
+      1,
+      1,
+      1
+    ],
+    "max_n": 127,
+    "positive_height": {
+      "lower": "-1/2",
+      "upper": "1/3"
+    },
+    "rank": 18,
+    "reason": "rank18_parameter_independent_rho_triangle",
+    "sample_kind": "max_witness_endpoint",
+    "witness": {
+      "kind": "rank18_parameter_independent_rho_triangle",
+      "scale_s": "1",
+      "vertices": [
+        41,
+        55,
+        69
+      ],
+      "xi_ab": [
+        "1",
+        "-1",
+        "-1",
+        "14"
+      ],
+      "xi_ac": [
+        "2",
+        "-2",
+        "-2",
+        "28"
+      ],
+      "xi_bc": [
+        "1",
+        "-1",
+        "-1",
+        "14"
+      ]
+    }
+  }
+]
