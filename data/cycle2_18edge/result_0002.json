@@ -1,0 +1,43 @@
+{
+  "assignment_order": [
+    10,
+    2,
+    6,
+    0,
+    11,
+    14,
+    15,
+    9,
+    1,
+    7,
+    17,
+    16,
+    4,
+    3,
+    8,
+    12,
+    13,
+    5
+  ],
+  "consistent_leaf_count": 57804,
+  "cycle_rank_distribution": {
+    "4": 27,
+    "5": 57777
+  },
+  "edge_count": 18,
+  "feasible_stream_sha256": "4ede8f955cbf90a9caf926d3cca42caa9fe88e9311262b78376979f6e2c8d1d5",
+  "feasible_total_after_rank15_exclusion": 57804,
+  "h0_rank21": 57777,
+  "h1_rank18": 27,
+  "h2_rank15": 0,
+  "inconsistent_prunes": 623029,
+  "logical_exact5_total": 28958095545,
+  "logical_pruned": 28958037741,
+  "lookahead_prunes": 135251,
+  "mask": "0x0002",
+  "nodes": 262515,
+  "record_limit": 20000,
+  "records_retained": 20000,
+  "simple_cycle_count": 22,
+  "wall_time_seconds": 216.59380400000373
+}

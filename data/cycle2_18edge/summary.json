@@ -1,0 +1,349 @@
+{
+  "cycle1_starting_sha": "c6b9ad413bdc13e7b3bfa38afc7da58eb29e9a73",
+  "dependencies": "standard library only",
+  "python": "3.14.3",
+  "quarter_turn_orbits": [
+    [
+      "0x0002",
+      "0x0020",
+      "0x0046",
+      "0x0200"
+    ],
+    [
+      "0x0004",
+      "0x0040",
+      "0x0062",
+      "0x0242"
+    ]
+  ],
+  "results": [
+    {
+      "assignment_order": [
+        10,
+        2,
+        6,
+        0,
+        11,
+        14,
+        15,
+        9,
+        1,
+        7,
+        17,
+        16,
+        4,
+        3,
+        8,
+        12,
+        13,
+        5
+      ],
+      "consistent_leaf_count": 57804,
+      "cycle_rank_distribution": {
+        "4": 27,
+        "5": 57777
+      },
+      "edge_count": 18,
+      "feasible_stream_sha256": "4ede8f955cbf90a9caf926d3cca42caa9fe88e9311262b78376979f6e2c8d1d5",
+      "feasible_total_after_rank15_exclusion": 57804,
+      "h0_rank21": 57777,
+      "h1_rank18": 27,
+      "h2_rank15": 0,
+      "inconsistent_prunes": 623029,
+      "logical_exact5_total": 28958095545,
+      "logical_pruned": 28958037741,
+      "lookahead_prunes": 135251,
+      "mask": "0x0002",
+      "nodes": 262515,
+      "record_limit": 20000,
+      "records_retained": 20000,
+      "simple_cycle_count": 22,
+      "wall_time_seconds": 216.59380400000373
+    },
+    {
+      "assignment_order": [
+        1,
+        8,
+        9,
+        12,
+        4,
+        0,
+        14,
+        5,
+        15,
+        7,
+        17,
+        2,
+        16,
+        13,
+        11,
+        3,
+        6,
+        10
+      ],
+      "consistent_leaf_count": 57804,
+      "cycle_rank_distribution": {
+        "4": 27,
+        "5": 57777
+      },
+      "edge_count": 18,
+      "feasible_stream_sha256": "bbf99a7d39734c4f6b014dbf0098be82354be6acd4d578bd34fcc79fae9f7165",
+      "feasible_total_after_rank15_exclusion": 57804,
+      "h0_rank21": 57777,
+      "h1_rank18": 27,
+      "h2_rank15": 0,
+      "inconsistent_prunes": 623029,
+      "logical_exact5_total": 28958095545,
+      "logical_pruned": 28958037741,
+      "lookahead_prunes": 135251,
+      "mask": "0x0004",
+      "nodes": 262515,
+      "record_limit": 20000,
+      "records_retained": 20000,
+      "simple_cycle_count": 22,
+      "wall_time_seconds": 234.05140160000883
+    }
+  ],
+  "scope": "18-edge exact-five equality census in cycle space; no geometry",
+  "searched_representatives": [
+    "0x0002",
+    "0x0004"
+  ],
+  "starting_git_sha": "34d0e383979326e530736ea10dc353252786d340",
+  "status": "PASS",
+  "transport_maps": {
+    "0x0002->0x0002": {
+      "edge_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "g": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "k": 0
+    },
+    "0x0002->0x0020": {
+      "edge_permutation": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        10,
+        13,
+        12,
+        15,
+        14,
+        17,
+        16,
+        0,
+        1,
+        2,
+        3
+      ],
+      "g": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "k": 1
+    },
+    "0x0002->0x0046": {
+      "edge_permutation": [
+        15,
+        16,
+        17,
+        12,
+        13,
+        14,
+        0,
+        1,
+        2,
+        3,
+        7,
+        6,
+        5,
+        4,
+        11,
+        10,
+        9,
+        8
+      ],
+      "g": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "k": 3
+    },
+    "0x0002->0x0200": {
+      "edge_permutation": [
+        9,
+        10,
+        8,
+        12,
+        13,
+        11,
+        14,
+        15,
+        16,
+        17,
+        1,
+        0,
+        3,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "g": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "k": 2
+    },
+    "0x0004->0x0004": {
+      "edge_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "g": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "k": 0
+    },
+    "0x0004->0x0040": {
+      "edge_permutation": [
+        6,
+        7,
+        8,
+        9,
+        11,
+        10,
+        13,
+        12,
+        15,
+        14,
+        17,
+        16,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "g": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "k": 1
+    },
+    "0x0004->0x0062": {
+      "edge_permutation": [
+        11,
+        10,
+        13,
+        12,
+        14,
+        15,
+        16,
+        17,
+        1,
+        0,
+        3,
+        2,
+        7,
+        8,
+        9,
+        4,
+        5,
+        6
+      ],
+      "g": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "k": 2
+    },
+    "0x0004->0x0242": {
+      "edge_permutation": [
+        14,
+        15,
+        16,
+        17,
+        0,
+        1,
+        2,
+        3,
+        7,
+        6,
+        5,
+        4,
+        12,
+        13,
+        11,
+        9,
+        10,
+        8
+      ],
+      "g": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "k": 3
+    }
+  },
+  "unresolved_error_count": 0
+}
