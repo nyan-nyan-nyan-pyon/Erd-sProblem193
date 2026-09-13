@@ -68,14 +68,21 @@ The four stages are:
 - **BIN2** — complete equality census only on BIN1 survivors;
 - **BIN3** — return to actual indexed cocycles and run direct geometry for every feasible system.
 
-The planned BIN0 quotient is deliberately split into two notions:
+### BIN0 anchoring correction
 
-- equality is expected to collapse the 4095 cocycles to 1061 distinct labeled edge sets and then 129 equality graph types;
-- indexed geometry retains the finer sequence-level quarter-turn orbit structure, expected to have 1947 orbits.
+The first BIN0 self-test correctly stopped because the draft assumed that global phase quarter-turn preserves the normalized cocycle slice `phi(0,0)=0`. This is false in general: `phi(j,0)` is gauge-invariant, and a quarter-turn can move a `1` into `(0,0)`.
 
-These numbers are frozen as BIN0 audit targets, not yet promoted results.
+The corrected program therefore distinguishes:
 
-For every BIN0 equality graph the runner will independently check
+```text
+4095 anchored cocycles
+ -> 1061 distinct labeled edge sets
+ -> 129 equality graph types
+```
+
+The `129` quotient is equality-only. **No global indexed-sequence quotient is assumed.** BIN3 keeps all 4095 actual anchored cocycles as replay units unless a subset-specific sequence conjugacy is separately proved.
+
+For every BIN0 equality graph and independently every labeled edge set, the runner checks
 
 \[
 \operatorname{rank}D=7,
@@ -91,10 +98,12 @@ which would give projected RHS rank three and the universal binary-hidden exact-
 
 If `h=2/rank15` occurs, it is a genuinely new structure absent from the audited 16/18-edge families and receives highest downstream priority.
 
-Active task/runner:
+Active corrected task/runner:
 
-- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK.md`
-- `experiments/binary_hidden/analyze_bin0_structural_census.py`
+- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK_V2.md`
+- `experiments/binary_hidden/analyze_bin0_structural_census_v2.py`
+
+The original BIN0 task/runner are superseded and retained only for provenance.
 
 New theory:
 
