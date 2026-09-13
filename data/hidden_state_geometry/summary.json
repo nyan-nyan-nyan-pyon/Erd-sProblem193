@@ -1,0 +1,32 @@
+{
+  "audited_lineage": {
+    "geo1_classification_sha256": "f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029",
+    "hs3r_classification_sha256": "2b73b525182fbda07747ee6fadac7e2d34b45e1009499dad7f2ae5c0ddc968db"
+  },
+  "classification_sha256": "363788c86ceb9c665fc1ce90b4c8e292b16204ad791105791bbc14c235011cc6",
+  "counts": {
+    "rank18_parameter_independent_geometric_collinearity": 119,
+    "rank21_exact_geometric_collinearity": 59135
+  },
+  "dependencies": "standard library only",
+  "hs1_replay": {
+    "feasible": 59254,
+    "rank_distribution": {
+      "18/3": 119,
+      "21/0": 59135
+    },
+    "stream_sha256": "6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b"
+  },
+  "max_n": 127,
+  "max_n_semantics": "finite exact witness search only; a found nondegenerate collinear triple is exact, while prefix survival is not a construction",
+  "max_witness_endpoint": 124,
+  "python": "3.14.3",
+  "scope": "phi=0x0042 positive-height free-scale exact-5 equality survivors; direct geometric collinearity",
+  "starting_git_sha": "859f72719d3303626c634faa5ed9bd9dd0d18e41",
+  "status": "PASS",
+  "survivor_count": 0,
+  "survivor_records_committed_if_small": true,
+  "survivor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 792.577578700002
+}
