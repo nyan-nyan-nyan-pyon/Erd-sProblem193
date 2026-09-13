@@ -40,23 +40,13 @@ Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
 Status: **COMPLETE / AUDITED**.
 
-For cycle basis `Y` and exact-five color matrix `C`,
-
-\[
-M=YC
-\]
-
-removes state potentials exactly. Equality feasibility is equivalent to the five-step cycle system `Mx=Yb`.
-
-CYCLE1 verifies cycle ranks, RHS rank three, and record-by-record agreement with the complete 59,254-system `phi=0x0042` HS1 replay.
-
-A short-cycle theorem strengthens the general nullity bound to
+Cycle space removes state potentials exactly. The short-cycle theorem gives
 
 \[
 \boxed{h\le1}
 \]
 
-for the unique 16-edge graph and all eight 18-edge graphs. Thus only rank21 (`h=0`) and rank18 (`h=1`) can occur; rank15 is impossible.
+for the unique 16-edge graph and all eight 18-edge graphs, so only rank21 and rank18 can occur; rank15 is impossible.
 
 Canonical theory:
 
@@ -75,7 +65,7 @@ The eight 18-edge representatives split for equality feasibility into
 {0x0004,0x0040,0x0062,0x0242}
 ```
 
-so equality search is required only for `0x0002` and `0x0004`.
+so exhaustive equality search is required only for `0x0002` and `0x0004`.
 
 Canonical proof: `docs/proofs/quarter_turn_equality_equivalence.md`.
 
@@ -83,15 +73,13 @@ Canonical proof: `docs/proofs/quarter_turn_equality_equivalence.md`.
 
 Status: **COMPLETE / AUDITED**.
 
-For each equality representative the full partition space
+For each equality representative all
 
 \[
 S(18,5)=28,958,095,545
 \]
 
-was accounted exactly by branch-and-prune in five-step cycle space.
-
-Audited result per representative:
+partitions were accounted exactly. Per representative:
 
 ```text
 feasible total : 57,804
@@ -100,30 +88,17 @@ rank18 / h=1  :     27
 rank15 / h=2  :      0
 ```
 
-The other six classes inherit the same equality census through explicit quarter-turn edge bijections.
-
 Result commit:
 
 ```text
 223e94d0fe3e1df45655104e2434d5c5323523b6
 ```
 
-Canonical task/runner:
-
-- `experiments/cycle_space/CYCLE2_TASK.md`
-- `experiments/cycle_space/search_cycle2_18edge.py`
-
 ## C4. Indexed quarter-turn geometry transport
 
-Status: **COMPLETE THEORETICALLY / INPUT TO GEO3**.
+Status: **COMPLETE / AUDITED**.
 
-If a target cocycle is the `k`-quarter-turn/gauge image of a representative, then its canonical initial state `(0,0)` corresponds to representative initial state
-
-\[
-(-k,0).
-\]
-
-Hence the four canonical target cocycles in one equality quartet are represented exactly by the representative coloring replayed from
+If a target cocycle is the `k`-quarter-turn/gauge image of a representative, then its canonical initial state `(0,0)` corresponds to representative initial state `(-k,0)`. Hence each quartet is replayed exactly from
 
 ```text
 (0,0) (1,0) (2,0) (3,0)
@@ -131,63 +106,66 @@ Hence the four canonical target cocycles in one equality quartet are represented
 
 with a horizontal quarter-turn, which preserves collinearity.
 
-Canonical proof:
-
-- `docs/proofs/quarter_turn_indexed_geometry_transport.md`
+Canonical proof: `docs/proofs/quarter_turn_indexed_geometry_transport.md`.
 
 ## C5. GEO3 direct geometry for all eight 18-edge cocycles
 
-Status: **ACTIVE / PRIORITY**.
+Status: **COMPLETE / AUDITED**.
 
-GEO3 replays both complete CYCLE2 feasible streams and tests all eight canonical cocycles through the exact
+GEO3 replays both complete CYCLE2 feasible streams and classifies all
 
-```text
-2 equality representatives x 4 initial states
-```
+\[
+8\cdot57,804=462,432
+\]
 
-sequence reduction.
+cocycle-system pairs with exact direct geometry at witness horizon `max_n=127`.
 
-Per equality representative:
-
-```text
-57,804 systems
-57,777 rank21
-27 rank18
-```
-
-Geometry types:
-
-- rank21 / `h=0`: unique five-step values, exact 3D interval-direction equality;
-- rank18 / `h=1`: one null vector and parameter-independent proportional `Xi`.
-
-No rank15 branch exists and positive-height existence is automatic.
-
-Prescribed witness horizon:
+For every target cocycle:
 
 ```text
-max_n = 127
+rank21 geometric witnesses                  : 57,777
+rank18 parameter-independent witnesses      :     27
+rank21 survivors                            :      0
+rank18 survivors                            :      0
+unresolved/error                            :      0
 ```
 
-A found witness is exact; prefix survival is not a construction.
+Global survivor count is zero and the maximum witness endpoint is 125.
 
-Canonical task/runner:
+Therefore every at-most-five-step lift in each of the eight positive-height free-scale 18-edge binary hidden families contains a genuine collinear triple. The six-step construction embeds, so
 
-- `experiments/direct_geometry/GEO3_18EDGE_TASK.md`
-- `experiments/direct_geometry/search_geo3_18edge.py`
+\[
+\boxed{\min |S|=6}
+\]
 
-Stop for ChatGPT audit after the `max_n=127` run, regardless of whether survivors remain.
+inside every one of these eight families.
+
+Result commit:
+
+```text
+e46a293d71f0b2ccb8abeddc7d7cec6f28782be0
+```
+
+Canonical proof:
+
+- `docs/proofs/eighteen_edge_geometric_optimality.md`
 
 ---
 
-# Stage 4 — broader binary cocycles / alternative base walks
+# Stage 4 — post-18-edge decision stage
 
-If GEO3 closes all eight 18-edge classes, the next decision is **not** to brute-force the next transition count automatically.  First compare:
+Status: **ACTIVE / THEORY FIRST**.
 
-1. an all-4095-cocycle algebraic five-step-feasibility sieve using the cycle-space formulation;
-2. higher-transition binary cocycle classes ordered by transition count and symmetry;
-3. changing the triangular base walk itself.
+The nearest low-transition binary hidden families are now closed geometrically. Do not brute-force the next transition count automatically.
 
-If GEO3 yields genuine prefix survivors, analyze those systems first before broadening.
+Compare four directions before starting another large computation:
+
+1. **All-cocycle algebraic sieve.** Use cycle-space feasibility to scan the 4095 binary cocycle gauge classes for whether an exact-five coloring is algebraically possible at all, before doing geometry.
+2. **Transition-count expansion.** Move to the next transition-count strata only if symmetry/cycle-space structure keeps the equality search small.
+3. **Base-walk change.** Treat the repeated failure of the triangular radix-4 mechanism as evidence that a different base substitution may be higher value than more hidden-state complexity.
+4. **General obstruction theorem.** Try to abstract the recurrent short-cycle/radix-cycle structure and the rank21/rank18 direct-collinearity mechanism into a theorem covering a much larger class without enumeration.
+
+The next computational issue should be created only after this comparison is worked out theoretically.
 
 # Stage 5 — global lower-bound direction
 
