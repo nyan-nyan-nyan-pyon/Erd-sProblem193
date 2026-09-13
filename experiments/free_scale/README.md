@@ -1,105 +1,68 @@
 # Free-scale four-state 5-step search
 
-Status: **active**.
-
-This is the next research stage after closing the fixed `A=4, M=16` tagged-lift family.
+Status: **COMPLETE / frozen**.
 
 ## Family
 
-Keep the audited triangular radix-4 base walk and four direction states, but allow the scale to vary:
+The completed experiment studies the triangular radix-4 base walk with four direction states and arbitrary scale:
 
 \[
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with
-
-- \(A\in\mathbb Z[i]\);
-- \(M\in\mathbb Z_{>0}\);
-- \(d_j\in\mathbb Z[i]\);
-- \(c_j\in\mathbb Z\).
-
-The target is a construction with at most **5 distinct adjacent 3D step vectors** while retaining an infinite no-collinear-triple proof.
-
-## First invariant
-
-For endpoint pairs with equal state, the tags cancel:
+with nonzero Gaussian integer \(A\), positive integer \(M\), integer tags, positive adjacent height increments, and the pairwise valuation certificate
 
 \[
-W_n-W_m=A(Z_n-Z_m),\qquad H_n-H_m=M(n-m).
+\nu_2(|W_n-W_m|^2)=\nu_2(H_n-H_m)\qquad(m<n).
 \]
 
-Using the base valuation identity gives the necessary relation
+The target was at most five distinct adjacent 3D step vectors.
+
+## Result
+
+The search closed symbolically; no large \((A,M)\) box was needed.
+
+Same-state pairs force
 
 \[
-\boxed{\nu_2(|A|^2)=\nu_2(M)}.
+\nu_2(|A|^2)=\nu_2(M).
 \]
 
-This must be exploited before numerical search.
-
-## Phase FS0 — normalization
-
-Do not start with arbitrary boxes such as `|A|<=N`, `M<=N`.
-
-First determine:
-
-1. the effect of Gaussian units \(\{\pm1,\pm i\}\) on \(A\) and the tags;
-2. which common integer scale factors can be divided out while preserving integrality;
-3. how powers of \(1+i\) / powers of 2 classify the 2-adic scale;
-4. whether odd factors of \(M\) and the Gaussian odd part of \(A\) can be reduced to finitely many congruence classes for the relevant valuation constraints;
-5. a canonical or primitive representative for each genuinely distinct scale class.
-
-Write the result in `NORMALIZATION.md` before implementing the broad search.
-
-## Phase FS1 — symbolic partition algebra
-
-For each exact-5 partition of the eight state transitions, study the step-equality system symbolically as a function of
+Exact-5 step-equality consistency/rank is scale-independent. The 1050 partitions split as
 
 \[
-A=a+bi,\qquad M.
+1050=184+839+27,
 \]
 
-Questions:
+with 184 inconsistent, 839 rank 9, and 27 rank 6.
 
-- Is the partition inconsistent generically?
-- Does consistency force a relation among \(a,b,M\)?
-- When does the affine rank drop?
-- Can the fixed-scale 22 linear obstruction types be upgraded to symbolic obstructions?
+All 839 rank-9 cases are eliminated by scale-free pair tests \(P_{0,4}\) and \(P_{3,7}\).
 
-The preferred output is a small taxonomy of symbolic cases, not 1050 independent brute-force jobs.
+The 27 rank-6 cases form 8 state-rotation orbits. Every orbit is eliminated by either:
 
-## Phase FS2 — exhaustive normalized search
+- a fixed-pair normalized valuation mismatch; or
+- two normalized endpoint-pair triples related by an even scalar, which shifts horizontal squared-norm valuation twice as much as height valuation.
 
-Only after FS0/FS1.
+Therefore no valuation-certified four-state free-scale lift uses at most five physical steps.
 
-Requirements:
+Since the audited construction uses six, six is optimal inside this family.
 
-- exact partition enumeration outside SMT;
-- exact linear algebra prefilter;
-- no arbitrary horizontal tag bounds;
-- all finite bounds justified mathematically;
-- deterministic summaries;
-- zero unresolved cases for a negative claim.
+## Canonical sources
 
-## SAT stop condition
+- `NORMALIZATION.md`
+- `verify_rank_reduction.py` — intermediate exact derivation checker
+- `../../scripts/certificates/verify_free_scale_four_state.py` — canonical complete checker
+- `../../docs/proofs/free_scale_four_state_optimality.md` — proof note
 
-If any exact-5 partition yields a survivor:
+All checkers use only Python standard-library exact arithmetic.
 
-1. stop the broad search;
-2. export exact `A, M, d, c`;
-3. list all eight transition vectors and the distinct physical step set;
-4. independently verify the valuation identity;
-5. derive the infinite proof before calling it a 5-step construction.
+## Scope
 
-## UNSAT stop condition
+This experiment does **not** rule out:
 
-If a mathematically normalized family is completely exhausted:
+- a four-state tagged lift proved non-collinear by a different invariant;
+- a construction with additional hidden states;
+- another base walk;
+- a global 5-step Erdős-193 construction.
 
-1. state exactly what was normalized/exhausted;
-2. distinguish numerical-class exhaustion from a symbolic theorem;
-3. reduce the solver result to an independent certificate/checker if feasible;
-4. update `docs/STATUS.md`.
-
-## After this experiment
-
-If the full four-state free-scale route closes without a 5-step construction, move to the hidden-state transducer stage in `docs/ROADMAP.md` rather than repeatedly enlarging numerical boxes.
+The active project has moved to the hidden-state transducer stage. See `../hidden_state/README.md` and `../../docs/ROADMAP.md`.
