@@ -1,0 +1,25 @@
+name: free-scale four-state certificate
+
+on:
+  push:
+    paths:
+      - 'scripts/certificates/verify_free_scale_four_state.py'
+      - 'docs/proofs/free_scale_four_state_optimality.md'
+      - '.github/workflows/free-scale-certificate.yml'
+  pull_request:
+    paths:
+      - 'scripts/certificates/verify_free_scale_four_state.py'
+      - 'docs/proofs/free_scale_four_state_optimality.md'
+      - '.github/workflows/free-scale-certificate.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run free-scale exact certificate
+        run: python scripts/certificates/verify_free_scale_four_state.py
