@@ -10,9 +10,7 @@ Status: **complete / frozen**.
 
 Status: **complete / frozen**.
 
-No valuation-certified <=5-step construction exists in the fixed `A=4, M=16` four-state family.
-
-## Stage 2 — free-scale four-state valuation-certified family
+## Stage 2 — free-scale four-state old valuation-certified family
 
 Status: **complete / frozen**.
 
@@ -22,21 +20,19 @@ For
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with nonzero Gaussian integer `A`, `M>0`, integral tags, positive adjacent heights, and the old all-pairs valuation certificate, exact-five equality systems split as
+the exact-five physical-step equality systems split as
 
 \[
 1050=184+839+27.
 \]
 
-All feasible rank-9 and rank-6 systems are eliminated by exact scale-free valuation obstructions. Six steps are optimal inside this valuation-certified family.
+All feasible systems are eliminated under the old all-pairs valuation identity. Six steps are optimal inside that certificate-defined family.
 
 ---
 
 # Stage R — weaken the non-collinearity invariant
 
-Status: **ACTIVE / PRIORITY**.
-
-Goal: test whether five-step four-state tagged lifts reappear when the old all-pairs equality certificate is replaced by the weaker rho-triangle certificate.
+Status: **FOUR-STATE COMPLETE / AUDITED**.
 
 Define
 
@@ -44,84 +40,103 @@ Define
 \rho_{mn}=\nu_2(|W_n-W_m|^2)-2\nu_2(H_n-H_m).
 \]
 
-Collinearity implies a rho-monochromatic triangle. Therefore no rho-monochromatic triangle is sufficient for no collinear triple.
+Collinearity implies a rho-monochromatic triangle, so absence of such a triangle is a sufficient no-collinearity certificate.
 
 ## R1. Rank-9 rho reconnaissance — COMPLETE / AUDITED
 
-All 839 rank-9 equality survivors fail each of:
+All 839 rank-9 exact-five equality systems have exact finite rho-monochromatic triangle witnesses.
 
 ```text
-valuation separation : 839 / 839
-sum-free rho fibers  : 839 / 839
-triangle-local        : 839 / 839
+triangle-local failures : 839
+survivors               :   0
 ```
 
-Triangle-local prefix survivors: 0. Every failure has a concrete exact finite witness.
+## R2. Rank-6 parameter-independent obstruction — COMPLETE / AUDITED
 
-Canonical sources:
+All 27 rank-6 affine families have exact proportional-triangle witnesses that force a rho-monochromatic triangle for every free-parameter choice.
 
-- `experiments/rho_certificate/RHO1_RANK9_TASK.md`
-- `experiments/rho_certificate/search_rho1_rank9.py`
-- `data/rho_rank9/`
+```text
+parameter-independent rho triangle : 27
+survivors                          :  0
+maximum witness endpoint           : 61
+```
 
-## R2. Rank-6 parameter-independent rho obstruction — ACTIVE
-
-The remaining 27 rank-6 systems have one common state null direction in each coordinate block:
-
-\[
-d=A\delta+Xv,\qquad c=Cv.
-\]
-
-For endpoint pairs define
+Therefore all exact-five partitions are closed under the triangle-local rho certificate:
 
 \[
-\Xi_{mn}=(\Re R_{mn},\Im R_{mn},q_{mn},n-m).
+184+839+27=1050.
 \]
 
-If `Xi_bc=s Xi_ab` for a triangle `a<b<c`, exact additivity gives `Xi_ac=(1+s)Xi_ab`. Both horizontal and vertical affine differences scale by the same rational factors, so the rho shifts cancel and the triangle is monochromatic for every free-parameter choice.
+Since the audited six-step lift satisfies the stronger old valuation identity,
 
-R2 must search this exact obstruction on all 27 rank-6 cases before considering any parameter search.
+\[
+\boxed{\min |S|=6}
+\]
 
-Do not use arbitrary rational grids, scale boxes, SMT, or finite-modulus parameter search unless R2 leaves survivors and a separate audited task is designed.
+inside the free-scale four-state triangle-local rho-certified family.
 
-If R2 eliminates all 27 and the audit passes, the 184 inconsistent + 839 rank-9 + 27 rank-6 classification would close all exact-five partitions in the four-state triangular tagged-lift family under the triangle-local rho certificate. Any resulting theorem remains family-specific.
+Canonical proof:
+
+- `docs/proofs/four_state_rho_triangle_optimality.md`
+
+Important scope: this does **not** prove that every five-step four-state lift is geometrically collinear. It proves only that none can be certified by this rho-triangle condition.
 
 ---
 
 # Stage 3 — hidden-state binary cocycles
 
-Status: **PAUSED AT NEXT EXPANSION / RESULTS FROZEN**.
+Status: **ACTIVE AT WEAKER-INVARIANT REUSE**.
 
 ## 3A. HS0 structure — COMPLETE / AUDITED
 
 Exact binary-cocycle enumeration gives one fully reachable 16-edge class (`phi=0x0042`) and eight 18-edge classes at the next transition-count level.
 
-## 3B. HS1 for `phi=0x0042` — COMPLETE / AUDITED
+## 3B. HS1 exact-five equality classification for `phi=0x0042` — COMPLETE / AUDITED
 
-All `S(16,5)=1,096,190,550` exact-five partitions are classified exactly; 59,254 rational equality survivors remain.
+All
 
-## 3C. HS2 for `phi=0x0042` — COMPLETE / AUDITED
+\[
+S(16,5)=1,096,190,550
+\]
 
-All 59,254 HS1 survivors are eliminated by exact normalized valuation obstructions. The `phi=0x0042` valuation-certified eight-state family has minimum six steps.
+exact-five partitions are covered exactly. There are 59,254 rationally feasible systems:
 
-## 3D. 18-edge binary cocycles — PLANNING / PAUSED
+```text
+rank 21 / dimension 0 : 59,135
+rank 18 / dimension 3 :    119
+```
 
-There are 8 gauge classes with 18 reachable transitions. Do not launch eight large searches while Stage R is active.
+## 3C. HS2 old valuation certificate — COMPLETE / AUDITED
 
-When resumed, first:
+All 59,254 equality survivors are eliminated by exact normalized valuation obstructions. Hence the `phi=0x0042` old valuation-certified eight-state family has minimum six steps.
 
-1. export the 8 canonical cocycle masks and exact transition graphs;
-2. compute relevant graph isomorphisms/automorphisms;
-3. quotient allowed hidden/base relabelings;
-4. determine same-state scale anchors;
-5. estimate branch-and-prune complexity;
-6. decide whether one shared task can cover all inequivalent classes.
+## 3R. Apply triangle-local rho to `phi=0x0042` — NEXT ACTIVE
+
+Do this **before** expanding to 18-edge cocycles, because the HS1 linear work is already complete and the rho certificate is strictly weaker than the old HS2 invariant.
+
+Planned split:
+
+1. rank 21 / dimension 0: reconstruct unique normalized tags and search exact scale-free rho-monochromatic triangles;
+2. rank 18 / dimension 3: enforce exact positive-height feasibility and search parameter-independent proportional-triangle obstructions using
+   \[
+   \Xi_{mn}=(\Re R_{mn},\Im R_{mn},q_{mn},T_{mn});
+   \]
+3. if survivors remain, stop and inspect them before any parameter grid, SMT, larger horizon, or 18-edge expansion;
+4. if all 59,254 are eliminated, audit before theorem promotion.
+
+Large computation must use the repository/Codex handoff.
+
+## 3D. 18-edge binary cocycles — PAUSED
+
+There are 8 gauge classes with 18 reachable transitions. Do not launch their much larger exact-five searches while 3R is unresolved.
+
+When resumed, first quotient graph/base/hidden symmetries and determine scale anchors before any large search.
 
 ---
 
 # Stage 4 — alternative base walks
 
-Use only if the current triangular-base lines become unproductive. Existing visual candidates are not proved constructions.
+Use only if the current triangular-base lines become unproductive.
 
 ---
 

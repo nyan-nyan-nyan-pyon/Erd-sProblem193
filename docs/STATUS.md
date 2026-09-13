@@ -28,24 +28,14 @@ with
 d=((0,0),(-2,2),(-2,-1),(0,-3)),\qquad c=(0,8,5,13)
 \]
 
-uses exactly six physical step vectors and satisfies the all-pairs 2-adic valuation identity that excludes collinear triples.
+uses exactly six physical step vectors and satisfies the old all-pairs 2-adic valuation identity.
 
 Canonical sources:
 
 - `docs/constructions/six_step.md`
 - `docs/proofs/six_step_audit.tex`
 
-## 3. Fixed-scale four-state <=5 impossibility — COMPLETE / FROZEN
-
-For
-
-\[
-W_n=4Z_n+d_{j_n},\qquad H_n=16n+c_{j_n},
-\]
-
-with arbitrary integer tags, positive adjacent heights, and the old pairwise valuation certificate, no construction with at most five distinct adjacent steps exists.
-
-## 4. Free-scale four-state valuation-certified <=5 impossibility — COMPLETE / FROZEN
+## 3. Four-state old valuation-certified family — COMPLETE / FROZEN
 
 For
 
@@ -53,32 +43,91 @@ For
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with nonzero Gaussian integer `A`, `M>0`, integral tags, positive adjacent heights, and the all-pairs valuation certificate, all exact-five equality systems split as
+with nonzero Gaussian integer `A`, `M>0`, integral tags, positive adjacent heights, and the all-pairs certificate
+
+\[
+\nu_2(|W_n-W_m|^2)=\nu_2(H_n-H_m),
+\]
+
+all exact-five step-equality systems split as
 
 \[
 1050=184+839+27.
 \]
 
-All feasible rank-9 and rank-6 systems are eliminated by exact normalized valuation obstructions. Therefore
+All feasible rank-9 and rank-6 systems are eliminated by exact normalized valuation obstructions. Hence six steps are optimal in this old valuation-certified four-state family.
+
+Canonical source:
+
+- `docs/proofs/free_scale_four_state_optimality.md`
+
+## 4. Four-state triangle-local rho-certified family — COMPLETE / AUDITED
+
+Define
+
+\[
+\boxed{\rho_{mn}=\nu_2(|W_n-W_m|^2)-2\nu_2(H_n-H_m).}
+\]
+
+For every collinear ordered triple `a<b<c`, rational affine scaling forces
+
+\[
+\boxed{\rho_{ab}=\rho_{bc}=\rho_{ac}}.
+\]
+
+Therefore absence of a rho-monochromatic triangle is a sufficient no-collinearity certificate. This condition is strictly weaker than the old all-pairs valuation identity.
+
+The same exact-five physical-step equality classification remains
+
+\[
+1050=184+839+27.
+\]
+
+RHO1 audited all 839 rank-9 systems and found a concrete exact rho-monochromatic triangle in every case:
+
+```text
+triangle-local failures : 839
+survivors               :   0
+unresolved/error        :   0
+```
+
+RHO2 audited all 27 rank-6 affine families and found a parameter-independent proportional-triangle witness in every case:
+
+```text
+parameter-independent rho triangle : 27
+survivors                          :  0
+maximum witness endpoint           : 61
+unresolved/error                   :  0
+```
+
+Hence no `<=5`-step free-scale four-state tagged lift satisfies the triangle-local rho certificate. The audited six-step construction satisfies the stronger old valuation identity and therefore lies in this broader rho-certified family. Thus
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside the complete free-scale four-state valuation-certified tagged-lift family.
+inside the triangle-local rho-certified four-state tagged-lift family.
+
+This is a certificate-defined family-specific theorem. A recorded rho-monochromatic triangle need not be geometrically collinear.
 
 Canonical sources:
 
-- `docs/proofs/free_scale_four_state_optimality.md`
-- `scripts/certificates/verify_free_scale_four_state.py`
+- `docs/proofs/four_state_rho_triangle_optimality.md`
+- `experiments/rho_certificate/search_rho1_rank9.py`
+- `experiments/rho_certificate/search_rho2_rank6.py`
+- `data/rho_rank9/`
+- `data/rho_rank6/`
 
-## 5. Scope warning
+Canonical hashes:
 
-The project still does **not** establish a global lower bound of six, global impossibility of five steps, impossibility of a four-state tagged lift proved by a different invariant, impossibility for arbitrary hidden-state transducers, impossibility for all binary cocycles, or impossibility for alternative base walks.
+```text
+RHO1 classification: 1888a9c7937eb10a13de8e361a1b116a58db93ba9f8e1d9e07b8255bf56a4272
+RHO2 classification: d356ebfb100bb84df5766c1ba8b6b23bb097bc50108209b1888764a9e333e1e3
+```
 
-## 6. Hidden-state binary-cocycle line
+## 5. Hidden-state binary-cocycle line
 
-Exact gauge enumeration gives 4096 binary cocycle classes. Among genuinely eight-state classes, the minimum reachable adjacent-transition count is 16 and the minimizing gauge class is unique:
+Exact gauge enumeration gives 4096 binary cocycle classes. Among genuinely eight-state classes, the minimum reachable adjacent-transition count is 16 and the unique minimizing gauge class is
 
 ```text
 phi = 0x0042
@@ -101,110 +150,34 @@ rank 21 / dimension 0 : 59,135
 rank 18 / dimension 3 :    119
 ```
 
-with unresolved/error count 0.
+### HS2 old valuation certificate — COMPLETE / AUDITED
 
-### HS2 for `phi=0x0042` — COMPLETE / AUDITED
+All 59,254 HS1 survivors are eliminated by the old normalized valuation certificate, so the `phi=0x0042` valuation-certified eight-state family has minimum six steps.
 
-All 59,254 HS1 survivors are eliminated by exact scale-free valuation obstructions:
-
-```text
-direct pair mismatch : 59,135
-fixed-pair mismatch  :    107
-scalar-pair mismatch :     12
-survivors            :      0
-unresolved/error     :      0
-```
-
-Thus the `phi=0x0042` free-scale valuation-certified eight-state tagged-lift family has minimum six steps.
-
-Canonical sources:
+Canonical source:
 
 - `docs/proofs/hidden_state_phi0042_optimality.md`
-- `experiments/hidden_state/search_hs1_linear_partitions.py`
-- `experiments/hidden_state/search_hs2_normalized_valuation.py`
-- `data/hidden_state_hs1/`
-- `data/hidden_state_hs2/`
 
-The 18-edge hidden-state expansion remains planning-only while the weaker-invariant four-state line below is evaluated.
+## 6. Next active direction — apply the weaker rho certificate to `phi=0x0042`
 
-## 7. Weaker rho-certificate line
+Before broadening to the 18-edge cocycles, reuse the already-audited HS1 equality classification for the unique 16-edge cocycle and ask whether any of its 59,254 exact-five equality survivors can satisfy the weaker triangle-local rho certificate.
 
-Define
+The natural split is:
 
-\[
-\boxed{\rho_{mn}=\nu_2(|W_n-W_m|^2)-2\nu_2(H_n-H_m).}
-\]
+- rank 21 / dimension 0: exact scale-free rho-color scan, analogous to RHO1;
+- rank 18 / dimension 3: exact positivity plus parameter-independent proportional-triangle search, analogous to RHO2, with stronger parameter analysis only if survivors remain.
 
-For any collinear ordered triple `a<b<c`, rational affine scaling gives
+No 18-edge large search should start until this cheaper broader-invariant test is audited.
 
-\[
-\boxed{\rho_{ab}=\rho_{bc}=\rho_{ac}}.
-\]
+## 7. Scope warning
 
-Hence absence of a rho-monochromatic triangle is a sufficient no-collinearity certificate. This is weaker than the old all-pairs valuation identity.
+The project still does **not** establish:
 
-### RHO1 rank-9 reconnaissance — COMPLETE / AUDITED
-
-Issue #4 result commit:
-
-```text
-ae32772d804db1eddab5ac9b354fe023a4856fb2
-```
-
-RHO1 replays the frozen exact-five classification and studies all 839 rank-9 / dimension-0 equality survivors. For rank 9, equality of rho colors is scale-independent.
-
-Audited result:
-
-```text
-valuation-separation failures : 839
-sum-free-fiber failures       : 839
-triangle-local failures       : 839
-triangle-local survivors      :   0
-unresolved/error              :   0
-```
-
-Every rank-9 candidate has a concrete exact rho-monochromatic triangle witness inside the searched prefix. The endpoint horizon is not a theorem assumption because each recorded witness is finite and exact.
-
-Canonical classification SHA-256:
-
-```text
-1888a9c7937eb10a13de8e361a1b116a58db93ba9f8e1d9e07b8255bf56a4272
-```
-
-Canonical sources:
-
-- `experiments/rho_certificate/RHO1_RANK9_TASK.md`
-- `experiments/rho_certificate/search_rho1_rank9.py`
-- `data/rho_rank9/`
-
-### RHO2 rank-6 parameter-independent obstruction — ACTIVE
-
-The remaining 27 rank-6 equality families have
-
-\[
-d=A\delta+Xv,\qquad c=Cv.
-\]
-
-For a pair define
-
-\[
-\Xi_{mn}=(\Re R_{mn},\Im R_{mn},q_{mn},n-m).
-\]
-
-If a triangle `a<b<c` satisfies
-
-\[
-\Xi_{bc}=s\Xi_{ab}
-\]
-
-for rational `s`, then exact additivity gives `Xi_ac=(1+s)Xi_ab`. Horizontal and vertical affine differences therefore scale by the same rational factors, whose valuation shifts cancel in rho. Such a triangle is rho-monochromatic for every free horizontal and height parameter choice.
-
-RHO2 searches this parameter-independent exact obstruction for all 27 rank-6 cases without any parameter grid, scale box, SMT, or heuristic search.
-
-Canonical task and runner:
-
-- `experiments/rho_certificate/RHO2_RANK6_TASK.md`
-- `experiments/rho_certificate/search_rho2_rank6.py`
+- a global lower bound of six for Erdős Problem 193;
+- geometric impossibility of all five-step four-state tagged lifts;
+- impossibility under arbitrary non-collinearity invariants;
+- impossibility for arbitrary hidden-state transducers or all binary cocycles;
+- impossibility for alternative base walks.
 
 ## 8. Compute workflow
 
