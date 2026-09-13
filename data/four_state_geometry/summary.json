@@ -1,0 +1,30 @@
+{
+  "audited_rho_hashes": {
+    "rho1": "1888a9c7937eb10a13de8e361a1b116a58db93ba9f8e1d9e07b8255bf56a4272",
+    "rho2": "d356ebfb100bb84df5766c1ba8b6b23bb097bc50108209b1888764a9e333e1e3"
+  },
+  "classification_sha256": "f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029",
+  "counts": {
+    "rank6_parameter_independent_geometric_collinearity": 27,
+    "rank9_exact_geometric_collinearity": 839
+  },
+  "dependencies": "standard library only",
+  "exact5_replay": {
+    "linear_inconsistent": 184,
+    "rank6": 27,
+    "rank6_rotation_orbits": 8,
+    "rank9": 839,
+    "total": 1050
+  },
+  "max_n": 127,
+  "max_n_semantics": "finite exact witness search only; a found geometric collinearity witness is exact, while a prefix survivor proves nothing global",
+  "max_witness_endpoint": 64,
+  "python": "3.14.3",
+  "scope": "free-scale four-state triangular tagged-lift exact-five equality systems; direct geometric collinearity, no valuation/rho certificate",
+  "starting_git_sha": "cee5e0f6bccf5e09ef2b91a5e05bed2d26b8b3b5",
+  "status": "PASS",
+  "survivor_count": 0,
+  "survivor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 1.151458400010597
+}
