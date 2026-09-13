@@ -17,6 +17,8 @@ Canonical audited proof notes live here.
 - `quarter_turn_equality_equivalence.md` — exact equality-feasibility quotient of the eight 18-edge classes into two quarter-turn quartets.
 - `quarter_turn_indexed_geometry_transport.md` — sequence-level transport identifying the four canonical indexed targets in each quartet with four initial states of one representative.
 - `positive_height_automatic.md` — positive-height existence is automatic for equality-feasible systems by taking vertical state tags zero.
+- `binary_hidden_equality_graph_quotient.md` — equality for arbitrary fully reachable binary-hidden cocycles depends only on the labeled adjacent graph up to hidden relabeling and global phase quarter-turn.
+- `rank15_binary_subspace_sieve.md` — exact `h=2/rank15` sieve through the ten-dimensional space `U=col[D B]` and binary color indicators.
 
 ## Superseded certificate-defined results retained for provenance
 
