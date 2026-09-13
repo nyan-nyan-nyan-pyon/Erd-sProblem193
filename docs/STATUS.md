@@ -108,32 +108,40 @@ Canonical theory includes:
 
 The next program treats all **4095 fully reachable binary-hidden cocycle gauge classes** as one finite search universe. It is intended as the final systematic test of the current triangular radix-4 base with one binary hidden bit.
 
-### BIN0 — structural census and equality quotient
+### BIN0 v2 — structural census and equality quotient
 
-Status: **ACTIVE / PRIORITY**.
+Status: **ACTIVE / PRIORITY — CORRECTED AFTER SELF-TEST STOP**.
 
-BIN0 performs no five-color search and no geometry. It must independently audit the exact structural compression
+The original BIN0 draft incorrectly assumed that global phase quarter-turn preserves the anchored normalized cocycle set `phi(0,0)=0`. In general
+
+\[
+\phi'(0,0)=\phi(-k,0),
+\]
+
+and `phi(j,0)` is gauge-invariant because digit `r=0` preserves phase. Thus a quarter-turn can leave the normalized slice; e.g. `0x0010` with `k=3` gives `0x0001`, whose `phi(0,0)=1`.
+
+Therefore BIN0 v2 keeps two levels strictly separate:
 
 ```text
-4095 fully reachable cocycles
+4095 anchored cocycles
  -> 1061 distinct labeled adjacent edge sets
  -> 129 equality graph types
 ```
 
-while separately recording the finer sequence-level quarter-turn quotient expected to contain 1947 orbits.
+The `129` quotient is **equality-only** and remains valid under edge-system state relabeling / quarter-turn. No global indexed-sequence quotient is claimed. For BIN3, all 4095 actual anchored cocycles are retained as replay units unless a subset-specific sequence conjugacy is separately proved.
 
-For every equality graph BIN0 checks exact linear algebra with
-
-\[
-B=(\Re b,\Im b,\mathbf1)
-\]
-
-and requires
+For every equality graph and, independently, every one of the 1061 labeled edge sets, BIN0 v2 requires
 
 \[
 \operatorname{rank}D=7,
 \qquad
-\operatorname{rank}[D\ B]=10.
+\operatorname{rank}[D\ B]=10,
+\]
+
+with
+
+\[
+B=(\Re b,\Im b,\mathbf1).
 \]
 
 If audited, this gives projected RHS rank three and therefore the universal binary-hidden exact-five bound
@@ -142,12 +150,16 @@ If audited, this gives projected RHS rank three and therefore the universal bina
 \boxed{h\le2}.
 \]
 
+BIN0 v2 also records the gauge-invariant `r=0` profile `(phi(1,0),phi(2,0),phi(3,0))`, expected among fully reachable classes as `000:511` and `512` for each of the seven nonzero profiles.
+
 Active sources:
 
 - `docs/proofs/binary_hidden_equality_graph_quotient.md`
 - `docs/proofs/rank15_binary_subspace_sieve.md`
-- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK.md`
-- `experiments/binary_hidden/analyze_bin0_structural_census.py`
+- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK_V2.md`
+- `experiments/binary_hidden/analyze_bin0_structural_census_v2.py`
+
+The original BIN0 task/runner are retained only for provenance and are superseded.
 
 ### BIN1 — equality-existence sieve
 
@@ -181,7 +193,9 @@ BIN2 performs complete equality enumeration only for graph types that survive BI
 
 Status: **BLOCKED ON BIN2 AUDIT**.
 
-BIN3 returns from equality graph types to actual cocycles or separately audited sequence conjugacies and applies exact direct geometry:
+BIN3 returns from equality graph types to the **actual anchored cocycles**. Equality graph equivalence alone is insufficient for indexed geometry, and no all-4095 sequence quarter-turn quotient is currently claimed.
+
+Exact direct geometry:
 
 - `h=0`: 3D interval displacement;
 - `h=1`: 4D `Xi`;
