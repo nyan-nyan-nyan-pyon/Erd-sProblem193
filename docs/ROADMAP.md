@@ -26,7 +26,7 @@ The old valuation and later triangle-local rho stages both gave six-step optimal
 
 Status: **COMPLETE / AUDITED**.
 
-GEO1 tests the complete four-state exact-five equality classification with no non-collinearity certificate assumption.
+GEO1 tests the complete exact-five equality classification for the stated positive-height four-state family with no non-collinearity certificate assumption.
 
 ```text
 184 : rationally inconsistent
@@ -40,13 +40,15 @@ Survivors and unresolved cases are zero. Maximum witness endpoint is 64. Canonic
 f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
 ```
 
-Therefore every at-most-five-step free-scale four-state triangular tagged lift contains three collinear visited points. The audited six-step construction supplies the upper bound, hence
+For rank 6, proportional-`Xi` forces the two three-dimensional displacement vectors to be proportional for every free-parameter choice; positive adjacent height increments ensure these vectors are nonzero and the three visited points are distinct.
+
+Therefore every at-most-five-step positive-height free-scale four-state triangular tagged lift contains three distinct collinear visited points. The audited six-step construction supplies the upper bound, hence
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside the complete free-scale four-state triangular tagged-lift family. This lower bound does not require positivity of adjacent height increments and does not depend on valuation/rho or any other certificate.
+inside this complete positive-height four-state triangular tagged-lift family. The lower bound no longer depends on valuation/rho or any other non-collinearity certificate.
 
 Canonical proof:
 
@@ -63,7 +65,7 @@ rank 21 / dimension 0 : 59,135
 rank 18 / dimension 3 :    119
 ```
 
-HS3R already gives proportional-`Xi` witnesses for all 119 rank-18 families. Those witnesses are stronger than rho failure: they force the actual three-dimensional displacements to be proportional for every free-parameter choice, hence they are genuine collinear triples.
+HS3R already gives proportional-`Xi` witnesses for all 119 rank-18 families. For admissible positive-height members, those witnesses force genuine collinearity for every free-parameter choice.
 
 The substantive new work is the 59,135 rank-21 systems. Their normalized tags are unique. Define exact normalized points
 
@@ -78,12 +80,12 @@ GEO2 should:
 1. replay the HS1 feasible stream count/ranks/hash exactly;
 2. verify the audited HS3R lineage before reuse;
 3. reconstruct all 59,135 rank-21 unique normalized systems;
-4. search exact finite collinear triples directly, using rational arithmetic and an efficient slope/direction signature;
-5. replay the 119 rank-18 proportional-`Xi` witnesses as true geometric collinearity;
+4. search exact finite collinear triples directly, using rational arithmetic and an efficient projective direction signature;
+5. replay/reconstruct the 119 rank-18 proportional-`Xi` witnesses as true geometric collinearity for positive-height members;
 6. stop after the prescribed finite horizon in either outcome;
 7. avoid 18-edge expansion, parameter grids, or SMT until ChatGPT audits the result.
 
-If all 59,254 feasible systems receive genuine collinearity witnesses, then six steps are optimal inside the complete `phi=0x0042` free-scale eight-state tagged-lift family, with no certificate assumption.
+If all 59,254 feasible systems receive genuine collinearity witnesses, then six steps are optimal inside the complete positive-height `phi=0x0042` free-scale eight-state tagged-lift family, with no certificate assumption.
 
 ---
 
