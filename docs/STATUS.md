@@ -14,7 +14,7 @@ q_{4n+r}=a_rq_n,\qquad a=(1,i,-i,1),\qquad Z_n=\sum_{k<n}q_k
 
 has an audited four-state tagged lift using exactly six physical step vectors. Canonical sources are `docs/constructions/six_step.md` and `docs/proofs/six_step_audit.tex`.
 
-## 2. Four-state exact-five classification
+## 2. Four-state direct geometry — COMPLETE / AUDITED
 
 For positive-height free-scale four-state tagged lifts
 
@@ -22,69 +22,31 @@ For positive-height free-scale four-state tagged lifts
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with nonzero Gaussian `A`, `M>0`, integral state tags, and positive adjacent height increments, the frozen exact-five physical-step equality classification is
+the frozen exact-five equality classification is
 
 \[
-1050=184+839+27,
+1050=184+839+27.
 \]
 
-with 184 rationally inconsistent systems, 839 rank-9 / dimension-0 systems, and 27 rank-6 / dimension-3 systems.
+GEO1 removes all valuation/rho certificate assumptions. The 184 inconsistent systems fail the step-equality equations, all 839 rank-9 systems have exact genuine collinear triples, and all 27 rank-6 affine systems have parameter-independent genuine collinear triples. Survivors and unresolved cases are zero; maximum witness endpoint is 64.
 
-The old valuation and rho stages are retained for provenance, but GEO1 now gives the strongest four-state result.
-
-## 3. GEO1 direct four-state geometry — COMPLETE / AUDITED
-
-Issue #7 result commit:
-
-```text
-68ddd331d0a0ead6c5b8105705d9bf79ac3fc0b4
-```
-
-GEO1 removes all non-collinearity-certificate assumptions and tests the feasible equality systems by genuine geometric collinearity.
-
-Audited counts:
-
-```text
-rank-9 exact geometric collinearity                  : 839
-rank-6 parameter-independent geometric collinearity :  27
-survivors                                            :   0
-unresolved/error                                     :   0
-maximum witness endpoint                             :  64
-```
-
-Canonical classification SHA-256:
+Canonical GEO1 classification SHA-256:
 
 ```text
 f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
 ```
 
-For rank 9, normalized points
-
-\[
-U_n=(\Re(Z_n+\delta_{j_n}),\Im(Z_n+\delta_{j_n}),n)
-\]
-
-are related to actual points by an invertible real-linear map, so exact normalized collinearity is equivalent to actual collinearity for every nonzero horizontal scale and positive vertical scale.
-
-For rank 6, a proportional relation
-
-\[
-\Xi_{bc}=s\Xi_{ab},\qquad s>0,
-\]
-
-forces the full actual normalized three-dimensional displacement on `bc` to be `s` times that on `ab` for every free horizontal/vertical parameter choice. For an admissible member of the family, positive adjacent height increments make these displacement vectors nonzero, so the three visited points are distinct and genuinely collinear.
-
-Therefore every at-most-five-step lift in the stated positive-height free-scale four-state triangular tagged-lift family contains a collinear triple. The audited six-step construction supplies the upper bound, so
+Therefore
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside this full positive-height four-state tagged-lift family.
+inside the complete positive-height free-scale four-state triangular tagged-lift family, with no non-collinearity-certificate assumption.
 
 Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
-## 4. Hidden-state structure
+## 3. Hidden-state structure
 
 For binary hidden state
 
@@ -100,7 +62,7 @@ phi = 0x0042
 
 The next transition count is 18, attained by 8 gauge classes.
 
-## 5. `phi=0x0042` exact-five classification
+## 4. `phi=0x0042` exact-five classification
 
 HS1 exhaustively covers
 
@@ -122,31 +84,54 @@ HS1 feasible-stream SHA-256:
 6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b
 ```
 
-HS2 eliminated all 59,254 under the old valuation certificate.
+HS2 and HS3R remain retained for provenance: they eliminated all 59,254 systems under the old valuation certificate and the weaker rho certificate respectively.
 
-HS3R then eliminated all 59,254 under the weaker triangle-local rho certificate:
+## 5. GEO2 direct hidden-state geometry — COMPLETE / AUDITED
+
+Issue #8 result commit:
 
 ```text
-rank21 rho triangle                        : 59,135
-rank18 parameter-independent rho triangle :    119
-survivors                                  :      0
-unresolved/error                           :      0
-maximum witness endpoint                   :     69
+7b63017c82cf1801b859ef0ee1f8eceefb091bac
 ```
 
-Thus six steps are optimal inside the `phi=0x0042` rho-certified family. Canonical proof: `docs/proofs/hidden_state_phi0042_rho_optimality.md`.
+GEO2 removes the remaining certificate assumption for `phi=0x0042` and tests genuine geometric collinearity directly.
 
-## 6. New active direction — direct hidden-state geometry
+Audited counts:
 
-Before launching the much larger 18-edge searches, ask whether the certificate caveat can also be removed for `phi=0x0042`.
+```text
+rank-21 exact geometric collinearity                  : 59,135
+rank-18 parameter-independent geometric collinearity :    119
+positive-height infeasible                            :      0
+survivors                                              :      0
+unresolved/error                                       :      0
+maximum witness endpoint                               :    124
+```
 
-The 119 rank-18 HS3R proportional-`Xi` witnesses already imply genuine geometric collinearity for every admissible positive-height free-parameter choice. The substantive remaining target is the 59,135 rank-21 systems. Their normalized tags are unique, so actual points are an invertible real-linear image of exact normalized three-dimensional points
+Canonical GEO2 classification SHA-256:
+
+```text
+363788c86ceb9c665fc1ce90b4c8e292b16204ad791105791bbc14c235011cc6
+```
+
+For rank 21, exact normalized three-dimensional pair displacements are directly proportional. For rank 18, proportional `Xi=(Re R, Im R, q, T)` makes the full normalized three-dimensional displacement proportional for every free-parameter choice; positive adjacent heights make the witness nondegenerate.
+
+Therefore every at-most-five-step lift in the stated positive-height free-scale `phi=0x0042` eight-state family contains three distinct collinear visited points. The audited six-step construction embeds by ignoring the hidden bit, hence
 
 \[
-V_n=(\Re(Z_n+\delta_{\sigma_n}),\Im(Z_n+\delta_{\sigma_n}),n+\gamma_{\sigma_n}).
+\boxed{\min |S|=6}
 \]
 
-The next task, GEO2, should search these systems for exact finite collinear triples, reusing the rank-18 proportional witnesses directly. It must replay HS1 exactly and stop for audit before any 18-edge expansion.
+inside this complete `phi=0x0042` family, with no valuation/rho or other non-collinearity-certificate assumption.
+
+Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
+
+## 6. Next active direction — cycle-space reduction before 18-edge search
+
+Do not launch a raw `S(18,5)` partition scan yet. The next structural target is to eliminate state tags by passing to the transition graph cycle space.
+
+For a physical-step coloring, closed-cycle sums cancel the state potentials. Thus five-step feasibility can be reformulated as a small linear system on the five unknown physical step values and the colored cycle-incidence matrix. This should be verified exactly for `phi=0x0042` and then for the eight 18-edge gauge classes before any exhaustive search.
+
+Issue #10 tracks this structural stage. Its purpose is to derive/verify the cycle-space formulation, ranks/nullities, canonical cycle bases, and symmetry reductions; no large 18-edge enumeration should start before that audit.
 
 ## 7. Scope warning
 
