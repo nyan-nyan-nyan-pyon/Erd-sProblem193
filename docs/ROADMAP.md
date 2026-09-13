@@ -8,171 +8,120 @@ Status: **complete / frozen**.
 
 ## Stage 1 — fixed-scale four-state optimality
 
-Family:
+Status: **complete / frozen**.
 
-\[
-W_n=4Z_n+d_{j_n},\qquad H_n=16n+c_{j_n}.
-\]
+No valuation-certified <=5-step construction exists in the fixed `A=4, M=16` four-state family.
+
+## Stage 2 — free-scale four-state valuation-certified family
 
 Status: **complete / frozen**.
 
-Result: no valuation-certified <=5-step construction exists in this fixed-scale family; the audited six-step lift attains the family minimum.
-
----
-
-# Stage 2 — free-scale four-state search
-
-Family:
+For
 
 \[
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with nonzero Gaussian integer `A`, `M>0`, integral tags, positive adjacent heights, and the all-pairs valuation certificate.
-
-Status: **complete / frozen**.
-
-Established:
-
-\[
-\nu_2(|A|^2)=\nu_2(M),
-\]
-
-and exact-five equality systems split universally as
+with nonzero Gaussian integer `A`, `M>0`, integral tags, positive adjacent heights, and the old all-pairs valuation certificate, exact-five equality systems split as
 
 \[
 1050=184+839+27.
 \]
 
-All feasible rank-9 and rank-6 systems are eliminated by scale-free valuation obstructions. Therefore six steps are optimal inside the full free-scale four-state valuation-certified tagged-lift family.
+All feasible rank-9 and rank-6 systems are eliminated by exact scale-free valuation obstructions. Six steps are optimal inside this valuation-certified family.
+
+---
+
+# Stage R — weaken the non-collinearity invariant
+
+Status: **ACTIVE / PRIORITY**.
+
+Goal: test whether five-step four-state tagged lifts reappear when the old all-pairs equality certificate is replaced by the weaker rho-triangle certificate.
+
+Define
+
+\[
+\rho_{mn}=\nu_2(|W_n-W_m|^2)-2\nu_2(H_n-H_m).
+\]
+
+Collinearity implies a rho-monochromatic triangle. Therefore no rho-monochromatic triangle is sufficient for no collinear triple.
+
+## R1. Rank-9 rho reconnaissance — COMPLETE / AUDITED
+
+All 839 rank-9 equality survivors fail each of:
+
+```text
+valuation separation : 839 / 839
+sum-free rho fibers  : 839 / 839
+triangle-local        : 839 / 839
+```
+
+Triangle-local prefix survivors: 0. Every failure has a concrete exact finite witness.
 
 Canonical sources:
 
-- `docs/proofs/free_scale_four_state_optimality.md`
-- `scripts/certificates/verify_free_scale_four_state.py`
+- `experiments/rho_certificate/RHO1_RANK9_TASK.md`
+- `experiments/rho_certificate/search_rho1_rank9.py`
+- `data/rho_rank9/`
+
+## R2. Rank-6 parameter-independent rho obstruction — ACTIVE
+
+The remaining 27 rank-6 systems have one common state null direction in each coordinate block:
+
+\[
+d=A\delta+Xv,\qquad c=Cv.
+\]
+
+For endpoint pairs define
+
+\[
+\Xi_{mn}=(\Re R_{mn},\Im R_{mn},q_{mn},n-m).
+\]
+
+If `Xi_bc=s Xi_ab` for a triangle `a<b<c`, exact additivity gives `Xi_ac=(1+s)Xi_ab`. Both horizontal and vertical affine differences scale by the same rational factors, so the rho shifts cancel and the triangle is monochromatic for every free-parameter choice.
+
+R2 must search this exact obstruction on all 27 rank-6 cases before considering any parameter search.
+
+Do not use arbitrary rational grids, scale boxes, SMT, or finite-modulus parameter search unless R2 leaves survivors and a separate audited task is designed.
+
+If R2 eliminates all 27 and the audit passes, the 184 inconsistent + 839 rank-9 + 27 rank-6 classification would close all exact-five partitions in the four-state triangular tagged-lift family under the triangle-local rho certificate. Any resulting theorem remains family-specific.
 
 ---
 
 # Stage 3 — hidden-state binary cocycles
 
-Status: **ACTIVE**.
+Status: **PAUSED AT NEXT EXPANSION / RESULTS FROZEN**.
 
-Goal: retain the recursive triangular base walk while augmenting routing state so internal transitions may collapse more effectively to a small physical step set.
+## 3A. HS0 structure — COMPLETE / AUDITED
 
-## 3A. HS0 binary phase cocycle — COMPLETE / AUDITED
+Exact binary-cocycle enumeration gives one fully reachable 16-edge class (`phi=0x0042`) and eight 18-edge classes at the next transition-count level.
 
-State:
+## 3B. HS1 for `phi=0x0042` — COMPLETE / AUDITED
 
-\[
-\sigma_n=(j_n,h_n),\qquad h_{4n+r}=h_n\oplus\phi(j_n,r).
-\]
+All `S(16,5)=1,096,190,550` exact-five partitions are classified exactly; 59,254 rational equality survivors remain.
 
-Exact gauge/carry enumeration gives 4096 cocycle classes. The reachable-transition distribution includes:
+## 3C. HS2 for `phi=0x0042` — COMPLETE / AUDITED
 
-```text
-16 edges : 1 fully reachable class
-18 edges : 8 fully reachable classes
-20 edges : 136 classes
-...
-```
+All 59,254 HS1 survivors are eliminated by exact normalized valuation obstructions. The `phi=0x0042` valuation-certified eight-state family has minimum six steps.
 
-The unique 16-edge class is
+## 3D. 18-edge binary cocycles — PLANNING / PAUSED
 
-```text
-phi = 0x0042
-```
+There are 8 gauge classes with 18 reachable transitions. Do not launch eight large searches while Stage R is active.
 
-## 3B. HS1 exact linear prefilter for `phi=0x0042` — COMPLETE / AUDITED
-
-All
-
-\[
-S(16,5)=1,096,190,550
-\]
-
-exact-five partitions are classified exactly:
-
-```text
-rationally inconsistent : 1,096,131,296
-rationally feasible     :        59,254
-rank 21 / dimension 0   :        59,135
-rank 18 / dimension 3   :           119
-unresolved/error        :             0
-```
-
-Canonical feasible-stream SHA-256:
-
-```text
-6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b
-```
-
-## 3C. HS2 normalized valuation sieve for `phi=0x0042` — COMPLETE / AUDITED
-
-Pair `(0,3)` has the same hidden state at both endpoints and forces
-
-\[
-\nu_2(|A|^2)=\nu_2(M).
-\]
-
-HS2 replays HS1 exactly and eliminates all 59,254 rational equality survivors by exact scale-free obstructions:
-
-```text
-direct pair mismatch : 59,135
-fixed-pair mismatch  :    107
-scalar-pair mismatch :     12
-survivors            :      0
-unresolved/error     :      0
-```
-
-The `n<=127` endpoint range is only where the finite witnesses were found; it is not an assumption in the resulting impossibility theorem.
-
-Because the audited four-state six-step lift embeds by ignoring the hidden bit,
-
-\[
-\boxed{\min |S|=6}
-\]
-
-inside the `phi=0x0042` free-scale valuation-certified eight-state tagged-lift family.
-
-Canonical sources:
-
-- `docs/proofs/hidden_state_phi0042_optimality.md`
-- `experiments/hidden_state/search_hs1_linear_partitions.py`
-- `experiments/hidden_state/search_hs2_normalized_valuation.py`
-- `data/hidden_state_hs1/`
-- `data/hidden_state_hs2/`
-
-## 3D. HS3 broaden to the 18-edge binary cocycles — PLANNING / ACTIVE
-
-There are 8 gauge classes with 18 reachable transitions. Do **not** run eight independent large searches immediately.
-
-First perform a structural reduction:
+When resumed, first:
 
 1. export the 8 canonical cocycle masks and exact transition graphs;
-2. compute graph isomorphisms and automorphism groups relevant to the tagged-lift equations;
-3. quotient any classes equivalent under allowed hidden/base relabelings;
-4. determine same-state endpoint pairs and resulting scale relations for each inequivalent class;
-5. estimate exact-five branch-and-prune complexity using the existing HS1 engine on bounded node-count dry runs only if mathematically useful;
-6. decide whether one shared HS3 task can cover all inequivalent 18-edge classes without duplicated computation.
-
-Only after this structural pass should a new compute handoff be committed.
-
-## 3E. Stronger invariants / larger state spaces — NOT YET ACTIVE
-
-Use only if the binary-cocycle line becomes unproductive. Possible directions include:
-
-- more reachable-transition cocycles;
-- more than one hidden bit;
-- other finite transducers;
-- a non-collinearity invariant other than the current all-pairs valuation identity.
-
-Any change of invariant or family must be explicit and must not be conflated with the completed `phi=0x0042` theorem.
+2. compute relevant graph isomorphisms/automorphisms;
+3. quotient allowed hidden/base relabelings;
+4. determine same-state scale anchors;
+5. estimate branch-and-prune complexity;
+6. decide whether one shared task can cover all inequivalent classes.
 
 ---
 
 # Stage 4 — alternative base walks
 
-Use if the current hidden-state line becomes unproductive. Existing visual candidates are not proved constructions. Promotion requires exact recursion, an invariant lemma, synchronization/tag construction, finite step-set derivation, and independent audit.
+Use only if the current triangular-base lines become unproductive. Existing visual candidates are not proved constructions.
 
 ---
 
@@ -188,9 +137,9 @@ Do not infer a global lower bound from family-specific exhaustive searches.
 
 A stage closes only when:
 
-- the mathematical family is explicit;
+- the mathematical family and invariant are explicit;
 - code is reproducible;
 - unresolved statuses are zero or explicitly documented;
-- candidates have an infinite proof before construction promotion;
-- negative results have an exact replay/audit when feasible;
+- candidates are not promoted without an infinite proof;
+- negative results have exact replay/audit when feasible;
 - `docs/STATUS.md` is updated after review.
