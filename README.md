@@ -12,19 +12,29 @@ For free-scale four-state tagged lifts
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-the exact-five physical-step equality classification is
+with nonzero Gaussian `A`, `M>0`, and integral state tags, the exact-five physical-step equality classification is
 
 \[
 1050=184+839+27.
 \]
 
-Six steps are optimal both under the original all-pairs valuation certificate and under the weaker triangle-local rho certificate
+GEO1 removes the previous non-collinearity-certificate caveat entirely:
+
+```text
+184 : rationally inconsistent
+839 : exact genuine collinear triple
+ 27 : parameter-independent genuine collinear triple
+```
+
+Thus every at-most-five-step lift in this complete four-state triangular tagged-lift family contains three collinear visited points. The audited six-step construction has no collinear triple, so
 
 \[
-\rho_{mn}=\nu_2(|W_n-W_m|^2)-2\nu_2(H_n-H_m),
+\boxed{\min |S|=6}
 \]
 
-where collinearity implies a rho-monochromatic triangle. Canonical proof: `docs/proofs/four_state_rho_triangle_optimality.md`.
+inside the full free-scale four-state triangular tagged-lift family. No valuation identity, rho certificate, or positivity of adjacent height increments is needed for the lower bound.
+
+Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
 For the unique fully reachable 16-edge hidden cocycle
 
@@ -43,23 +53,13 @@ HS3R eliminates all 59,254 under the weaker triangle-local rho certificate, with
 
 These are family-specific results, not a global six-step lower bound for Erdős Problem 193.
 
-## Current active direction — direct four-state geometry
+## Current active direction — direct hidden-state geometry
 
-Before expanding to the much larger 18-edge hidden cocycles, test whether the four-state certificate caveat can be removed entirely.
+The next question is whether the certificate caveat can also be removed for the unique 16-edge hidden cocycle `phi=0x0042`.
 
-The rank-6 proportional-`Xi` witnesses already force genuine geometric collinearity for every free-parameter choice. For rank 9, normalized points are
+The 119 rank-18 affine families already have proportional-`Xi` witnesses from HS3R; these witnesses in fact force genuine three-dimensional collinearity for every free-parameter choice. The remaining substantive target is the 59,135 rank-21 systems: reconstruct their unique normalized three-dimensional points and search for exact geometric collinearity directly.
 
-\[
-U_n=(\Re(Z_n+\delta_{j_n}),\Im(Z_n+\delta_{j_n}),n),
-\]
-
-and actual free scales are an invertible real-linear transformation, so collinearity is scale-independent. GEO1 will search all 839 rank-9 systems for exact triples `a<b<c` with
-
-\[
-R_{ab}/(b-a)=R_{bc}/(c-b).
-\]
-
-If all are covered, six steps become optimal inside the complete free-scale four-state triangular tagged-lift family with positive heights, with no certificate assumption.
+Only after this direct-geometry reuse is audited should the project resume the much larger eight-class 18-edge expansion.
 
 See `docs/STATUS.md` and `docs/ROADMAP.md`.
 
