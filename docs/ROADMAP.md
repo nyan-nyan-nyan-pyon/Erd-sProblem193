@@ -65,28 +65,45 @@ e46a293d71f0b2ccb8abeddc7d7cec6f28782be0
 
 This is the final systematic test of the current triangular radix-4 base with one binary hidden bit. Do not advance by edge count one stratum at a time.
 
-## BIN0 — structural census and equality quotient
+## BIN0 v2 — structural census and equality quotient
 
-Status: **ACTIVE / PRIORITY**.
+Status: **ACTIVE / PRIORITY — CORRECTED**.
 
-Enumerate all 4095 fully reachable binary cocycle gauge classes exactly, but perform no five-color search yet.
+The first BIN0 self-test correctly stopped because the draft incorrectly assumed that global phase quarter-turn preserves the anchored normalized cocycle set `phi(0,0)=0`.
+
+For digit `r=0`, phase is unchanged, so `phi(j,0)` is gauge-invariant. A quarter-turn by `k` sends
+
+\[
+\phi(0,0)\mapsto\phi(-k,0),
+\]
+
+which can be one. Concrete regression:
+
+```text
+0x0010 --k=3--> 0x0001, with phi(0,0)=1.
+```
+
+Therefore the corrected BIN0 separates equality compression from indexed geometry.
 
 Goals:
 
-1. reproduce the exact edge-count census;
+1. reproduce the exact 4095-class edge-count census;
 2. collapse cocycles with identical adjacent edge sets;
-3. quotient the equality problem by hidden-state relabeling and global quarter-turn;
-4. verify cycle-space incidence/RHS ranks on every equality graph;
-5. record sequence-level quarter-turn orbits for later geometry.
+3. quotient the **equality problem only** by hidden-state relabeling and global quarter-turn;
+4. verify cycle-space incidence/RHS ranks on every equality graph and all labeled edge sets;
+5. retain all 4095 actual anchored cocycles for later BIN3 indexed replay;
+6. record the gauge-invariant `r=0` profile explaining the anchoring obstruction.
 
-Frozen structural targets to audit:
+Frozen structural targets:
 
 ```text
 fully reachable cocycles       : 4095
 distinct labeled edge sets     : 1061
 equality graph types           : 129
-sequence quarter-turn orbits   : 1947
+indexed replay units           : 4095
 ```
+
+There is deliberately **no global sequence quarter-turn quotient target**.
 
 Expected equality graph types by edge count:
 
@@ -95,7 +112,15 @@ Expected equality graph types by edge count:
 26: 18  28: 9   30: 2    32: 1
 ```
 
-For every equality graph require
+Expected `r=0` profile distribution among fully reachable anchored classes:
+
+```text
+000:511
+001:512 010:512 011:512
+100:512 101:512 110:512 111:512
+```
+
+For every equality graph and independently every labeled edge graph require
 
 \[
 \operatorname{rank}D=7,
@@ -113,10 +138,12 @@ Canonical theory/task:
 
 - `docs/proofs/binary_hidden_equality_graph_quotient.md`
 - `docs/proofs/rank15_binary_subspace_sieve.md`
-- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK.md`
-- `experiments/binary_hidden/analyze_bin0_structural_census.py`
+- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK_V2.md`
+- `experiments/binary_hidden/analyze_bin0_structural_census_v2.py`
 
-Stop after BIN0 output for audit.
+The original BIN0 task/runner are superseded and retained only for provenance.
+
+Stop after BIN0 v2 output for audit.
 
 ## BIN1 — equality-existence sieve on 129 graph types
 
@@ -164,7 +191,7 @@ BIN1 output partitions the 129 equality graph types into:
 
 - equality-infeasible;
 - equality-feasible with rank15 present;
-- equality-feasible with no rank15 found/possible under the exact BIN1-A proof.
+- equality-feasible with rank15 impossible under the exact BIN1-A proof.
 
 Do not run indexed geometry in BIN1.
 
@@ -191,7 +218,9 @@ If the survivor count or feasible-stream volume is unexpectedly explosive, stop 
 
 Status: **BLOCKED ON BIN2 AUDIT**.
 
-Return from equality graph types to actual cocycles (or a separately audited sequence-level conjugacy). Equality graph equivalence alone is insufficient for indexed geometry.
+Return from equality graph types to the actual anchored cocycles. Equality graph equivalence alone is insufficient for indexed geometry, and no all-4095 sequence quarter-turn quotient is currently claimed.
+
+A separately proved sequence-level conjugacy may still be used for a special subset, as happened for the 18-edge classes, but it must not be assumed globally.
 
 For each BIN2 feasible system use exact direct geometry:
 
