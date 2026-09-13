@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# TeX build products
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Generated search/certificate runs
+runs_*/
+run_*/
+results/tmp/
+results/scratch/
+
+# Console logs
+*_stdout.log
+*_stderr.log
+
+# Local scratch / rendered previews
+_tmp/
+tmp/
+rendered/
+_render*/
+*.tmp
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# We track selected canonical PDFs explicitly if added under artifacts/.
+# All other generated PDFs are ignored by default.
+*.pdf
+!artifacts/**/*.pdf
