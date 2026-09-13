@@ -1,8 +1,12 @@
 {
-  "allowed_eight_state_tag_ranks": [
+  "allowed_eight_state_tag_ranks_before_short_cycle_exclusion": [
     21,
     18,
     15
+  ],
+  "allowed_eight_state_tag_ranks_after_short_cycle_exclusion": [
+    21,
+    18
   ],
   "cycle_rank_16": 9,
   "cycle_rank_18": 11,
@@ -36,6 +40,7 @@
       "0x0242"
     ]
   ],
+  "rank15_short_cycle_excluded": true,
   "representatives_18": [
     "0x0002",
     "0x0004",
