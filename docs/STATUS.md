@@ -14,7 +14,7 @@ q_{4n+r}=a_rq_n,\qquad a=(1,i,-i,1),\qquad Z_n=\sum_{k<n}q_k
 
 has an audited four-state tagged lift using exactly six physical step vectors. Canonical sources are `docs/constructions/six_step.md` and `docs/proofs/six_step_audit.tex`.
 
-## 2. Four-state direct geometry — COMPLETE / AUDITED
+## 2. Four-state exact-five classification
 
 For positive-height free-scale four-state tagged lifts
 
@@ -22,31 +22,53 @@ For positive-height free-scale four-state tagged lifts
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-the frozen exact-five equality classification is
+with nonzero Gaussian `A`, `M>0`, integral state tags, and positive adjacent height increments, the frozen exact-five physical-step equality classification is
 
 \[
-1050=184+839+27.
+1050=184+839+27,
 \]
 
-GEO1 removes all valuation/rho certificate assumptions. The 184 inconsistent systems fail the step-equality equations, all 839 rank-9 systems have exact genuine collinear triples, and all 27 rank-6 affine systems have parameter-independent genuine collinear triples. Survivors and unresolved cases are zero; maximum witness endpoint is 64.
+with 184 rationally inconsistent systems, 839 rank-9 / dimension-0 systems, and 27 rank-6 / dimension-3 systems.
 
-Canonical GEO1 classification SHA-256:
+The old valuation and rho stages are retained for provenance, but GEO1 gives the strongest four-state result.
+
+## 3. GEO1 direct four-state geometry — COMPLETE / AUDITED
+
+Issue #7 result commit:
+
+```text
+68ddd331d0a0ead6c5b8105705d9bf79ac3fc0b4
+```
+
+GEO1 removes all non-collinearity-certificate assumptions and tests the feasible equality systems by genuine geometric collinearity.
+
+Audited counts:
+
+```text
+rank-9 exact geometric collinearity                  : 839
+rank-6 parameter-independent geometric collinearity :  27
+survivors                                            :   0
+unresolved/error                                     :   0
+maximum witness endpoint                             :  64
+```
+
+Canonical classification SHA-256:
 
 ```text
 f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
 ```
 
-Therefore
+Therefore every at-most-five-step lift in the stated positive-height free-scale four-state triangular tagged-lift family contains a collinear triple. The audited six-step construction supplies the upper bound, so
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside the complete positive-height free-scale four-state triangular tagged-lift family, with no non-collinearity-certificate assumption.
+inside this full positive-height four-state tagged-lift family.
 
 Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
-## 3. Hidden-state structure
+## 4. Hidden-state structure
 
 For binary hidden state
 
@@ -62,7 +84,7 @@ phi = 0x0042
 
 The next transition count is 18, attained by 8 gauge classes.
 
-## 4. `phi=0x0042` exact-five classification
+## 5. `phi=0x0042` exact-five classification
 
 HS1 exhaustively covers
 
@@ -84,9 +106,9 @@ HS1 feasible-stream SHA-256:
 6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b
 ```
 
-HS2 and HS3R remain retained for provenance: they eliminated all 59,254 systems under the old valuation certificate and the weaker rho certificate respectively.
+HS2 and HS3R are retained for provenance; GEO2 gives the strongest result.
 
-## 5. GEO2 direct hidden-state geometry — COMPLETE / AUDITED
+## 6. GEO2 direct hidden-state geometry — COMPLETE / AUDITED
 
 Issue #8 result commit:
 
@@ -94,49 +116,110 @@ Issue #8 result commit:
 7b63017c82cf1801b859ef0ee1f8eceefb091bac
 ```
 
-GEO2 removes the remaining certificate assumption for `phi=0x0042` and tests genuine geometric collinearity directly.
-
-Audited counts:
+GEO2 replayed HS1 exactly and gave genuine geometric-collinearity witnesses for every rationally feasible exact-five system:
 
 ```text
-rank-21 exact geometric collinearity                  : 59,135
-rank-18 parameter-independent geometric collinearity :    119
-positive-height infeasible                            :      0
-survivors                                              :      0
-unresolved/error                                       :      0
-maximum witness endpoint                               :    124
+rank-21 exact geometric collinearity                : 59,135
+rank-18 parameter-independent geometric collinearity:    119
+positive-height infeasible                          :      0
+survivors                                           :      0
+unresolved/error                                    :      0
+maximum witness endpoint                            :    124
 ```
 
-Canonical GEO2 classification SHA-256:
+Canonical classification SHA-256:
 
 ```text
 363788c86ceb9c665fc1ce90b4c8e292b16204ad791105791bbc14c235011cc6
 ```
 
-For rank 21, exact normalized three-dimensional pair displacements are directly proportional. For rank 18, proportional `Xi=(Re R, Im R, q, T)` makes the full normalized three-dimensional displacement proportional for every free-parameter choice; positive adjacent heights make the witness nondegenerate.
-
-Therefore every at-most-five-step lift in the stated positive-height free-scale `phi=0x0042` eight-state family contains three distinct collinear visited points. The audited six-step construction embeds by ignoring the hidden bit, hence
+Therefore every at-most-five-step lift in the positive-height free-scale eight-state family for `phi=0x0042` contains three distinct collinear visited points.  The six-step construction embeds by ignoring the hidden bit, so
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside this complete `phi=0x0042` family, with no valuation/rho or other non-collinearity-certificate assumption.
+inside this complete positive-height `phi=0x0042` tagged-lift family, with no valuation/rho/non-collinearity-certificate assumption.
 
 Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
-## 6. Next active direction — cycle-space reduction before 18-edge search
+## 7. CYCLE1 structural reduction — ACTIVE
 
-Do not launch a raw `S(18,5)` partition scan yet. The next structural target is to eliminate state tags by passing to the transition graph cycle space.
+Before any exhaustive 18-edge exact-five search, eliminate state potentials exactly in cycle space.
 
-For a physical-step coloring, closed-cycle sums cancel the state potentials. Thus five-step feasibility can be reformulated as a small linear system on the five unknown physical step values and the colored cycle-incidence matrix. This should be verified exactly for `phi=0x0042` and then for the eight 18-edge gauge classes before any exhaustive search.
+For reduced incidence matrix `D`, color-indicator matrix `C`, and full cycle-space matrix `Y`, define
 
-Issue #10 tracks this structural stage. Its purpose is to derive/verify the cycle-space formulation, ranks/nullities, canonical cycle bases, and symmetry reductions; no large 18-edge enumeration should start before that audit.
+\[
+M=YC.
+\]
 
-## 7. Scope warning
+Then the state-tag equality problem is exactly equivalent to
+
+\[
+Mx=Yb.
+\]
+
+For the current 16/18-edge hidden graphs, the cycle-space right-hand sides for the two horizontal coordinates and height have rank three. Hence every rationally feasible exact-five coloring satisfies
+
+\[
+\operatorname{rank}M\ge3,
+\qquad
+h=5-\operatorname{rank}M\le2.
+\]
+
+Thus the only possible eight-state tag-RREF ranks are
+
+\[
+\boxed{21,18,15}.
+\]
+
+Exact gauge enumeration identifies the eight 18-edge representatives
+
+```text
+0x0002 0x0004 0x0020 0x0040 0x0046 0x0062 0x0200 0x0242
+```
+
+and at the graph/base quarter-turn level they split into two structural quartets
+
+```text
+{0x0002,0x0020,0x0046,0x0200}
+{0x0004,0x0040,0x0062,0x0242}
+```
+
+All current 16/18-edge target representatives have eight independent radix three-cycles. The 16-edge graph needs one additional four-cycle; each 18-edge graph can be completed to a cycle basis by complementary cycle lengths `2,2,4`.
+
+CYCLE1 now audits the implementation by replaying the complete `phi=0x0042` HS1 feasible stream and requiring cycle nullity to reproduce every old tag rank exactly:
+
+```text
+h=0 <-> rank 21 : 59135
+h=1 <-> rank 18 :   119
+h=2 <-> rank 15 :     0   for phi=0x0042
+```
+
+Canonical theory/task/checker:
+
+- `docs/proofs/cycle_space_reduction.md`
+- `experiments/cycle_space/CYCLE1_TASK.md`
+- `experiments/cycle_space/analyze_cycle_space.py`
+
+Do not begin an exhaustive 18-edge exact-five search before CYCLE1 audit.
+
+## 8. Why cycle space matters for the 18-edge stage
+
+A raw search would face
+
+\[
+S(18,5)=28,958,095,545
+\]
+
+partitions per graph.  Instead, each edge contributes an 11-dimensional cycle-incidence vector and each of the five colors contributes only the sum of the vectors assigned to that color.  Equality feasibility becomes a five-bin vector-partition condition in cycle space.
+
+If a new rank-15 / two-parameter family appears, continuous parameter gridding is still unnecessary: the generalized `Xi` map is invertible on five-dimensional color-count space, so parameter-independent collinearity is equivalent to proportional Parikh vectors of two consecutive intervals.
+
+## 9. Scope warning
 
 The project still does **not** establish a global lower bound of six for Erdős Problem 193, impossibility for arbitrary finite-state transducers, impossibility for all binary cocycles, or impossibility for alternative base walks.
 
-## 8. Compute workflow
+## 10. Compute workflow
 
 Substantial computation uses the repository boundary: ChatGPT scopes and commits the task/runner; Codex syncs, self-tests, runs, commits only small canonical outputs, and reports exact commands/environment/counts/hashes in the issue; ChatGPT audits before theorem promotion or the next search.
