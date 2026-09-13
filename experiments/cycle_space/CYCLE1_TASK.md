@@ -16,7 +16,7 @@ The committed checker is:
 
 ## Required starting point
 
-Sync `main` and record the starting SHA.  Read:
+Sync `main` and record the starting SHA. Read:
 
 - `README.md`
 - `AGENTS.md`
@@ -29,7 +29,7 @@ Sync `main` and record the starting SHA.  Read:
 
 ## Mathematical claims to verify
 
-For a fixed exact-five coloring with edge/color matrix `C`, reduced incidence matrix `D`, and full cycle basis `Y`, define
+For a fixed exact-five coloring with edge/color matrix `C`, reduced incidence matrix `D`, and a full cycle-space matrix `Y`, define
 
 \[
 M=YC.
@@ -71,7 +71,7 @@ For the current hidden-state target graphs it must verify:
     {0x0004,0x0040,0x0062,0x0242}
     ```
 
-The quarter-turn result is a structural/base-orientation symmetry.  Do not silently promote it to a full indexed-walk theorem beyond what is explicitly replayed.
+The quarter-turn result is a structural/base-orientation symmetry. Do not silently promote it to a full indexed-walk theorem beyond what is explicitly replayed.
 
 ## Regression requirements
 
@@ -187,4 +187,4 @@ Do **not** begin:
 
 ## Intended next use
 
-After CYCLE1 audit, design the 18-edge search directly in cycle space as a five-bin vector-partition problem, with possible nullity `h=0,1,2` only.  If `h=2` appears, use the generalized `Xi`/Parikh-vector formulation from the theory note rather than continuous parameter sampling.
+After CYCLE1 audit, design the 18-edge search directly in cycle space as a five-bin vector-partition problem, with possible nullity `h=0,1,2` only. If `h=2` appears, use the generalized `Xi`/Parikh-vector formulation from the theory note rather than continuous parameter sampling.
