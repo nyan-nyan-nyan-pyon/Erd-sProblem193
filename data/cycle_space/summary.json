@@ -1,0 +1,54 @@
+{
+  "allowed_eight_state_tag_ranks": [
+    21,
+    18,
+    15
+  ],
+  "cycle_rank_16": 9,
+  "cycle_rank_18": 11,
+  "dependencies": "standard library only",
+  "five_color_nullity_upper_bound": 2,
+  "phi0042_replay": {
+    "cycle_nullity_distribution": {
+      "h=0": 59135,
+      "h=1": 119,
+      "h=2": 0
+    },
+    "feasible": 59254,
+    "rank_distribution": {
+      "18/3": 119,
+      "21/0": 59135
+    },
+    "stream_sha256": "6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b"
+  },
+  "python": "3.14.3",
+  "quarter_turn_structural_orbits": [
+    [
+      "0x0002",
+      "0x0020",
+      "0x0046",
+      "0x0200"
+    ],
+    [
+      "0x0004",
+      "0x0040",
+      "0x0062",
+      "0x0242"
+    ]
+  ],
+  "representatives_18": [
+    "0x0002",
+    "0x0004",
+    "0x0020",
+    "0x0040",
+    "0x0046",
+    "0x0062",
+    "0x0200",
+    "0x0242"
+  ],
+  "rhs_rank_all_target_graphs": 3,
+  "scope": "cycle-space structural reduction; no exhaustive 18-edge exact-five search",
+  "starting_git_sha": "c6b9ad413bdc13e7b3bfa38afc7da58eb29e9a73",
+  "status": "PASS",
+  "wall_time_seconds": 441.3766744999739
+}

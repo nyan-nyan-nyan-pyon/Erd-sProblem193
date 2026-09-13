@@ -1,0 +1,475 @@
+[
+  {
+    "complement_cycle_lengths": [
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "cycle_rank": 9,
+    "edge_count": 16,
+    "mask": "0x0042",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0002",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0004",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0020",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0040",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0046",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0062",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0200",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  },
+  {
+    "complement_cycle_lengths": [
+      2,
+      2,
+      4
+    ],
+    "complement_cycles": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "cycle_rank": 11,
+    "edge_count": 18,
+    "mask": "0x0242",
+    "nullity_upper_bound_for_five_colors": 2,
+    "radix_cycle_count": 8,
+    "radix_cycle_rank": 8,
+    "rhs_rank": 3,
+    "state_count": 8
+  }
+]
