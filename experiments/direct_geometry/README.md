@@ -1,10 +1,12 @@
-# Direct four-state geometry
+# Direct geometry stage
 
-Status: **GEO1 ACTIVE**.
+Status: **GEO1 COMPLETE / AUDITED; GEO2 ACTIVE**.
 
-This stage tests whether the remaining certificate caveat can be removed from the free-scale four-state triangular tagged-lift family.
+This stage removes non-collinearity-certificate assumptions by testing genuine geometric collinearity directly.
 
-The frozen exact-five physical-step equality classification is
+## GEO1 — four states COMPLETE / AUDITED
+
+The frozen exact-five four-state classification is
 
 ```text
 1050 total
@@ -13,54 +15,85 @@ The frozen exact-five physical-step equality classification is
 27 rank 6 / dimension 3
 ```
 
-No valuation or rho certificate is assumed in GEO1.
+GEO1 finds genuine collinear triples for all 839 rank-9 systems and parameter-independent genuine collinear triples for all 27 rank-6 affine families. Survivors and unresolved cases are zero.
 
-## Rank 9
+Thus six steps are optimal inside the stated positive-height free-scale four-state triangular tagged-lift family without assuming valuation, rho, or any other non-collinearity certificate.
 
-The normalized height tags vanish and the normalized horizontal tags are unique. Write
+Canonical proof:
+
+```text
+docs/proofs/four_state_geometric_optimality.md
+```
+
+Canonical classification SHA-256:
+
+```text
+f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
+```
+
+## GEO2 — hidden cocycle `phi=0x0042`
+
+HS1 leaves 59,254 exact-five equality survivors:
+
+```text
+rank 21 / dimension 0 : 59,135
+rank 18 / dimension 3 :    119
+```
+
+The family is
 
 \[
-R_{mn}=Z_n-Z_m+\delta_{j_n}-\delta_{j_m}.
+W_n=A Z_n+d_{\sigma_n},\qquad H_n=Mn+c_{\sigma_n},
 \]
 
-Actual points are obtained from
+for the canonical 16-edge cocycle `phi=0x0042`, with nonzero Gaussian `A`, `M>0`, integral actual tags, and positive adjacent height increments.
+
+No valuation/rho certificate is assumed in GEO2.
+
+### Rank 21
+
+The normalized tags are unique. With
 
 \[
-U_n=(\Re(Z_n+\delta_{j_n}),\Im(Z_n+\delta_{j_n}),n)
+R_{mn}=Z_n-Z_m+\delta_{\sigma_n}-\delta_{\sigma_m},
 \]
-
-by the invertible real-linear map that multiplies the horizontal complex coordinate by nonzero `A` and the vertical coordinate by positive `M`. Therefore collinearity is independent of the free scales.
-
-For `a<b<c`, the normalized points are collinear exactly when
 
 \[
-\frac{R_{ab}}{b-a}=\frac{R_{bc}}{c-b}.
+T_{mn}=(n-m)+\gamma_{\sigma_n}-\gamma_{\sigma_m},
 \]
 
-GEO1 searches these rational slope signatures exactly.
+the normalized 3D displacement is
 
-## Rank 6
+\[
+(\Re R_{mn},\Im R_{mn},T_{mn}).
+\]
+
+Positive heights give `T_mn>0` for `m<n`. Since free scales act by an invertible real-linear map, direct collinearity can be detected exactly by matching the slope signature
+
+\[
+(\Re R/T,\Im R/T)
+\]
+
+on the two sides of a middle vertex.
+
+### Rank 18
 
 The affine family is
 
 \[
-\delta+u v,\qquad \lambda v
+\delta+u v,\qquad \gamma+\lambda v.
 \]
 
-in normalized coordinates. With
+With
 
 \[
-\Xi_{mn}=(\Re R_{mn},\Im R_{mn},q_{mn},n-m),
+\Xi_{mn}=(\Re R_{mn},\Im R_{mn},q_{mn},T_{mn}),
 \]
 
-any triangle satisfying `Xi_bc=s Xi_ab` has full normalized three-dimensional displacement on `bc` equal to `s` times that on `ab` for every `u,lambda`. Thus it is genuinely geometrically collinear, not merely rho-monochromatic.
+a relation `Xi_bc=s Xi_ab`, `s>0`, forces the full normalized 3D displacement on `bc` to be `s` times the one on `ab` for every `u,lambda`. For admissible positive-height choices the displacements are nonzero, hence this is genuine collinearity.
 
-The audited RHO2 computation already found such witnesses for all 27 rank-6 systems; GEO1 independently reconstructs them.
+HS3R already suggests such witnesses for all 119 rank-18 systems; GEO2 reconstructs them directly rather than relying on the rho conclusion.
 
-## Claim if GEO1 closes
+See `GEO2_HIDDEN_STATE_GEOMETRY_TASK.md` for the exact Codex handoff.
 
-If all 839 rank-9 systems also have finite exact collinear witnesses, then the `184+839+27` exact-five classification closes every `<=5`-step case in the complete free-scale four-state triangular tagged-lift family with positive heights, without assuming any particular non-collinearity certificate.
-
-This would still be family-specific and not a global lower bound for Erdős Problem 193.
-
-See `GEO1_FOUR_STATE_GEOMETRY_TASK.md` for the exact Codex handoff.
+The 18-edge hidden-state expansion remains paused until GEO2 is audited.
