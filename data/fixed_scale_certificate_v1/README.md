@@ -1,54 +1,43 @@
 # Fixed-scale certificate data v1
 
-This directory contains the compact canonical data retained from the fixed `A=4, M=16` <=5-step certification stage.
+This directory keeps only the compact historical data useful for cross-checking the frozen fixed `A=4, M=16` <=5-step theorem.
 
-The final theorem should be reproduced primarily with
+The theorem itself should be reproduced with
 
 ```text
 scripts/certificates/verify_fixed_scale_reduced.py
 ```
 
-which does not require these files or Z3. The data here is kept for provenance and cross-checking.
+which uses only the Python standard library and does not depend on these files or on Z3.
 
-## Files
+## Tracked files
 
 ### `linear_unsat_partitions.json`
 
-The 184 exact-5 transition partitions whose step-equality affine system is already inconsistent over the rationals.
+The 184 exact-5 transition partitions whose step-equality affine system is inconsistent over the rationals.
 
-The reduced checker independently regenerates this set and can compare it against this file.
-
-### `core_results.csv`
-
-Per-partition UNSAT-core extraction results for the 866 linearly feasible exact-5 partitions.
-
-Columns include:
-
-- partition key / labels;
-- block shape;
-- linear rank and dimension;
-- raw core;
-- minimized irreducible core;
-- timing/check counts.
+The reduced checker independently regenerates this set; passing `--linear-json` checks exact set equality.
 
 ### `core_groups.csv`
 
-The minimized cores grouped by block shape, rank, and core pair-set. This was used to discover that almost all cases admit extremely small local contradictions.
+A compact grouped summary of the earlier UNSAT-core extraction over the 866 linearly feasible exact-5 partitions. It records block shape, linear rank/dimension, minimized core pair-set, group size, and a representative partition key.
 
-## Historical extraction result
+## Deliberately not tracked
 
-For the 866 linearly feasible partitions:
+The original 866-row `core_results.csv`, solver logs, and timestamped run directories were intermediate research output. They are not needed for the final independent certificate and are omitted from the canonical repository.
 
-- 866/866 `CERTIFIED_UNSAT`;
-- 866/866 replayed successfully;
-- minimized core sizes were 0, 1, 2, or 3 only.
+Historical headline from that stage:
 
-The reduced pure-Python checker subsequently compressed the full 1050-partition proof to
+- 866/866 partitions were `CERTIFIED_UNSAT`;
+- 866/866 certificate replay succeeded;
+- minimized core size was at most 3.
+
+The reduced checker later compressed the complete exact-5 proof to
 
 \[
-1050=184+164+675+27.
+\boxed{1050=184+164+675+27}.
 \]
 
 ## Scope warning
 
-These data certify only the fixed-scale four-state tagged-lift family. They do not establish global impossibility of 5-step Erdős-193 walks.
+These data concern only the fixed-scale four-state tagged-lift family. They do not establish a global lower bound for Erdős Problem 193.
