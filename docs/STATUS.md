@@ -58,7 +58,7 @@ inside the complete positive-height `phi=0x0042` free-scale eight-state family.
 
 Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
-## 4. CYCLE1 cycle-space reduction — COMPLETE / AUDITED
+## 4. Cycle-space reduction — COMPLETE / AUDITED
 
 For reduced incidence matrix `D`, exact-five color matrix `C`, and full cycle-space matrix `Y`, set
 
@@ -72,19 +72,13 @@ Then
 Cx=b+Dp\iff Mx=Yb.
 \]
 
-CYCLE1 replayed all 59,254 `phi=0x0042` feasible systems and matched the old tag rank record-by-record.  For the unique 16-edge class and all eight 18-edge classes, the short-cycle argument excludes `h=2`; hence every rationally feasible exact-five system has
+CYCLE1 replayed all 59,254 `phi=0x0042` feasible systems and matched the old tag rank record-by-record. For the unique 16-edge class and all eight 18-edge classes, the short-cycle argument excludes `h=2`; hence every rationally feasible exact-five system has
 
 \[
 \boxed{h\in\{0,1\}}
 \]
 
-and only tag ranks
-
-\[
-\boxed{21\text{ or }18}.
-\]
-
-Rank 15 cannot occur in the current 16/18-edge targets.
+and only tag ranks 21 or 18. Rank15 cannot occur in the current 16/18-edge targets.
 
 Canonical theory:
 
@@ -107,15 +101,15 @@ For equality feasibility they split into two exact quarter-turn classes:
 {0x0004,0x0040,0x0062,0x0242}
 ```
 
-Thus CYCLE2 exhaustively searched only representatives `0x0002` and `0x0004`, with explicit edge transports to the other six classes.
-
-For each searched representative the full exact-five space
+CYCLE2 exhaustively searched representatives `0x0002` and `0x0004`, with explicit transports to the other six. For each representative the complete partition space
 
 \[
 S(18,5)=28,958,095,545
 \]
 
-was accounted exactly.  Audited result per representative:
+was accounted exactly.
+
+Audited result per equality representative:
 
 ```text
 rationally feasible : 57,804
@@ -138,48 +132,12 @@ Result commit:
 223e94d0fe3e1df45655104e2434d5c5323523b6
 ```
 
-CYCLE2 is equality-only; it does not yet prove geometric impossibility for the 18-edge families.
+## 6. Indexed quarter-turn geometry transport — COMPLETE / AUDITED
 
-## 6. Automatic positive height and five-step normal form
-
-Vertical equality is never a separate existence obstruction here: taking all vertical state tags zero gives normalized adjacent height increment one everywhere.
-
-For a feasible five-coloring:
-
-### rank21 / h=0
-
-The five normalized horizontal step values are unique and all normalized height steps are one.
-
-### rank18 / h=1
-
-If `n` spans `ker M`, then
+If a target cocycle is obtained from a representative by quarter-turn `k` and gauge `g`, then target canonical initial state `(0,0)` corresponds to representative initial state
 
 \[
-z=z^0+u n,\qquad r=\mathbf1+\lambda n.
-\]
-
-For an interval with color-count vector `p`, the parameter-independent geometry coordinate is
-
-\[
-\Xi(p)=\bigl(\Re(p\cdot z^0),\Im(p\cdot z^0),p\cdot n,|p|\bigr).
-\]
-
-No state-tag reconstruction is needed in the direct-geometry hot path.
-
-## 7. Indexed quarter-turn geometry transport
-
-The equality quotient alone does not identify the canonical indexed walks because their initial state is fixed.  The stronger sequence-level conjugacy is now explicit.
-
-If target `psi` is obtained from representative `phi` by quarter-turn `k` and gauge `g`, with
-
-\[
-F(j,h)=(j+k,h\oplus g(j+k)),
-\]
-
-then the target canonical initial state `(0,0)` corresponds in the representative automaton to
-
-\[
-F^{-1}(0,0)=(-k,0).
+(-k,0).
 \]
 
 Therefore the four canonical cocycles in one quarter-turn quartet are represented exactly by one representative coloring replayed from
@@ -188,42 +146,80 @@ Therefore the four canonical cocycles in one quarter-turn quartet are represente
 (0,0) (1,0) (2,0) (3,0)
 ```
 
-with a horizontal quarter-turn applied to the physical steps.  Horizontal quarter-turn is invertible real-linear and preserves collinearity.
+followed by the corresponding horizontal quarter-turn, which preserves collinearity.
 
-Canonical proof note: `docs/proofs/quarter_turn_indexed_geometry_transport.md`.
+Canonical proof: `docs/proofs/quarter_turn_indexed_geometry_transport.md`.
 
-## 8. GEO3 18-edge direct geometry — ACTIVE
+## 7. GEO3 18-edge direct geometry — COMPLETE / AUDITED
 
-GEO3 replays both complete CYCLE2 feasible streams and tests all eight canonical 18-edge cocycles through the exact `2 representatives x 4 initial states` sequence reduction.
-
-Per equality representative:
+GEO3 result commit:
 
 ```text
-57,804 systems total
-57,777 rank21
-27 rank18
+e46a293d71f0b2ccb8abeddc7d7cec6f28782be0
 ```
 
-Rank21 uses exact proportionality of genuine 3D interval displacements. Rank18 uses exact proportionality of the 4D `Xi` vectors; such a witness forces genuine 3D collinearity for every free parameter choice.
-
-Prescribed finite witness horizon:
+The result commit is a direct child of activation commit
 
 ```text
-max_n = 127
+3b3473d39a8be43d13204ccaee91f2c662ee624f
 ```
 
-A found witness is exact. A finite-prefix survivor is not a construction.
+and changes only the requested small canonical output files.
 
-Canonical task/runner:
+GEO3 re-enumerates both complete CYCLE2 feasible streams with the audited counts/hashes and verifies the indexed state/edge transport. It then classifies all
 
-- `experiments/direct_geometry/GEO3_18EDGE_TASK.md`
-- `experiments/direct_geometry/search_geo3_18edge.py`
+\[
+8\cdot57,804=462,432
+\]
 
-Do not increase the horizon or move to more hidden states before GEO3 audit.
+cocycle-system pairs at the prescribed witness horizon `max_n=127`.
+
+For every one of the eight target cocycles:
+
+```text
+rank21 exact geometric witnesses                  : 57,777
+rank18 parameter-independent geometric witnesses :     27
+rank21 prefix survivors                           :      0
+rank18 prefix survivors                           :      0
+unresolved/error                                  :      0
+```
+
+Global survivor count is zero. Overall maximum witness endpoint is 125.
+
+Rank21 uses exact positive proportionality of genuine 3D interval displacements. Rank18 uses exact proportionality of
+
+\[
+\Xi(p)=\bigl(\Re(p\cdot z^0),\Im(p\cdot z^0),p\cdot n,|p|\bigr),
+\]
+
+which forces genuine 3D collinearity for every free parameter choice in the affine family. Positive-height members have nonzero interval displacements, so the three visited points are distinct.
+
+Hence every at-most-five-step lift in each of the eight positive-height free-scale 18-edge binary hidden families contains a genuine collinear triple. The audited six-step construction embeds by ignoring the hidden bit, so
+
+\[
+\boxed{\min |S|=6}
+\]
+
+inside each of these eight 18-edge families, with no valuation/rho/non-collinearity-certificate assumption.
+
+Canonical proof: `docs/proofs/eighteen_edge_geometric_optimality.md`.
+
+## 8. Current decision point
+
+The four-state family, the unique 16-edge hidden class, and all eight 18-edge hidden classes are now geometrically closed at five steps.
+
+Do **not** automatically brute-force the next transition count. The next research decision should compare:
+
+1. an algebraic five-step-feasibility sieve across all 4095 binary cocycle gauge classes using cycle-space structure;
+2. transition-count-ordered expansion to the next hidden classes, with symmetry reduction before geometry;
+3. changing the triangular radix-4 base walk itself;
+4. extracting a more general obstruction from the repeated rank21/rank18 collinearity mechanism.
+
+The preferred next move should be chosen theoretically before another large search.
 
 ## 9. Scope warning
 
-The project still does **not** establish a global lower bound of six for Erdős Problem 193, impossibility for arbitrary finite-state transducers, impossibility for all 4095 fully reachable binary cocycles, or impossibility for alternative base walks.
+The project still does **not** establish a global lower bound of six for Erdős Problem 193, impossibility for arbitrary finite-state transducers, impossibility for all 4095 binary cocycle classes, or impossibility for alternative base walks.
 
 ## 10. Compute workflow
 
