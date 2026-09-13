@@ -12,11 +12,14 @@ Canonical prerequisites:
 - `docs/proofs/rank15_cycle_exclusion.md`
 - `docs/proofs/five_step_step_space_normal_form.md`
 - `docs/proofs/quarter_turn_equality_equivalence.md`
+- `docs/proofs/positive_height_automatic.md`
 - `data/cycle_space/summary.json`
 
 Runner:
 
 - `experiments/cycle_space/search_cycle2_18edge.py`
+
+The vertical equality coordinate is not a separate feasibility filter: setting all vertical state tags to zero gives normalized height step `1` on every edge. Therefore the census may test horizontal cycle consistency only.
 
 ## Search reduction
 
@@ -40,7 +43,7 @@ Therefore the exhaustive equality search is run only for
 0x0004
 ```
 
-The runner must construct and verify the explicit state/edge transports to the other six representatives.  Do not use this quotient to skip later indexed-geometry replay.
+The runner must construct and verify the explicit state/edge transports to the other six representatives. Do not use this quotient to skip later indexed-geometry replay.
 
 ## Engine
 
@@ -121,7 +124,7 @@ Required:
 - `result_0004.json`
 - `transport_maps.json` or the equivalent maps embedded in `summary.json`
 
-If a representative has at most 20,000 feasible systems, its complete survivor JSONL may also be committed.  If it has more, keep the full survivor stream local and commit only counts, deterministic stream hash, and small samples.
+If a representative has at most 20,000 feasible systems, its complete survivor JSONL may also be committed. If it has more, keep the full survivor stream local and commit only counts, deterministic stream hash, and small samples.
 
 Do not commit large logs.
 
@@ -173,4 +176,4 @@ Do **not** begin:
 
 ## Intended next step
 
-After CYCLE2 audit, transport the equality classifications to all eight 18-edge cocycles and run direct geometry on the actual indexed word of each cocycle separately.  Rank21 uses unique five-step values and exact 3D proportionality; rank18 uses the one-null-direction `Xi` normal form.  No rank15 geometry branch is needed.
+After CYCLE2 audit, transport the equality classifications to all eight 18-edge cocycles and run direct geometry on the actual indexed word of each cocycle separately. Rank21 uses unique five-step values and exact 3D proportionality; rank18 uses the one-null-direction `Xi` normal form. No rank15 geometry branch is needed.
