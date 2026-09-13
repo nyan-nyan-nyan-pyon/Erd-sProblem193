@@ -119,12 +119,12 @@ Issue #8 result commit:
 GEO2 replayed HS1 exactly and gave genuine geometric-collinearity witnesses for every rationally feasible exact-five system:
 
 ```text
-rank-21 exact geometric collinearity                : 59,135
-rank-18 parameter-independent geometric collinearity:    119
-positive-height infeasible                          :      0
-survivors                                           :      0
-unresolved/error                                    :      0
-maximum witness endpoint                            :    124
+rank-21 exact geometric collinearity                 : 59,135
+rank-18 parameter-independent geometric collinearity :    119
+positive-height infeasible                           :      0
+survivors                                            :      0
+unresolved/error                                     :      0
+maximum witness endpoint                             :    124
 ```
 
 Canonical classification SHA-256:
@@ -133,7 +133,7 @@ Canonical classification SHA-256:
 363788c86ceb9c665fc1ce90b4c8e292b16204ad791105791bbc14c235011cc6
 ```
 
-Therefore every at-most-five-step lift in the positive-height free-scale eight-state family for `phi=0x0042` contains three distinct collinear visited points.  The six-step construction embeds by ignoring the hidden bit, so
+Therefore every at-most-five-step lift in the positive-height free-scale eight-state family for `phi=0x0042` contains three distinct collinear visited points. The six-step construction embeds by ignoring the hidden bit, so
 
 \[
 \boxed{\min |S|=6}
@@ -159,7 +159,7 @@ Then the state-tag equality problem is exactly equivalent to
 Mx=Yb.
 \]
 
-For the current 16/18-edge hidden graphs, the cycle-space right-hand sides for the two horizontal coordinates and height have rank three. Hence every rationally feasible exact-five coloring satisfies
+For the current 16/18-edge hidden graphs, the cycle-space RHS vectors for real horizontal, imaginary horizontal, and height coordinates have rank three. Therefore every rationally feasible exact-five coloring satisfies the general bound
 
 \[
 \operatorname{rank}M\ge3,
@@ -167,11 +167,25 @@ For the current 16/18-edge hidden graphs, the cycle-space right-hand sides for t
 h=5-\operatorname{rank}M\le2.
 \]
 
-Thus the only possible eight-state tag-RREF ranks are
+A stronger short-cycle argument now excludes `h=2` entirely for the unique 16-edge class and for all eight 18-edge target classes. The key facts are:
+
+- eight independent radix three-cycles cover every reachable edge;
+- the 16-edge graph has one extra zero-horizontal four-cycle;
+- every 18-edge graph has two extra zero-horizontal two-cycles and one zero-horizontal four-cycle.
+
+If `h=2`, exact-five color counts on those cycles are forced into support of size at most two, contradicting five nonempty colors. Therefore
 
 \[
-\boxed{21,18,15}.
+\boxed{h\le1}
 \]
+
+for every current eight-state exact-five target, and the only possible tag-RREF ranks are
+
+\[
+\boxed{21\text{ or }18}.
+\]
+
+In particular, no new rank-15/two-parameter family can occur in the 18-edge stage.
 
 Exact gauge enumeration identifies the eight 18-edge representatives
 
@@ -186,25 +200,62 @@ and at the graph/base quarter-turn level they split into two structural quartets
 {0x0004,0x0040,0x0062,0x0242}
 ```
 
-All current 16/18-edge target representatives have eight independent radix three-cycles. The 16-edge graph needs one additional four-cycle; each 18-edge graph can be completed to a cycle basis by complementary cycle lengths `2,2,4`.
-
 CYCLE1 now audits the implementation by replaying the complete `phi=0x0042` HS1 feasible stream and requiring cycle nullity to reproduce every old tag rank exactly:
 
 ```text
 h=0 <-> rank 21 : 59135
 h=1 <-> rank 18 :   119
-h=2 <-> rank 15 :     0   for phi=0x0042
 ```
 
-Canonical theory/task/checker:
+Canonical theory/task/checkers:
 
 - `docs/proofs/cycle_space_reduction.md`
+- `docs/proofs/rank15_cycle_exclusion.md`
+- `docs/proofs/five_step_step_space_normal_form.md`
 - `experiments/cycle_space/CYCLE1_TASK.md`
+- `experiments/cycle_space/CYCLE1_RANK15_ADDENDUM.md`
 - `experiments/cycle_space/analyze_cycle_space.py`
+- `experiments/cycle_space/verify_rank15_exclusion.py`
 
 Do not begin an exhaustive 18-edge exact-five search before CYCLE1 audit.
 
-## 8. Why cycle space matters for the 18-edge stage
+## 8. Step-space normal form for future 18-edge geometry
+
+Once a feasible five-coloring is found, state tags need not be reconstructed for geometry.
+
+### Rank 21 / `h=0`
+
+The five normalized horizontal step values are unique and all five normalized height steps equal one. Positive height is automatic. Geometry is reconstructed directly from the five-color edge word.
+
+### Rank 18 / `h=1`
+
+If `n in Q^5` spans `ker M`, then every normalized five-step family has
+
+\[
+z=z^0+u n,\qquad r=\mathbf1+\lambda n.
+\]
+
+Positive height is exactly
+
+\[
+1+\lambda n_k>0\qquad(k=1,\ldots,5).
+\]
+
+The null vector is a state gradient:
+
+\[
+n_{c(e)}=v_t-v_s.
+\]
+
+For an interval with Parikh vector `p`, the audited rank-18 geometry coordinate becomes
+
+\[
+\Xi(p)=\bigl(\Re(p\cdot z^0),\Im(p\cdot z^0),p\cdot n,|p|\bigr).
+\]
+
+Thus the future 18-edge geometry stage can operate entirely in five-step/Parikh space, using the same two direct-geometry forms already validated in GEO2.
+
+## 9. Why cycle space matters for the 18-edge stage
 
 A raw search would face
 
@@ -212,14 +263,14 @@ A raw search would face
 S(18,5)=28,958,095,545
 \]
 
-partitions per graph.  Instead, each edge contributes an 11-dimensional cycle-incidence vector and each of the five colors contributes only the sum of the vectors assigned to that color.  Equality feasibility becomes a five-bin vector-partition condition in cycle space.
+partitions per graph. Instead, each edge contributes an 11-dimensional cycle-incidence vector and each of the five colors contributes only the sum of vectors assigned to that color. Equality feasibility becomes a five-bin vector-partition problem in cycle space.
 
-If a new rank-15 / two-parameter family appears, continuous parameter gridding is still unnecessary: the generalized `Xi` map is invertible on five-dimensional color-count space, so parameter-independent collinearity is equivalent to proportional Parikh vectors of two consecutive intervals.
+The rank-15 branch is now removed theoretically, so any feasible output needs only the already-understood rank-21 or rank-18 downstream geometry.
 
-## 9. Scope warning
+## 10. Scope warning
 
 The project still does **not** establish a global lower bound of six for Erdős Problem 193, impossibility for arbitrary finite-state transducers, impossibility for all binary cocycles, or impossibility for alternative base walks.
 
-## 10. Compute workflow
+## 11. Compute workflow
 
 Substantial computation uses the repository boundary: ChatGPT scopes and commits the task/runner; Codex syncs, self-tests, runs, commits only small canonical outputs, and reports exact commands/environment/counts/hashes in the issue; ChatGPT audits before theorem promotion or the next search.
