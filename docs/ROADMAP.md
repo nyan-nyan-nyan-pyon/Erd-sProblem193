@@ -6,11 +6,17 @@ This roadmap is conservative: each stage should produce a construction, an audit
 
 Status: **COMPLETE / FROZEN**.
 
-## Stage 1–2 — valuation/rho certificate stages
+## Stage 1–2 — four-state valuation/rho certificate stages
 
 Status: **SUPERSEDED BY DIRECT GEOMETRY / RETAINED FOR PROVENANCE**.
 
-The old valuation and triangle-local rho stages established six-step optimality only inside certificate-defined subclasses. GEO1/GEO2 now give stronger direct-geometric results for the corresponding four-state and `phi=0x0042` families.
+The exact-five equality classification is
+
+\[
+1050=184+839+27.
+\]
+
+The old valuation and later triangle-local rho stages both gave six-step optimality only inside certificate-defined subclasses.
 
 ---
 
@@ -20,7 +26,7 @@ The old valuation and triangle-local rho stages established six-step optimality 
 
 Status: **COMPLETE / AUDITED**.
 
-The exact-five equality classification is
+GEO1 tests the complete exact-five equality classification for the stated positive-height four-state family with no non-collinearity certificate assumption.
 
 ```text
 184 : rationally inconsistent
@@ -28,92 +34,126 @@ The exact-five equality classification is
  27 : rank-6 parameter-independent genuine collinear triple
 ```
 
-Survivors/unresolved are zero; maximum witness endpoint is 64. Hence
+Survivors and unresolved cases are zero. Maximum witness endpoint is 64. Canonical classification SHA-256:
+
+```text
+f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
+```
+
+For rank 6, proportional-`Xi` forces the two three-dimensional displacement vectors to be proportional for every free-parameter choice; positive adjacent height increments ensure these vectors are nonzero and the three visited points are distinct.
+
+Therefore every at-most-five-step positive-height free-scale four-state triangular tagged lift contains three distinct collinear visited points. The audited six-step construction supplies the upper bound, hence
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside the complete positive-height free-scale four-state triangular tagged-lift family, with no non-collinearity-certificate assumption.
+inside this complete positive-height four-state triangular tagged-lift family. The lower bound no longer depends on valuation/rho or any other non-collinearity certificate.
 
-Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
+Canonical proof:
+
+- `docs/proofs/four_state_geometric_optimality.md`
 
 ## G2. Direct geometry for hidden cocycle `phi=0x0042`
 
 Status: **COMPLETE / AUDITED**.
 
-HS1 leaves 59,254 rationally feasible exact-five equality systems:
+HS1 leaves 59,254 feasible exact-five equality systems:
 
 ```text
 rank 21 / dimension 0 : 59,135
 rank 18 / dimension 3 :    119
 ```
 
-GEO2 gives genuine geometric collinearity witnesses for every one of them:
+GEO2 gives genuine geometric-collinearity witnesses for every one of them:
 
 ```text
-rank-21 exact geometric collinearity                  : 59,135
+rank-21 direct geometric collinearity                : 59,135
 rank-18 parameter-independent geometric collinearity :    119
-positive-height infeasible                            :      0
-survivors                                              :      0
-maximum witness endpoint                               :    124
+survivors                                             :      0
+unresolved/error                                      :      0
+maximum witness endpoint                              :    124
 ```
 
-Canonical classification SHA-256:
+Therefore six steps are optimal inside the complete positive-height `phi=0x0042` free-scale eight-state tagged-lift family, with no valuation/rho/non-collinearity-certificate assumption.
 
-```text
-363788c86ceb9c665fc1ce90b4c8e292b16204ad791105791bbc14c235011cc6
-```
+Canonical proof:
 
-Therefore
-
-\[
-\boxed{\min |S|=6}
-\]
-
-inside the complete positive-height free-scale eight-state tagged-lift family for `phi=0x0042`, again with no valuation/rho or other non-collinearity-certificate assumption.
-
-Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
+- `docs/proofs/hidden_state_phi0042_geometric_optimality.md`
 
 ---
 
 # Stage C — cycle-space reduction before 18-edge search
 
-Status: **NEXT ACTIVE / PRIORITY**.
+## C1. Potential elimination / structural audit
 
-There are 8 gauge classes with 18 reachable transitions. Do **not** begin a raw exact-five scan of
+Status: **ACTIVE**.
+
+Before any exhaustive 18-edge exact-five search, replace state tags by the exact cycle-space formulation.
+
+For reduced incidence matrix `D`, color-indicator matrix `C`, and a full cycle-space matrix `Y`, define
+
+\[
+M=YC.
+\]
+
+Then physical-step equality feasibility is exactly equivalent to the small cycle system
+
+\[
+Mx=Yb.
+\]
+
+For the current 16/18-edge hidden graphs the cycle-space right-hand sides for real horizontal, imaginary horizontal, and height coordinates have rank three. Hence every feasible five-coloring satisfies
+
+\[
+\operatorname{rank}M\ge3,
+\qquad
+h=5-\operatorname{rank}M\le2.
+\]
+
+Thus the only possible eight-state tag-RREF ranks are
+
+\[
+\boxed{21,18,15}.
+\]
+
+The 16-edge and all eight 18-edge canonical representatives also share eight independent radix three-cycles. The 16-edge graph needs one additional four-cycle; every 18-edge graph can be completed by cycles of lengths `2,2,4`.
+
+CYCLE1 must independently verify these facts and replay all 59,254 audited `phi=0x0042` HS1 survivors, checking record-by-record that cycle nullity reproduces the old tag rank:
+
+```text
+h=0 <-> rank 21 : 59135
+h=1 <-> rank 18 :   119
+h=2 <-> rank 15 :     0   (for phi=0x0042 only)
+```
+
+Canonical theory/task/checker:
+
+- `docs/proofs/cycle_space_reduction.md`
+- `experiments/cycle_space/CYCLE1_TASK.md`
+- `experiments/cycle_space/analyze_cycle_space.py`
+
+Do not start an exhaustive 18-edge exact-five search before CYCLE1 is audited.
+
+## C2. Intended 18-edge engine
+
+After CYCLE1 audit, formulate each exact-five coloring as five bin sums of edge cycle-incidence vectors in an 11-dimensional cycle space.  Work modulo color permutation and exploit graph/base/hidden symmetries before branching.
+
+If a rank-15 / `h=2` family appears, do not use a continuous parameter grid.  The generalized `Xi` map is then invertible on the five-dimensional color-count space, so parameter-independent collinearity is equivalent to proportional Parikh vectors of two consecutive intervals.
+
+---
+
+# Stage 3D — 18-edge binary cocycles
+
+Status: **PAUSED PENDING CYCLE1**.
+
+There are 8 gauge classes with 18 reachable transitions. Raw enumeration of
 
 \[
 S(18,5)=28,958,095,545
 \]
 
-partitions per graph.
-
-First exploit the potential/cycle-space formulation. If edge `e:s->t` uses physical step `z_{c(e)}` and base increment `b_e`, then
-
-\[
-z_{c(e)}=b_e+p_t-p_s.
-\]
-
-For every directed cycle, the potential terms telescope. Thus the equality problem is equivalent to a linear cycle system on the physical step values. The next task must:
-
-1. derive an exact canonical cycle basis for `phi=0x0042` and each of the eight 18-edge classes;
-2. verify that the cycle equations are necessary and sufficient for recovering state tags;
-3. compute the resulting five-color cycle matrix ranks/nullities;
-4. explain the observed rank-21/rank-18 split for `phi=0x0042` from this formulation;
-5. determine the maximum possible free-parameter nullity for a five-step system;
-6. quotient graph/base/hidden and color-permutation symmetries before any large search;
-7. only after audit, design a branch-and-prune five-bin/cycle-space feasibility sieve.
-
-Issue #10 tracks this stage.
-
-# Stage 3D — 18-edge binary cocycles
-
-Status: **PAUSED PENDING CYCLE-SPACE AUDIT**.
-
-Resume only after Stage C supplies an audited compressed formulation. Prefer a cycle-space/algebraic five-step-feasibility sieve over raw set-partition enumeration.
-
-A later alternative is to sieve all 4095 fully reachable binary cocycles by whether five physical step values are algebraically feasible and only then perform direct geometric analysis on survivors.
+partitions per graph is not the preferred starting point.
 
 # Stage 4 — alternative base walks
 
