@@ -6,13 +6,13 @@ This repository is the canonical workspace for the triangular tagged-lift invest
 
 The triangular radix-4 base walk has an audited six-step construction.
 
-For free-scale four-state tagged lifts
+For positive-height free-scale four-state tagged lifts
 
 \[
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with nonzero Gaussian `A`, `M>0`, and integral state tags, the exact-five physical-step equality classification is
+with nonzero Gaussian `A`, `M>0`, integral state tags, and positive adjacent height increments, the exact-five physical-step equality classification is
 
 \[
 1050=184+839+27.
@@ -26,13 +26,13 @@ GEO1 removes the previous non-collinearity-certificate caveat entirely:
  27 : parameter-independent genuine collinear triple
 ```
 
-Thus every at-most-five-step lift in this complete four-state triangular tagged-lift family contains three collinear visited points. The audited six-step construction has no collinear triple, so
+Thus every at-most-five-step lift in this four-state triangular tagged-lift family contains three distinct collinear visited points. The audited six-step construction has no collinear triple, so
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside the full free-scale four-state triangular tagged-lift family. No valuation identity, rho certificate, or positivity of adjacent height increments is needed for the lower bound.
+inside the positive-height free-scale four-state triangular tagged-lift family. No valuation identity, rho certificate, or other non-collinearity certificate is assumed.
 
 Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
@@ -57,7 +57,7 @@ These are family-specific results, not a global six-step lower bound for Erdős 
 
 The next question is whether the certificate caveat can also be removed for the unique 16-edge hidden cocycle `phi=0x0042`.
 
-The 119 rank-18 affine families already have proportional-`Xi` witnesses from HS3R; these witnesses in fact force genuine three-dimensional collinearity for every free-parameter choice. The remaining substantive target is the 59,135 rank-21 systems: reconstruct their unique normalized three-dimensional points and search for exact geometric collinearity directly.
+The 119 rank-18 affine families already have proportional-`Xi` witnesses from HS3R; for admissible positive-height members these witnesses force genuine three-dimensional collinearity for every free-parameter choice. The remaining substantive target is the 59,135 rank-21 systems: reconstruct their unique normalized three-dimensional points and search for exact geometric collinearity directly.
 
 Only after this direct-geometry reuse is audited should the project resume the much larger eight-class 18-edge expansion.
 
