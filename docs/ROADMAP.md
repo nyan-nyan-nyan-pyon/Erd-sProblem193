@@ -6,17 +6,11 @@ This roadmap is conservative: each stage should produce a construction, an audit
 
 Status: **COMPLETE / FROZEN**.
 
-## Stage 1–2 — four-state valuation/rho certificate stages
+## Stage 1–2 — valuation/rho certificate stages
 
 Status: **SUPERSEDED BY DIRECT GEOMETRY / RETAINED FOR PROVENANCE**.
 
-The exact-five equality classification is
-
-\[
-1050=184+839+27.
-\]
-
-The old valuation and later triangle-local rho stages both gave six-step optimality only inside certificate-defined subclasses.
+The old valuation and triangle-local rho stages established six-step optimality only inside certificate-defined subclasses. GEO1/GEO2 now give stronger direct-geometric results for the corresponding four-state and `phi=0x0042` families.
 
 ---
 
@@ -26,7 +20,7 @@ The old valuation and later triangle-local rho stages both gave six-step optimal
 
 Status: **COMPLETE / AUDITED**.
 
-GEO1 tests the complete exact-five equality classification for the stated positive-height four-state family with no non-collinearity certificate assumption.
+The exact-five equality classification is
 
 ```text
 184 : rationally inconsistent
@@ -34,68 +28,60 @@ GEO1 tests the complete exact-five equality classification for the stated positi
  27 : rank-6 parameter-independent genuine collinear triple
 ```
 
-Survivors and unresolved cases are zero. Maximum witness endpoint is 64. Canonical classification SHA-256:
-
-```text
-f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
-```
-
-For rank 6, proportional-`Xi` forces the two three-dimensional displacement vectors to be proportional for every free-parameter choice; positive adjacent height increments ensure these vectors are nonzero and the three visited points are distinct.
-
-Therefore every at-most-five-step positive-height free-scale four-state triangular tagged lift contains three distinct collinear visited points. The audited six-step construction supplies the upper bound, hence
+Survivors/unresolved are zero; maximum witness endpoint is 64. Hence
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside this complete positive-height four-state triangular tagged-lift family. The lower bound no longer depends on valuation/rho or any other non-collinearity certificate.
+inside the complete positive-height free-scale four-state triangular tagged-lift family, with no non-collinearity-certificate assumption.
 
-Canonical proof:
-
-- `docs/proofs/four_state_geometric_optimality.md`
+Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
 ## G2. Direct geometry for hidden cocycle `phi=0x0042`
 
-Status: **NEXT ACTIVE / PRIORITY**.
+Status: **COMPLETE / AUDITED**.
 
-HS1 leaves 59,254 feasible exact-five equality systems:
+HS1 leaves 59,254 rationally feasible exact-five equality systems:
 
 ```text
 rank 21 / dimension 0 : 59,135
 rank 18 / dimension 3 :    119
 ```
 
-HS3R already gives proportional-`Xi` witnesses for all 119 rank-18 families. For admissible positive-height members, those witnesses force genuine collinearity for every free-parameter choice.
+GEO2 gives genuine geometric collinearity witnesses for every one of them:
 
-The substantive new work is the 59,135 rank-21 systems. Their normalized tags are unique. Define exact normalized points
+```text
+rank-21 exact geometric collinearity                  : 59,135
+rank-18 parameter-independent geometric collinearity :    119
+positive-height infeasible                            :      0
+survivors                                              :      0
+maximum witness endpoint                               :    124
+```
+
+Canonical classification SHA-256:
+
+```text
+363788c86ceb9c665fc1ce90b4c8e292b16204ad791105791bbc14c235011cc6
+```
+
+Therefore
 
 \[
-V_n=(\Re(Z_n+\delta_{\sigma_n}),\Im(Z_n+\delta_{\sigma_n}),n+\gamma_{\sigma_n}).
+\boxed{\min |S|=6}
 \]
 
-Nonzero horizontal scale `A` and positive vertical scale `M` act by an invertible real-linear map, so direct collinearity of `V_n` is equivalent to actual collinearity.
+inside the complete positive-height free-scale eight-state tagged-lift family for `phi=0x0042`, again with no valuation/rho or other non-collinearity-certificate assumption.
 
-GEO2 should:
-
-1. replay the HS1 feasible stream count/ranks/hash exactly;
-2. verify the audited HS3R lineage before reuse;
-3. reconstruct all 59,135 rank-21 unique normalized systems;
-4. search exact finite collinear triples directly, using rational arithmetic and an efficient projective direction signature;
-5. replay/reconstruct the 119 rank-18 proportional-`Xi` witnesses as true geometric collinearity for positive-height members;
-6. stop after the prescribed finite horizon in either outcome;
-7. avoid 18-edge expansion, parameter grids, or SMT until ChatGPT audits the result.
-
-If all 59,254 feasible systems receive genuine collinearity witnesses, then six steps are optimal inside the complete positive-height `phi=0x0042` free-scale eight-state tagged-lift family, with no certificate assumption.
+Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
 ---
 
-# Stage 3D — 18-edge binary cocycles
+# Stage C — cycle-space reduction before 18-edge search
 
-Status: **PAUSED**.
+Status: **NEXT ACTIVE / PRIORITY**.
 
-There are 8 gauge classes with 18 reachable transitions. Resume only after GEO2 is audited.
-
-Before any large exact-five search, exploit cycle/potential constraints, graph/base/hidden symmetries, and color permutation symmetry. Prefer an algebraic five-step-feasibility sieve over raw enumeration of
+There are 8 gauge classes with 18 reachable transitions. Do **not** begin a raw exact-five scan of
 
 \[
 S(18,5)=28,958,095,545
@@ -103,7 +89,31 @@ S(18,5)=28,958,095,545
 
 partitions per graph.
 
-A later alternative is to sieve all 4095 fully reachable binary cocycles first by whether five physical step values are algebraically feasible, and only then perform non-collinearity analysis on survivors.
+First exploit the potential/cycle-space formulation. If edge `e:s->t` uses physical step `z_{c(e)}` and base increment `b_e`, then
+
+\[
+z_{c(e)}=b_e+p_t-p_s.
+\]
+
+For every directed cycle, the potential terms telescope. Thus the equality problem is equivalent to a linear cycle system on the physical step values. The next task must:
+
+1. derive an exact canonical cycle basis for `phi=0x0042` and each of the eight 18-edge classes;
+2. verify that the cycle equations are necessary and sufficient for recovering state tags;
+3. compute the resulting five-color cycle matrix ranks/nullities;
+4. explain the observed rank-21/rank-18 split for `phi=0x0042` from this formulation;
+5. determine the maximum possible free-parameter nullity for a five-step system;
+6. quotient graph/base/hidden and color-permutation symmetries before any large search;
+7. only after audit, design a branch-and-prune five-bin/cycle-space feasibility sieve.
+
+Issue #10 tracks this stage.
+
+# Stage 3D — 18-edge binary cocycles
+
+Status: **PAUSED PENDING CYCLE-SPACE AUDIT**.
+
+Resume only after Stage C supplies an audited compressed formulation. Prefer a cycle-space/algebraic five-step-feasibility sieve over raw set-partition enumeration.
+
+A later alternative is to sieve all 4095 fully reachable binary cocycles by whether five physical step values are algebraically feasible and only then perform direct geometric analysis on survivors.
 
 # Stage 4 — alternative base walks
 
