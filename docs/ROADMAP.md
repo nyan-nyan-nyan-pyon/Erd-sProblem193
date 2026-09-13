@@ -36,138 +36,203 @@ Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
 # Stage C — 18-edge cycle-space program
 
-## C1. Potential elimination / structural audit
-
 Status: **COMPLETE / AUDITED**.
 
-Cycle space removes state potentials exactly. The short-cycle theorem gives
+CYCLE1/CYCLE2/GEO3 establish the cycle-space reduction, close the unique 16-edge class, and close all eight 18-edge binary-hidden classes by direct geometry. In each of those nine eight-state families,
 
 \[
-\boxed{h\le1}
+\boxed{\min |S|=6}.
 \]
 
-for the unique 16-edge graph and all eight 18-edge graphs, so only rank21 and rank18 can occur; rank15 is impossible.
-
-Canonical theory:
+Canonical sources include:
 
 - `docs/proofs/cycle_space_reduction.md`
 - `docs/proofs/rank15_cycle_exclusion.md`
 - `docs/proofs/five_step_step_space_normal_form.md`
+- `docs/proofs/quarter_turn_equality_equivalence.md`
+- `docs/proofs/quarter_turn_indexed_geometry_transport.md`
+- `docs/proofs/eighteen_edge_geometric_optimality.md`
 
-## C2. Quarter-turn equality quotient
-
-Status: **COMPLETE / AUDITED**.
-
-The eight 18-edge representatives split for equality feasibility into
-
-```text
-{0x0002,0x0020,0x0046,0x0200}
-{0x0004,0x0040,0x0062,0x0242}
-```
-
-so exhaustive equality search is required only for `0x0002` and `0x0004`.
-
-Canonical proof: `docs/proofs/quarter_turn_equality_equivalence.md`.
-
-## C3. CYCLE2 exact-five equality census
-
-Status: **COMPLETE / AUDITED**.
-
-For each equality representative all
-
-\[
-S(18,5)=28,958,095,545
-\]
-
-partitions were accounted exactly. Per representative:
-
-```text
-feasible total : 57,804
-rank21 / h=0  : 57,777
-rank18 / h=1  :     27
-rank15 / h=2  :      0
-```
-
-Result commit:
-
-```text
-223e94d0fe3e1df45655104e2434d5c5323523b6
-```
-
-## C4. Indexed quarter-turn geometry transport
-
-Status: **COMPLETE / AUDITED**.
-
-If a target cocycle is the `k`-quarter-turn/gauge image of a representative, then its canonical initial state `(0,0)` corresponds to representative initial state `(-k,0)`. Hence each quartet is replayed exactly from
-
-```text
-(0,0) (1,0) (2,0) (3,0)
-```
-
-with a horizontal quarter-turn, which preserves collinearity.
-
-Canonical proof: `docs/proofs/quarter_turn_indexed_geometry_transport.md`.
-
-## C5. GEO3 direct geometry for all eight 18-edge cocycles
-
-Status: **COMPLETE / AUDITED**.
-
-GEO3 replays both complete CYCLE2 feasible streams and classifies all
-
-\[
-8\cdot57,804=462,432
-\]
-
-cocycle-system pairs with exact direct geometry at witness horizon `max_n=127`.
-
-For every target cocycle:
-
-```text
-rank21 geometric witnesses                  : 57,777
-rank18 parameter-independent witnesses      :     27
-rank21 survivors                            :      0
-rank18 survivors                            :      0
-unresolved/error                            :      0
-```
-
-Global survivor count is zero and the maximum witness endpoint is 125.
-
-Therefore every at-most-five-step lift in each of the eight positive-height free-scale 18-edge binary hidden families contains a genuine collinear triple. The six-step construction embeds, so
-
-\[
-\boxed{\min |S|=6}
-\]
-
-inside every one of these eight families.
-
-Result commit:
+GEO3 result commit:
 
 ```text
 e46a293d71f0b2ccb8abeddc7d7cec6f28782be0
 ```
 
-Canonical proof:
+---
 
-- `docs/proofs/eighteen_edge_geometric_optimality.md`
+# Stage BIN — all 4095 fully reachable binary-hidden cocycles
+
+This is the final systematic test of the current triangular radix-4 base with one binary hidden bit. Do not advance by edge count one stratum at a time.
+
+## BIN0 — structural census and equality quotient
+
+Status: **ACTIVE / PRIORITY**.
+
+Enumerate all 4095 fully reachable binary cocycle gauge classes exactly, but perform no five-color search yet.
+
+Goals:
+
+1. reproduce the exact edge-count census;
+2. collapse cocycles with identical adjacent edge sets;
+3. quotient the equality problem by hidden-state relabeling and global quarter-turn;
+4. verify cycle-space incidence/RHS ranks on every equality graph;
+5. record sequence-level quarter-turn orbits for later geometry.
+
+Frozen structural targets to audit:
+
+```text
+fully reachable cocycles       : 4095
+distinct labeled edge sets     : 1061
+equality graph types           : 129
+sequence quarter-turn orbits   : 1947
+```
+
+Expected equality graph types by edge count:
+
+```text
+16: 1   18: 2   20: 26   22: 33   24: 37
+26: 18  28: 9   30: 2    32: 1
+```
+
+For every equality graph require
+
+\[
+\operatorname{rank}D=7,
+\qquad
+\operatorname{rank}[D\ B]=10,
+\]
+
+so the projected RHS rank is three and every exact-five feasible coloring satisfies
+
+\[
+\boxed{h\le2}.
+\]
+
+Canonical theory/task:
+
+- `docs/proofs/binary_hidden_equality_graph_quotient.md`
+- `docs/proofs/rank15_binary_subspace_sieve.md`
+- `experiments/binary_hidden/BIN0_STRUCTURAL_CENSUS_TASK.md`
+- `experiments/binary_hidden/analyze_bin0_structural_census.py`
+
+Stop after BIN0 output for audit.
+
+## BIN1 — equality-existence sieve on 129 graph types
+
+Status: **BLOCKED ON BIN0 AUDIT**.
+
+Input is the audited BIN0 equality-graph list, not the 4095 cocycles individually.
+
+BIN1 has two layers.
+
+### BIN1-A: exact `h=2 / rank15` sieve
+
+For one equality graph let
+
+\[
+U=\operatorname{col}[D\ B].
+\]
+
+BIN0 should give `dim U=10`. Any feasible `h=2` coloring must have each of its five color indicators in
+
+\[
+U\cap\{0,1\}^E.
+\]
+
+Choose ten pivot edge coordinates. Enumerating their binary values gives at most
+
+\[
+2^{10}=1024
+\]
+
+reconstruction trials per graph, after which an exact-cover/rank check completely decides the rank15 branch.
+
+Any rank15 family is a genuinely new structure and receives highest downstream priority.
+
+### BIN1-B: general existence sieve
+
+For graph types not closed by BIN1-A, use a generalized CYCLE2 restricted-growth/cycle-equation search to answer only:
+
+```text
+Does any exact-five rationally feasible coloring exist?
+```
+
+For a feasible graph, BIN1 may stop after recording existence/witness metadata; complete enumeration belongs to BIN2. For an infeasible graph, exhaustive accounting is required.
+
+BIN1 output partitions the 129 equality graph types into:
+
+- equality-infeasible;
+- equality-feasible with rank15 present;
+- equality-feasible with no rank15 found/possible under the exact BIN1-A proof.
+
+Do not run indexed geometry in BIN1.
+
+## BIN2 — complete equality census on BIN1 survivors
+
+Status: **BLOCKED ON BIN1 AUDIT**.
+
+Run complete exact-five equality classification only for the equality graph types that survive BIN1.
+
+Required outputs per surviving graph type:
+
+- logical search-space accounting;
+- complete feasible count;
+- nullity distribution `h=0,1,2`;
+- deterministic feasible-stream SHA-256;
+- retained complete stream when small, otherwise deterministic streaming interface for BIN3;
+- unresolved/error count.
+
+Rank15 systems are ordered first. No parameter grid is permitted; their two-null-direction normal form is exact.
+
+If the survivor count or feasible-stream volume is unexpectedly explosive, stop and audit before attempting geometry.
+
+## BIN3 — indexed direct geometry and all-binary-hidden closure
+
+Status: **BLOCKED ON BIN2 AUDIT**.
+
+Return from equality graph types to actual cocycles (or a separately audited sequence-level conjugacy). Equality graph equivalence alone is insufficient for indexed geometry.
+
+For each BIN2 feasible system use exact direct geometry:
+
+- `h=0`: exact 3D interval-displacement proportionality;
+- `h=1`: exact 4D `Xi` proportionality;
+- `h=2`: exact 5D
+
+\[
+\Xi(p)=
+\left(
+\Re(p\cdot z^0),
+\Im(p\cdot z^0),
+ p\cdot n^{(1)},
+ p\cdot n^{(2)},
+ |p|
+\right)
+\]
+
+proportionality.
+
+A found witness is exact. A finite-prefix survivor is not a construction and must trigger targeted analysis before any horizon increase.
+
+If every feasible system for all 4095 fully reachable binary cocycles receives a genuine collinearity witness, promote the family-specific theorem:
+
+> the minimum physical-step count is six throughout the complete positive-height free-scale binary-hidden triangular radix-4 tagged-lift family.
+
+This would still **not** be a global lower bound for Erdős Problem 193.
+
+If BIN3 produces a genuine prefix survivor, analyze that system before changing the base walk or enlarging the hidden state space.
 
 ---
 
-# Stage 4 — post-18-edge decision stage
+# Stage BASE — alternative base walk
 
-Status: **ACTIVE / THEORY FIRST**.
+Status: **DEFERRED UNTIL BIN PROGRAM GATE**.
 
-The nearest low-transition binary hidden families are now closed geometrically. Do not brute-force the next transition count automatically.
+The BIN program is the final systematic test of the current triangular radix-4 base. After BIN1/BIN2, reconsider the cost/benefit before committing to BIN3 if the survivor volume is unexpectedly large.
 
-Compare four directions before starting another large computation:
+If the binary-hidden program yields no genuinely new mechanism (especially no useful rank15 survivor), move to base-walk redesign rather than enumerating ever larger hidden-state models.
 
-1. **All-cocycle algebraic sieve.** Use cycle-space feasibility to scan the 4095 binary cocycle gauge classes for whether an exact-five coloring is algebraically possible at all, before doing geometry.
-2. **Transition-count expansion.** Move to the next transition-count strata only if symmetry/cycle-space structure keeps the equality search small.
-3. **Base-walk change.** Treat the repeated failure of the triangular radix-4 mechanism as evidence that a different base substitution may be higher value than more hidden-state complexity.
-4. **General obstruction theorem.** Try to abstract the recurrent short-cycle/radix-cycle structure and the rank21/rank18 direct-collinearity mechanism into a theorem covering a much larger class without enumeration.
-
-The next computational issue should be created only after this comparison is worked out theoretically.
-
-# Stage 5 — global lower-bound direction
+# Stage GLOBAL — global lower-bound direction
 
 Logically separate from all tagged-lift searches. A global proof that five steps are impossible must handle arbitrary step sets and arbitrary infinite words, not only the triangular tagged-lift ansatz.
 
