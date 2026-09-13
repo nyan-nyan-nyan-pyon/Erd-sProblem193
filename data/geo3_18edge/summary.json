@@ -1,0 +1,174 @@
+{
+  "cycle2_replay": {
+    "0x0002": {
+      "assignment_order": [
+        10,
+        2,
+        6,
+        0,
+        11,
+        14,
+        15,
+        9,
+        1,
+        7,
+        17,
+        16,
+        4,
+        3,
+        8,
+        12,
+        13,
+        5
+      ],
+      "consistent_leaf_count": 57804,
+      "cycle_rank_distribution": {
+        "4": 27,
+        "5": 57777
+      },
+      "edge_count": 18,
+      "feasible_stream_sha256": "4ede8f955cbf90a9caf926d3cca42caa9fe88e9311262b78376979f6e2c8d1d5",
+      "feasible_total_after_rank15_exclusion": 57804,
+      "h0_rank21": 57777,
+      "h1_rank18": 27,
+      "h2_rank15": 0,
+      "inconsistent_prunes": 623029,
+      "logical_exact5_total": 28958095545,
+      "logical_pruned": 28958037741,
+      "lookahead_prunes": 135251,
+      "mask": "0x0002",
+      "nodes": 262515,
+      "record_limit": 100000,
+      "records_retained": 57804,
+      "simple_cycle_count": 22,
+      "wall_time_seconds": 203.4675587999809
+    },
+    "0x0004": {
+      "assignment_order": [
+        1,
+        8,
+        9,
+        12,
+        4,
+        0,
+        14,
+        5,
+        15,
+        7,
+        17,
+        2,
+        16,
+        13,
+        11,
+        3,
+        6,
+        10
+      ],
+      "consistent_leaf_count": 57804,
+      "cycle_rank_distribution": {
+        "4": 27,
+        "5": 57777
+      },
+      "edge_count": 18,
+      "feasible_stream_sha256": "bbf99a7d39734c4f6b014dbf0098be82354be6acd4d578bd34fcc79fae9f7165",
+      "feasible_total_after_rank15_exclusion": 57804,
+      "h0_rank21": 57777,
+      "h1_rank18": 27,
+      "h2_rank15": 0,
+      "inconsistent_prunes": 623029,
+      "logical_exact5_total": 28958095545,
+      "logical_pruned": 28958037741,
+      "lookahead_prunes": 135251,
+      "mask": "0x0004",
+      "nodes": 262515,
+      "record_limit": 100000,
+      "records_retained": 57804,
+      "simple_cycle_count": 22,
+      "wall_time_seconds": 242.48895660002017
+    }
+  },
+  "dependencies": "standard library only",
+  "max_n": 127,
+  "max_n_semantics": "found witnesses are exact; finite-prefix survival is not a construction",
+  "per_target": {
+    "0x0002": {
+      "classification_sha256": "5fec9e690f1f383c60a3b693b4aca69739674dbacb0a5135baa04eb3fa40f343",
+      "max_witness_endpoint": 125,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    },
+    "0x0004": {
+      "classification_sha256": "f9e2690e6c1f25bb1f523fd66a3657922f7b393a74614c75da2e8da94d488deb",
+      "max_witness_endpoint": 100,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    },
+    "0x0020": {
+      "classification_sha256": "9c9d0a666466523cc118e5d4d83196181359e97da3465db272ea0cc0b5bd95b0",
+      "max_witness_endpoint": 100,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    },
+    "0x0040": {
+      "classification_sha256": "ae3db9a08ea39be5e43fa68e16d8840692a8c09b51a8ff2c0e77ea3fc4dfd88a",
+      "max_witness_endpoint": 100,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    },
+    "0x0046": {
+      "classification_sha256": "bf92fd1ce2e102b00cc2534757252897b3a59be168fed62ffbb881f93e16da91",
+      "max_witness_endpoint": 100,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    },
+    "0x0062": {
+      "classification_sha256": "51e3187905acada0db93b82daa68d8abd9a39c27d2e4b500921242797a42f3c0",
+      "max_witness_endpoint": 100,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    },
+    "0x0200": {
+      "classification_sha256": "a8410d5e3296e6c17b85be7867a0e8d04a5cae208bbcd4cb5ed3fccc2dd1c26f",
+      "max_witness_endpoint": 100,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    },
+    "0x0242": {
+      "classification_sha256": "af50040dd336ffeed0d6b91c09df9895b11d49d10d2263601ff6391de41dd659",
+      "max_witness_endpoint": 100,
+      "rank18_parameter_independent_geometric_collinearity": 27,
+      "rank18_prefix_survivor": 0,
+      "rank21_geometric_collinearity": 57777,
+      "rank21_prefix_survivor": 0,
+      "survivor_total": 0
+    }
+  },
+  "python": "3.14.3",
+  "scope": "direct indexed geometry for all eight 18-edge cocycles via two representatives x four initial states",
+  "starting_git_sha": "3b3473d39a8be43d13204ccaee91f2c662ee624f",
+  "status": "PASS",
+  "survivor_count": 0,
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 987.5046969999967
+}
