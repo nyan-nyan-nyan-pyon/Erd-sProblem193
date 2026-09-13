@@ -6,19 +6,13 @@ This repository is the canonical workspace for the triangular tagged-lift invest
 
 The triangular radix-4 base walk has an audited six-step construction.
 
-For positive-height free-scale four-state tagged lifts
+For the positive-height free-scale four-state tagged-lift family, GEO1 shows that every at-most-five-step system contains a genuine collinear triple. Hence
 
 \[
-W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
+\boxed{\min |S|=6}
 \]
 
-the exact-five physical-step equality classification is
-
-\[
-1050=184+839+27.
-\]
-
-GEO1 gives genuine collinear triples for all 866 rationally feasible exact-five systems, so six steps are optimal in the complete stated four-state family with no valuation/rho/non-collinearity-certificate assumption. Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
+inside that complete family, with no valuation/rho/non-collinearity-certificate assumption. Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
 For the unique fully reachable 16-edge hidden cocycle
 
@@ -26,63 +20,68 @@ For the unique fully reachable 16-edge hidden cocycle
 phi = 0x0042
 ```
 
-HS1 exactly classifies all `S(16,5)=1,096,190,550` exact-five partitions and leaves 59,254 rationally feasible systems:
-
-```text
-rank 21 / dimension 0 : 59,135
-rank 18 / dimension 3 :    119
-```
-
-GEO2 gives genuine geometric-collinearity witnesses for all 59,254. Therefore six steps are optimal inside the complete positive-height `phi=0x0042` free-scale eight-state family, again with no non-collinearity-certificate assumption. Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
+HS1 leaves 59,254 rationally feasible exact-five systems, and GEO2 gives genuine collinear triples for all of them. Thus six steps are also optimal inside the complete positive-height `phi=0x0042` free-scale eight-state family. Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
 These are family-specific results, not a global six-step lower bound for Erdős Problem 193.
 
-## Current active direction — cycle-space reduction
+## Audited cycle-space reduction
 
-Before the eight 18-edge hidden cocycles are searched, the state-tag equality system is being rewritten exactly in cycle space.
-
-For reduced incidence matrix `D`, exact-five color-indicator matrix `C`, and full cycle-space matrix `Y`, set
+CYCLE1 replaces the state-tag equality system exactly by a five-step cycle-space system. For cycle basis `Y` and exact-five color matrix `C`,
 
 \[
 M=YC.
 \]
 
-Then
+Equality feasibility is equivalent to `Mx=Yb`.
+
+For the current 16/18-edge eight-state targets, the general RHS-rank bound gives `h<=2`, and the audited short-cycle argument strengthens this to
 
 \[
-Cx=b+Dp
-\iff
-Mx=Yb.
+\boxed{h\le1}.
 \]
 
-For the current 16/18-edge target graphs the cycle-space right-hand-side space has rank three. Therefore every feasible five-coloring has `rank(M)>=3`, so its nullity satisfies
+Therefore only rank21 (`h=0`) and rank18 (`h=1`) exact-five families can occur. Rank15 is impossible before the 18-edge search begins.
 
-\[
-h=5-\operatorname{rank}M\le2.
-\]
-
-Thus the only possible eight-state tag-RREF ranks are
-
-```text
-21  18  15
-```
-
-and even a new rank-15/two-parameter family can be treated algebraically without a parameter grid.
-
-The eight 18-edge gauge representatives are
+The eight 18-edge representatives are
 
 ```text
 0x0002 0x0004 0x0020 0x0040 0x0046 0x0062 0x0200 0x0242
 ```
 
-CYCLE1 is the current structural audit. It replays the audited `phi=0x0042` HS1 stream and checks record-by-record that cycle nullity reproduces the old tag rank before any exhaustive 18-edge partition search is attempted.
+For equality feasibility they split into two exact quarter-turn classes:
+
+```text
+{0x0002,0x0020,0x0046,0x0200}
+{0x0004,0x0040,0x0062,0x0242}
+```
+
+so only `0x0002` and `0x0004` need exhaustive equality search. Indexed geometry will still be replayed separately for every actual cocycle.
 
 See:
 
 - `docs/proofs/cycle_space_reduction.md`
-- `experiments/cycle_space/CYCLE1_TASK.md`
-- `docs/STATUS.md`
-- `docs/ROADMAP.md`
+- `docs/proofs/rank15_cycle_exclusion.md`
+- `docs/proofs/five_step_step_space_normal_form.md`
+- `docs/proofs/quarter_turn_equality_equivalence.md`
+
+## Current active direction — CYCLE2
+
+A raw 18-edge search contains
+
+\[
+S(18,5)=28,958,095,545
+\]
+
+exact-five partitions per graph. CYCLE2 searches the two equality representatives directly in cycle space instead of materializing those partitions.
+
+The runner maintains exact rational cycle equations in the five physical-step values, prunes inconsistent RGS subtrees immediately, and accounts every pruned logical completion exactly. Before the 18-edge run it must reproduce the complete `phi=0x0042` 59,254-system HS1 partition set and every rank record-by-record.
+
+Task/runner:
+
+- `experiments/cycle_space/CYCLE2_TASK.md`
+- `experiments/cycle_space/search_cycle2_18edge.py`
+
+See `docs/STATUS.md` and `docs/ROADMAP.md` for exact scope and stop conditions.
 
 ## Compute workflow
 
