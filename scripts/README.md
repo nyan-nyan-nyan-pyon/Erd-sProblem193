@@ -4,7 +4,7 @@ Only canonical/reusable code is committed here. Superseded search prototypes and
 
 ## `certificates/verify_fixed_scale_reduced.py`
 
-This is the canonical fixed-scale checker.
+Canonical fixed-scale checker.
 
 Properties:
 
@@ -12,35 +12,50 @@ Properties:
 - no Z3/SMT dependency;
 - exact rational/integer arithmetic;
 - complete exact-5 partition enumeration;
-- complete mod-16 residue check for the rank-6 exceptional families;
-- optional cross-check against `data/fixed_scale_certificate_v1/linear_unsat_partitions.json`.
+- complete mod-16 residue check for the fixed-scale rank-6 exceptional families;
+- optional cross-check against historical fixed-scale certificate data.
+
+## `certificates/verify_free_scale_four_state.py`
+
+Canonical free-scale four-state checker.
+
+It proves, inside the valuation-certified four-state tagged-lift family,
+
+\[
+W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
+\]
+
+that no construction with at most five distinct adjacent steps exists for any nonzero Gaussian integer `A` and any positive integer `M`.
+
+The checker uses only Python standard-library exact arithmetic and reconstructs:
+
+```text
+exact-5 partitions: 1050
+linear inconsistent: 184
+rank 9 eliminated: 839
+rank 6 eliminated: 27 in 8 C4 orbits
+survivors: 0
+```
 
 Run:
 
 ```bash
-python scripts/certificates/verify_fixed_scale_reduced.py \
-  --linear-json data/fixed_scale_certificate_v1/linear_unsat_partitions.json \
-  --out reduced_certificate.json
+python scripts/certificates/verify_free_scale_four_state.py
 ```
 
-Expected headline:
-
-```text
-REDUCED CERTIFICATE PASS
-1050 = 184 + 164 + 675 + 27
-```
+This is family-specific and is not a global lower bound for Erdős Problem 193.
 
 ## Search code policy going forward
 
 New active search code belongs under the corresponding experiment while it is unstable. Promote a script into `scripts/` only when it becomes reusable or part of a frozen audit trail.
 
-For the current free-scale stage, start in `experiments/free_scale/`.
+The active experiment is now `experiments/hidden_state/`.
 
 ## Historical fixed-scale solvers
 
-The fixed-scale result was originally obtained through monolithic Z3/CEGIS, then partitioned Z3, then an unbounded-horizontal-tag solver, and finally UNSAT-core extraction. Those intermediate scripts were useful research instruments but are not required to reproduce the final theorem, so they are not treated as canonical repository content.
+The fixed-scale result was originally obtained through monolithic Z3/CEGIS, partitioned Z3, an unbounded-horizontal-tag solver, and UNSAT-core extraction. Those intermediate scripts were useful research instruments but are not required to reproduce the final theorem, so they are not canonical repository content.
 
-If provenance requires them later, add them under a dedicated `archive/fixed_scale_solver_history/` directory rather than mixing them with active code.
+If provenance requires them later, place them under a dedicated archive directory rather than mixing them with active code.
 
 ## Output policy
 
