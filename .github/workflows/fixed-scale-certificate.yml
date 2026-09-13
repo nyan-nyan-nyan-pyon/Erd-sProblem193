@@ -1,0 +1,28 @@
+name: fixed-scale certificate
+
+on:
+  push:
+    paths:
+      - 'scripts/certificates/verify_fixed_scale_reduced.py'
+      - 'data/fixed_scale_certificate_v1/linear_unsat_partitions.json'
+      - '.github/workflows/fixed-scale-certificate.yml'
+  pull_request:
+    paths:
+      - 'scripts/certificates/verify_fixed_scale_reduced.py'
+      - 'data/fixed_scale_certificate_v1/linear_unsat_partitions.json'
+      - '.github/workflows/fixed-scale-certificate.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run independent reduced certificate
+        run: |
+          python scripts/certificates/verify_fixed_scale_reduced.py \
+            --linear-json data/fixed_scale_certificate_v1/linear_unsat_partitions.json \
+            --out reduced_certificate.json
