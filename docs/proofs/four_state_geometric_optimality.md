@@ -14,13 +14,11 @@ with `q_n=i^{j_n}`. Consider free-scale four-state tagged lifts
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-where `A` is a nonzero Gaussian integer, `M>0`, `d_j in Z[i]`, and `c_j in Z`.
+where `A` is a nonzero Gaussian integer, `M>0`, `d_j in Z[i]`, `c_j in Z`, and every adjacent height increment is positive.
 
 No valuation identity, rho condition, or other non-collinearity certificate is assumed.
 
-> **Theorem.** Every such lift using at most five distinct adjacent physical step vectors contains three collinear visited points. The audited six-step construction has no collinear triple. Therefore the minimum number of physical steps inside this free-scale four-state triangular tagged-lift family is exactly six.
-
-The proof does not use positivity of adjacent height increments; the hypothesis `M>0` is only the nonzero free vertical scale used in the family normalization.
+> **Theorem.** Every such positive-height lift using at most five distinct adjacent physical step vectors contains three distinct collinear visited points. The audited six-step construction has no collinear triple. Therefore the minimum number of physical steps inside this free-scale four-state triangular tagged-lift family is exactly six.
 
 This is still a family-specific theorem. It is not a global lower bound for Erdős Problem 193.
 
@@ -106,9 +104,13 @@ If for `a<b<c`
 \Xi_{bc}=s\Xi_{ab}\qquad(s>0),
 \]
 
-then every coordinate of the actual displacement on `bc` is `s` times the corresponding coordinate on `ab`, for every `u,lambda`. Thus the three actual points are genuinely collinear for every member of that affine family.
+then every coordinate of the actual displacement on `bc` is `s` times the corresponding coordinate on `ab`, for every `u,lambda`.
+
+For an actual member of the stated family, positive adjacent height increments imply `H_b-H_a>0` and `H_c-H_b>0`. Thus these displacement vectors are nonzero and the three visited points are distinct. Therefore the proportional-`Xi` relation forces genuine geometric collinearity for every admissible positive-height member of the affine family.
 
 GEO1 reconstructs such a proportional-`Xi` witness for all 27 rank-6 systems.
+
+Without the positive-height restriction, a special parameter choice could in principle make a recorded displacement vanish; GEO1 does not claim a larger theorem covering that degenerate case.
 
 ## 4. Audited GEO1 result
 
@@ -144,7 +146,7 @@ Canonical sources:
 
 ## 5. Conclusion and claim boundary
 
-Combining the 184 inconsistent exact-five systems with the 839 rank-9 and 27 rank-6 systems carrying genuine collinear triples eliminates every exact-five refinement. Therefore every free-scale four-state triangular tagged lift with at most five physical steps contains a collinear triple.
+Combining the 184 inconsistent exact-five systems with the 839 rank-9 and 27 rank-6 systems carrying genuine collinear triples eliminates every exact-five refinement for the stated positive-height family. Therefore every free-scale four-state triangular tagged lift in this family with at most five physical steps contains three distinct collinear visited points.
 
 The audited six-step construction supplies the matching upper bound, so
 
@@ -152,6 +154,6 @@ The audited six-step construction supplies the matching upper bound, so
 \boxed{\min |S|=6}
 \]
 
-inside this complete four-state tagged-lift family.
+inside this complete positive-height four-state tagged-lift family.
 
-This result removes the previous certificate caveat for four states. It still does **not** rule out five-step walks outside this tagged-lift family, including other base walks, other state models, or arbitrary infinite words.
+This result removes the previous non-collinearity-certificate caveat for four states. It still does **not** rule out five-step walks outside this tagged-lift family, including other base walks, other state models, or arbitrary infinite words.
