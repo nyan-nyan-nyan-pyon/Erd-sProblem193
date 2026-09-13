@@ -16,15 +16,13 @@ The complete positive-height free-scale four-state triangular tagged-lift family
 \boxed{\min |S|=6}.
 \]
 
-No valuation/rho/non-collinearity-certificate assumption remains. Canonical proof:
-
-- `docs/proofs/four_state_geometric_optimality.md`
+Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
 ## Stage G2 — minimal hidden-state direct geometry
 
 Status: **COMPLETE / AUDITED**.
 
-For the unique fully reachable 16-edge cocycle `phi=0x0042`, HS1 leaves 59,254 rationally feasible exact-five systems and GEO2 gives genuine collinearity witnesses for all of them. Therefore
+For the unique fully reachable 16-edge cocycle `phi=0x0042`, all 59,254 rationally feasible exact-five systems have genuine geometric-collinearity witnesses. Therefore
 
 \[
 \boxed{\min |S|=6}
@@ -32,9 +30,7 @@ For the unique fully reachable 16-edge cocycle `phi=0x0042`, HS1 leaves 59,254 r
 
 inside the complete positive-height `phi=0x0042` free-scale eight-state family.
 
-Canonical proof:
-
-- `docs/proofs/hidden_state_phi0042_geometric_optimality.md`
+Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
 
 ---
 
@@ -52,23 +48,15 @@ M=YC
 
 removes state potentials exactly. Equality feasibility is equivalent to the five-step cycle system `Mx=Yb`.
 
-CYCLE1 verifies:
+CYCLE1 verifies cycle ranks, RHS rank three, and record-by-record agreement with the complete 59,254-system `phi=0x0042` HS1 replay.
 
-```text
-16-edge cycle rank : 9
-18-edge cycle rank : 11
-RHS rank           : 3
-```
-
-and replays every one of the 59,254 `phi=0x0042` HS1 feasible systems with exact rank agreement.
-
-A short-cycle theorem strengthens the general `h<=2` bound to
+A short-cycle theorem strengthens the general nullity bound to
 
 \[
 \boxed{h\le1}
 \]
 
-for the unique 16-edge graph and all eight 18-edge graphs. Thus only rank21 (`h=0`) and rank18 (`h=1`) can occur; rank15 is impossible before the 18-edge search begins.
+for the unique 16-edge graph and all eight 18-edge graphs. Thus only rank21 (`h=0`) and rank18 (`h=1`) can occur; rank15 is impossible.
 
 Canonical theory:
 
@@ -78,81 +66,128 @@ Canonical theory:
 
 ## C2. Quarter-turn equality quotient
 
-Status: **COMPLETE THEORETICALLY / USED BY CYCLE2**.
+Status: **COMPLETE / AUDITED**.
 
-The eight 18-edge representatives are
-
-```text
-0x0002 0x0004 0x0020 0x0040 0x0046 0x0062 0x0200 0x0242
-```
-
-and equality feasibility splits into two exact quarter-turn equivalence classes:
+The eight 18-edge representatives split for equality feasibility into
 
 ```text
 {0x0002,0x0020,0x0046,0x0200}
 {0x0004,0x0040,0x0062,0x0242}
 ```
 
-Therefore equality search is needed only for representatives `0x0002` and `0x0004`.
+so equality search is required only for `0x0002` and `0x0004`.
 
-This quotient is not yet used for indexed geometry.
-
-Canonical proof:
-
-- `docs/proofs/quarter_turn_equality_equivalence.md`
+Canonical proof: `docs/proofs/quarter_turn_equality_equivalence.md`.
 
 ## C3. CYCLE2 exact-five equality census
 
-Status: **ACTIVE / PRIORITY**.
+Status: **COMPLETE / AUDITED**.
 
-The raw partition count per 18-edge graph is
+For each equality representative the full partition space
 
 \[
-S(18,5)=28,958,095,545.
+S(18,5)=28,958,095,545
 \]
 
-CYCLE2 does not materialize that list. It uses restricted-growth edge coloring with exact cycle-equation pruning in five physical-step variables. Every pruned subtree is counted exactly, so a successful run must account for all `S(18,5)` logical partitions.
+was accounted exactly by branch-and-prune in five-step cycle space.
 
-Before the 18-edge run, the new engine must independently reproduce the complete `phi=0x0042` feasible partition set and every rank against old HS1:
-
-```text
-h=0 / rank21 : 59,135
-h=1 / rank18 :    119
-h=2 / rank15 :      0
-```
-
-Then search exactly:
+Audited result per representative:
 
 ```text
-0x0002
-0x0004
+feasible total : 57,804
+rank21 / h=0  : 57,777
+rank18 / h=1  :     27
+rank15 / h=2  :      0
 ```
 
-and report the full equality census by rank/nullity.
+The other six classes inherit the same equality census through explicit quarter-turn edge bijections.
+
+Result commit:
+
+```text
+223e94d0fe3e1df45655104e2434d5c5323523b6
+```
 
 Canonical task/runner:
 
 - `experiments/cycle_space/CYCLE2_TASK.md`
 - `experiments/cycle_space/search_cycle2_18edge.py`
 
-## C4. Direct geometry for all eight 18-edge cocycles
+## C4. Indexed quarter-turn geometry transport
 
-Status: **BLOCKED ON CYCLE2 AUDIT**.
+Status: **COMPLETE THEORETICALLY / INPUT TO GEO3**.
 
-Transport equality classifications within each quarter-turn quartet, but replay the actual indexed edge word separately for every cocycle.
+If a target cocycle is the `k`-quarter-turn/gauge image of a representative, then its canonical initial state `(0,0)` corresponds to representative initial state
 
-Only two geometry types can occur:
+\[
+(-k,0).
+\]
 
-- rank21 / `h=0`: unique five-step values, exact 3D direction equality;
-- rank18 / `h=1`: one null vector `n`, positive-height interval from `1+lambda*n_k>0`, and parameter-independent proportional `Xi`.
+Hence the four canonical target cocycles in one equality quartet are represented exactly by the representative coloring replayed from
 
-No rank15/two-parameter geometry branch is required.
+```text
+(0,0) (1,0) (2,0) (3,0)
+```
+
+with a horizontal quarter-turn, which preserves collinearity.
+
+Canonical proof:
+
+- `docs/proofs/quarter_turn_indexed_geometry_transport.md`
+
+## C5. GEO3 direct geometry for all eight 18-edge cocycles
+
+Status: **ACTIVE / PRIORITY**.
+
+GEO3 replays both complete CYCLE2 feasible streams and tests all eight canonical cocycles through the exact
+
+```text
+2 equality representatives x 4 initial states
+```
+
+sequence reduction.
+
+Per equality representative:
+
+```text
+57,804 systems
+57,777 rank21
+27 rank18
+```
+
+Geometry types:
+
+- rank21 / `h=0`: unique five-step values, exact 3D interval-direction equality;
+- rank18 / `h=1`: one null vector and parameter-independent proportional `Xi`.
+
+No rank15 branch exists and positive-height existence is automatic.
+
+Prescribed witness horizon:
+
+```text
+max_n = 127
+```
+
+A found witness is exact; prefix survival is not a construction.
+
+Canonical task/runner:
+
+- `experiments/direct_geometry/GEO3_18EDGE_TASK.md`
+- `experiments/direct_geometry/search_geo3_18edge.py`
+
+Stop for ChatGPT audit after the `max_n=127` run, regardless of whether survivors remain.
 
 ---
 
 # Stage 4 — broader binary cocycles / alternative base walks
 
-Use only if the 18-edge families fail to close or yield a genuine five-step survivor.
+If GEO3 closes all eight 18-edge classes, the next decision is **not** to brute-force the next transition count automatically.  First compare:
+
+1. an all-4095-cocycle algebraic five-step-feasibility sieve using the cycle-space formulation;
+2. higher-transition binary cocycle classes ordered by transition count and symmetry;
+3. changing the triangular base walk itself.
+
+If GEO3 yields genuine prefix survivors, analyze those systems first before broadening.
 
 # Stage 5 — global lower-bound direction
 
