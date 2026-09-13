@@ -1,0 +1,35 @@
+{
+  "all_hs1_survivors_eliminated": true,
+  "classification_sha256": "1601e92a77db7a9779109f909783d614351ba42de524188f8643cc87225b5d8c",
+  "dependencies": "standard library only",
+  "hs1_replay": {
+    "feasible": 59254,
+    "rank_distribution": {
+      "18/3": 119,
+      "21/0": 59135
+    },
+    "stream_sha256": "6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b"
+  },
+  "max_n": 127,
+  "max_n_semantics": "finite exact witness search only; survival is not all-pair feasibility",
+  "normalization": {
+    "anchor_pair": [
+      0,
+      3
+    ],
+    "scale_relation": "v2(|A|^2)=v2(M)"
+  },
+  "python": "3.14.3",
+  "reason_counts": {
+    "direct_pair_mismatch": 59135,
+    "fixed_pair_mismatch": 107,
+    "scalar_pair_mismatch": 12
+  },
+  "scope": "phi=0x0042 free-scale valuation-certified tagged-lift necessary-condition sieve",
+  "starting_git_sha": "924b75941571b75941aa0aa9da681a9a4eb31164",
+  "status": "PASS",
+  "survivor_count": 0,
+  "survivor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 742.5417030999961
+}

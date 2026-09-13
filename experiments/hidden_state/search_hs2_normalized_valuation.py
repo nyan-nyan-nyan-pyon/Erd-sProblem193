@@ -138,7 +138,10 @@ def record_bytes(x): return (json.dumps(x,sort_keys=True,separators=(",",":"))+"
 def four_regression(hs1):
     r=hs1.PartitionSearch("four_hs2",hs1.FOUR_STATES,hs1.FOUR_EDGES,output_record_limit=2000).run()
     assert r.feasible_count==866 and r.rank_distribution==Counter({(9,0):839,(6,3):27})
-    tab=hs1.equality_row_table(hs1.FOUR_EDGES,hs1.FOUR_STATES); pb=pair_bases(7,lambda n:triangle(n)[2]); c=Counter()
+    # The five non-representative rank-6 partitions need witnesses as late as
+    # n=31.  Keep this finite regression broader than the first eight points;
+    # it does not change the HS2 search horizon or its mathematical scope.
+    tab=hs1.equality_row_table(hs1.FOUR_EDGES,hs1.FOUR_STATES); pb=pair_bases(31,lambda n:triangle(n)[2]); c=Counter()
     for lab,er in r.feasible_records:
         ok,rank,p,b=hs1.exact_rref(hs1.rows_for_partition(lab,tab),9); assert ok and rank==er
         d,g,v=unpack(p,b,4); w=direct(pb,d,g) if rank==9 else affine(pb,d,g,v); assert w is not None
