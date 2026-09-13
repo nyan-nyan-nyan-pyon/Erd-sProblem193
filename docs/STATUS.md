@@ -175,23 +175,80 @@ Current family:
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-where
+where \(A\in\mathbb Z[i]\setminus\{0\}\), \(M\in\mathbb Z_{>0}\), \(d_j\in\mathbb Z[i]\), and \(c_j\in\mathbb Z\), using the same four base states.
 
-- \(A\in\mathbb Z[i]\);
-- \(M\in\mathbb Z_{>0}\);
-- \(d_j\in\mathbb Z[i]\);
-- \(c_j\in\mathbb Z\);
-- the same four base states \(j\in\mathbb Z/4\mathbb Z\) are used.
-
-For same-state endpoint pairs the tags cancel. Combining that with the base valuation lemma gives the necessary scale relation
+For same-state endpoint pairs the tags cancel, giving the necessary relation
 
 \[
 \boxed{\nu_2(|A|^2)=\nu_2(M)}.
 \]
 
-The immediate task is to turn this into a useful normalization/classification of scale classes before launching a broad 5-step search.
+### 6.1 Scale-independent partition reduction — ESTABLISHED
 
-See `experiments/free_scale/README.md`.
+For equal adjacent steps, the common vertical term \(M\) cancels exactly. Horizontally, dividing the rational equations by nonzero \(A\) removes the horizontal scale. Therefore rational consistency and rank of the exact-5 step-equality system are completely independent of \(A,M\).
+
+The universal exact-5 classification is
+
+\[
+\boxed{1050=184+839+27}:
+\]
+
+- 184 partitions are rationally inconsistent for every scale;
+- 839 have rank 9;
+- 27 have rank 6.
+
+There are no exceptional projective horizontal directions \([a:b]\) at this linear-consistency/rank level.
+
+### 6.2 All rank-9 free-scale partitions eliminated — ESTABLISHED
+
+For every rank-9 partition, the vertical tags are forced to zero and the horizontal tags have the form
+
+\[
+d_j=A\delta_j
+\]
+
+with scale-independent rational Gaussian tags \(\delta_j\).
+
+After cancelling the necessary scale relation \(\nu_2(|A|^2)=\nu_2(M)\), the pair valuation tests are independent of \(A,M\). Exact rational enumeration shows that only
+
+\[
+P_{0,4},\qquad P_{3,7}
+\]
+
+are needed to eliminate all 839 rank-9 partitions:
+
+- both fail: 509;
+- only \(P_{0,4}\) fails: 165;
+- only \(P_{3,7}\) fails: 165;
+- survive both: 0.
+
+This result uses exact `Fraction` arithmetic and does not assume that the fixed-scale reference tags are integral.
+
+Canonical checker:
+
+- `experiments/free_scale/verify_rank_reduction.py`
+
+### 6.3 Remaining free-scale problem
+
+Only the **27 rank-6 partitions**, forming **8** \(C_4\)-rotation orbits, remain.
+
+Each has rational affine form
+
+\[
+\boxed{d=A\delta+Xv,\qquad c=Cv}
+\]
+
+with one common null vector \(v\) across the two horizontal blocks and the height block.
+
+Writing
+
+\[
+\xi=X/A,\qquad \eta=C/M,
+\]
+
+cancels the common scale from the valuation equations. The immediate task is therefore a 2-adic classification of these eight orbit types in the scale-free ratios \((\xi,\eta)\), followed by the integer-lattice and positive-height constraints.
+
+See `experiments/free_scale/NORMALIZATION.md`.
 
 ## 7. Planned stage after free-scale
 
@@ -208,3 +265,5 @@ For the current stage, stop and audit before continuing if any of the following 
 - a solver result depends on a finite arbitrary box not justified by normalization;
 - any contradiction with the frozen 6-step or fixed-scale certificate appears;
 - any `TIMEOUT`, `UNKNOWN`, or implementation error prevents completeness.
+
+For substantial computations, use the repository-mediated ChatGPT/Codex handoff defined in `AGENTS.md`: ChatGPT specifies and commits the task, Codex syncs/runs/pushes canonical results, and ChatGPT reviews the pushed commit before promoting the result.
