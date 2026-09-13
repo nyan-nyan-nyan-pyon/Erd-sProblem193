@@ -81,7 +81,7 @@ Two labeled edge sets are equality-equivalent if one is carried to the other by
 F(j,h) = (j+k, h xor g(j+k))
 ```
 
-for `k in Z/4` and arbitrary `g : Z/4 -> Z/2`.  Equality-graph orbit counts expected by edge count:
+for `k in Z/4` and arbitrary `g : Z/4 -> Z/2`. Equality-graph orbit counts expected by edge count:
 
 ```text
 16 :  1
@@ -135,7 +135,7 @@ Therefore the audited BIN0 output will imply the universal binary-hidden exact-f
 h <= 2
 ```
 
-for every one of the 4095 fully reachable cocycles.  BIN0 does not claim that `h=2` exists.
+for every one of the 4095 fully reachable cocycles. BIN0 does not claim that `h=2` exists.
 
 ## Regressions
 
@@ -169,12 +169,19 @@ BIN0 STRUCTURAL SELF-TEST PASS
 Then run:
 
 ```bash
-python experiments/binary_hidden/analyze_bin0_structural_census.py
+python experiments/binary_hidden/analyze_bin0_structural_census.py \
+  --output-dir data/bin0_binary_hidden
+```
+
+Require:
+
+```text
+BIN0 STRUCTURAL CENSUS PASS
 ```
 
 ## Outputs
 
-Write local run outputs first.  On PASS commit only small canonical outputs under
+On PASS commit only small canonical outputs under
 
 ```text
 data/bin0_binary_hidden/
