@@ -1,0 +1,30 @@
+{
+  "certificate_hierarchy": [
+    "valuation_separation",
+    "sumfree_rho_fibers",
+    "triangle_local_no_monochromatic_rho_triangle"
+  ],
+  "classification_sha256": "1888a9c7937eb10a13de8e361a1b116a58db93ba9f8e1d9e07b8255bf56a4272",
+  "counts": {
+    "sumfree_fiber_fail": 839,
+    "triangle_local_fail": 839,
+    "vs_fail": 839
+  },
+  "dependencies": "standard library only",
+  "exact5_replay": {
+    "linear_inconsistent": 184,
+    "rank6": 27,
+    "rank9": 839,
+    "total": 1050
+  },
+  "max_n": 127,
+  "max_n_semantics": "finite exact witness search only; prefix survival is not a global rho-certificate and not a construction",
+  "python": "3.14.3",
+  "scope": "four-state free-scale exact-5 rank-9 equality survivors; rho-certificate reconnaissance only",
+  "starting_git_sha": "23ee695e7c357efc00e8efd836146630a3a7b794",
+  "status": "PASS",
+  "triangle_prefix_survivor_count": 0,
+  "triangle_survivor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 48.78419770000619
+}
