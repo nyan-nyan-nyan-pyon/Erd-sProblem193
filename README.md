@@ -20,11 +20,34 @@ For the unique fully reachable 16-edge hidden cocycle
 phi = 0x0042
 ```
 
-HS1 leaves 59,254 rationally feasible exact-five systems, and GEO2 gives genuine collinear triples for all of them. Thus six steps are also optimal inside the complete positive-height `phi=0x0042` free-scale eight-state family.
+GEO2 gives genuine collinear triples for all 59,254 rationally feasible exact-five systems, so six steps are optimal inside that complete positive-height free-scale eight-state family as well.
+
+For the eight fully reachable 18-edge binary hidden classes
+
+```text
+0x0002 0x0004 0x0020 0x0040 0x0046 0x0062 0x0200 0x0242
+```
+
+CYCLE2 accounts the complete exact-five equality space and GEO3 gives genuine geometric-collinearity witnesses for every feasible system in every class. Per target cocycle:
+
+```text
+rank21 exact geometric witnesses                  : 57,777
+rank18 parameter-independent geometric witnesses :     27
+survivors                                         :      0
+unresolved/error                                  :      0
+```
+
+Thus
+
+\[
+\boxed{\min |S|=6}
+\]
+
+inside each of these eight complete positive-height free-scale 18-edge tagged-lift families. Canonical proof: `docs/proofs/eighteen_edge_geometric_optimality.md`.
 
 These are family-specific results, not a global six-step lower bound for Erdős Problem 193.
 
-## Audited cycle-space reduction
+## Structural reduction
 
 CYCLE1 replaces the state-tag equality system exactly by a five-step cycle-space system. For cycle basis `Y` and exact-five color matrix `C`,
 
@@ -32,7 +55,7 @@ CYCLE1 replaces the state-tag equality system exactly by a five-step cycle-space
 M=YC.
 \]
 
-For all current 16/18-edge eight-state targets, the short-cycle theorem gives
+For the current 16/18-edge eight-state targets, the audited short-cycle argument gives
 
 \[
 \boxed{h=5-\operatorname{rank}M\le1},
@@ -40,85 +63,36 @@ For all current 16/18-edge eight-state targets, the short-cycle theorem gives
 
 so only rank21 (`h=0`) and rank18 (`h=1`) exact-five families can occur. Rank15 is impossible.
 
-The eight 18-edge representatives are
-
-```text
-0x0002 0x0004 0x0020 0x0040 0x0046 0x0062 0x0200 0x0242
-```
-
-For equality feasibility they split into two exact quarter-turn classes:
+The eight 18-edge representatives split for equality feasibility into two exact quarter-turn classes:
 
 ```text
 {0x0002,0x0020,0x0046,0x0200}
 {0x0004,0x0040,0x0062,0x0242}
 ```
 
-## CYCLE2 18-edge equality census — COMPLETE / AUDITED
+CYCLE2 searches only representatives `0x0002` and `0x0004`; GEO3 uses the stronger indexed sequence transport to cover all eight canonical cocycles exactly as `2 representatives x 4 initial states`.
 
-CYCLE2 exhaustively accounts all
-
-\[
-S(18,5)=28,958,095,545
-\]
-
-exact-five partitions for representatives `0x0002` and `0x0004`, with explicit equality transports to the other six classes.
-
-For **each** equality representative:
-
-```text
-feasible total : 57,804
-rank21 / h=0  : 57,777
-rank18 / h=1  :     27
-rank15 / h=2  :      0
-```
-
-Result commit:
-
-```text
-223e94d0fe3e1df45655104e2434d5c5323523b6
-```
-
-CYCLE2 is equality-only; these 57,804 systems are not claimed to avoid collinearity.
-
-## Current active direction — GEO3 direct 18-edge geometry
-
-The quarter-turn conjugacy can be strengthened at the indexed-word level.  For a target obtained by quarter-turn `k`, target canonical initial state `(0,0)` corresponds in the equality representative to initial state `(-k,0)`.
-
-Therefore all eight canonical 18-edge cocycles are tested exactly as
-
-```text
-2 equality representatives x 4 representative initial states
-```
-
-with a harmless horizontal quarter-turn, which preserves collinearity.
-
-GEO3 replays both complete 57,804-system equality streams and uses:
-
-- rank21: exact 3D interval-direction equality;
-- rank18: parameter-independent proportional `Xi` in the one-null-direction normal form.
-
-Prescribed witness horizon:
-
-```text
-max_n = 127
-```
-
-A found witness is exact. A finite-prefix survivor is not a construction.
-
-Task/runner:
-
-- `experiments/direct_geometry/GEO3_18EDGE_TASK.md`
-- `experiments/direct_geometry/search_geo3_18edge.py`
-
-Theory:
+Key proofs:
 
 - `docs/proofs/cycle_space_reduction.md`
 - `docs/proofs/rank15_cycle_exclusion.md`
 - `docs/proofs/five_step_step_space_normal_form.md`
 - `docs/proofs/quarter_turn_equality_equivalence.md`
 - `docs/proofs/quarter_turn_indexed_geometry_transport.md`
+- `docs/proofs/eighteen_edge_geometric_optimality.md`
 
-See `docs/STATUS.md` and `docs/ROADMAP.md` for exact scope and stop conditions.
+## Current active direction — post-18-edge theory
+
+The four-state family, the unique 16-edge hidden class, and all eight 18-edge hidden classes are now geometrically closed at five steps.
+
+Do not automatically brute-force the next transition count. The next decision is to compare:
+
+1. an all-4095-binary-cocycle algebraic five-step-feasibility sieve in cycle space;
+2. transition-count-ordered expansion with symmetry reduction;
+3. changing the triangular radix-4 base walk;
+4. extracting a general obstruction theorem from the repeated short-cycle/radix-cycle and rank21/rank18 collinearity mechanisms.
+
+See `docs/STATUS.md` and `docs/ROADMAP.md` for exact scope.
 
 ## Compute workflow
 
