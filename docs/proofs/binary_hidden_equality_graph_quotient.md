@@ -30,7 +30,7 @@ The cocycle digit table itself does not enter the equality equations once the ex
 
 This observation is equality-only: the cocycles can still generate different indexed edge words.
 
-## 2. Hidden relabeling and quarter-turn equivalence
+## 2. Hidden relabeling and quarter-turn equivalence for equality
 
 For `k in Z/4` and an arbitrary hidden relabeling
 
@@ -83,6 +83,32 @@ Therefore the equality problem may be quotiented by the finite group generated b
 - the sixteen independent swaps of the two hidden labels inside the four phase classes.
 
 This is a group of at most `4*16=64` state relabelings on a fixed edge graph.
+
+### Anchoring caveat: this is not a global cocycle-sequence quotient
+
+The normalized cocycle universe is anchored by
+
+\[
+\phi(0,0)=0.
+\]
+
+For digit `r=0`, the base phase does not change. Therefore under a hidden gauge relabeling the two gauge terms occur at the same phase and cancel, so every bit
+
+\[
+\phi(j,0)
+\]
+
+is gauge-invariant.
+
+A phase quarter-turn by `k` sends the anchored entry to
+
+\[
+\phi'(0,0)=\phi(-k,0).
+\]
+
+For a general cocycle this can equal one, and no gauge transform can repair it. For example the normalized class `0x0010` quarter-turned by `k=3` gives raw mask `0x0001`, which has `phi(0,0)=1` and lies outside the normalized 4096-class slice.
+
+Thus the state relabeling above is an exact **equality-graph equivalence**, but it must not be promoted to an all-cocycle indexed-sequence equivalence. The earlier 18-edge sequence transport remains valid only because that special family satisfied the additional anchoring conditions proved there.
 
 ## 3. Cycle-space formulation
 
@@ -164,7 +190,9 @@ The graph quotient in this note is deliberately stronger than cocycle gauge equi
 That does **not** imply that their canonical indexed edge words agree. Consequently:
 
 - BIN0/BIN1/BIN2 may quotient equality by the graph equivalence above;
-- BIN3 must return to actual cocycles, or to a separately proved sequence-level conjugacy, before making a direct-geometric conclusion.
+- BIN3 must return to the actual anchored cocycles, or to a separately proved subset-specific sequence-level conjugacy, before making a direct-geometric conclusion.
+
+No global sequence quarter-turn quotient is asserted for the 4095 normalized cocycles.
 
 ## Claim boundary
 
