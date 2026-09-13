@@ -61,6 +61,48 @@ For each new search family:
 
 Generated run directories and raw logs should not be committed. Small canonical certificates and summaries may be committed under `data/`.
 
+## ChatGPT <-> Codex compute handoff
+
+Use the repository as the synchronization boundary for substantial computation.
+
+### ChatGPT/planner responsibilities
+
+Before asking Codex to run a substantial search:
+
+1. derive as much symbolic structure as practical first;
+2. write the exact task, mathematical scope, stop conditions, commands, and expected artifacts into an issue or committed task note;
+3. commit any checker/search code that Codex should run;
+4. identify which outputs are canonical and small enough to commit.
+
+ChatGPT should not request a large numerical box merely because it is easy to run. The box must have a mathematically documented meaning.
+
+### Codex/runner responsibilities
+
+For a compute handoff, Codex should:
+
+1. sync/pull the current `main` branch and record the starting commit SHA;
+2. read `README.md`, `docs/STATUS.md`, `docs/ROADMAP.md`, this file, and the active experiment notes;
+3. do not silently change the mathematical family or normalizations;
+4. run the requested self-tests/regressions before the main computation;
+5. stop immediately on a requested stop condition, especially a SAT survivor, contradiction of a frozen result, unresolved solver status, or implementation bug;
+6. preserve commands, environment, timings, and machine-readable summaries;
+7. commit and push source changes plus only the requested small canonical results/summaries;
+8. report the resulting commit SHA and exact commands in the task issue.
+
+Large raw logs and generated run trees stay local unless explicitly requested. If a large artifact is needed for audit, summarize it into a small deterministic certificate or table first.
+
+### ChatGPT review after Codex
+
+After Codex pushes results, ChatGPT should:
+
+1. fetch the reported commit and diff from GitHub rather than relying only on the prose report;
+2. inspect machine-readable summaries and any survivor/certificate files;
+3. independently replay small exact checks when practical;
+4. classify the result at the correct claim level;
+5. update `docs/STATUS.md` and the roadmap only after the review passes.
+
+This is the default workflow for large computations in Stage 2 and later.
+
 ## Solver rules
 
 - Prefer exact integer/rational arithmetic whenever possible.
