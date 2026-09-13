@@ -12,7 +12,7 @@ For the positive-height free-scale four-state tagged-lift family, GEO1 shows tha
 \boxed{\min |S|=6}
 \]
 
-inside that complete family, with no valuation/rho/non-collinearity-certificate assumption. Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
+inside that complete family, with no valuation/rho/non-collinearity-certificate assumption.
 
 For the unique fully reachable 16-edge hidden cocycle
 
@@ -20,7 +20,7 @@ For the unique fully reachable 16-edge hidden cocycle
 phi = 0x0042
 ```
 
-HS1 leaves 59,254 rationally feasible exact-five systems, and GEO2 gives genuine collinear triples for all of them. Thus six steps are also optimal inside the complete positive-height `phi=0x0042` free-scale eight-state family. Canonical proof: `docs/proofs/hidden_state_phi0042_geometric_optimality.md`.
+HS1 leaves 59,254 rationally feasible exact-five systems, and GEO2 gives genuine collinear triples for all of them. Thus six steps are also optimal inside the complete positive-height `phi=0x0042` free-scale eight-state family.
 
 These are family-specific results, not a global six-step lower bound for Erdős Problem 193.
 
@@ -32,15 +32,13 @@ CYCLE1 replaces the state-tag equality system exactly by a five-step cycle-space
 M=YC.
 \]
 
-Equality feasibility is equivalent to `Mx=Yb`.
-
-For the current 16/18-edge eight-state targets, the general RHS-rank bound gives `h<=2`, and the audited short-cycle argument strengthens this to
+For all current 16/18-edge eight-state targets, the short-cycle theorem gives
 
 \[
-\boxed{h\le1}.
+\boxed{h=5-\operatorname{rank}M\le1},
 \]
 
-Therefore only rank21 (`h=0`) and rank18 (`h=1`) exact-five families can occur. Rank15 is impossible before the 18-edge search begins.
+so only rank21 (`h=0`) and rank18 (`h=1`) exact-five families can occur. Rank15 is impossible.
 
 The eight 18-edge representatives are
 
@@ -55,31 +53,70 @@ For equality feasibility they split into two exact quarter-turn classes:
 {0x0004,0x0040,0x0062,0x0242}
 ```
 
-so only `0x0002` and `0x0004` need exhaustive equality search. Indexed geometry will still be replayed separately for every actual cocycle.
+## CYCLE2 18-edge equality census — COMPLETE / AUDITED
 
-See:
-
-- `docs/proofs/cycle_space_reduction.md`
-- `docs/proofs/rank15_cycle_exclusion.md`
-- `docs/proofs/five_step_step_space_normal_form.md`
-- `docs/proofs/quarter_turn_equality_equivalence.md`
-
-## Current active direction — CYCLE2
-
-A raw 18-edge search contains
+CYCLE2 exhaustively accounts all
 
 \[
 S(18,5)=28,958,095,545
 \]
 
-exact-five partitions per graph. CYCLE2 searches the two equality representatives directly in cycle space instead of materializing those partitions.
+exact-five partitions for representatives `0x0002` and `0x0004`, with explicit equality transports to the other six classes.
 
-The runner maintains exact rational cycle equations in the five physical-step values, prunes inconsistent RGS subtrees immediately, and accounts every pruned logical completion exactly. Before the 18-edge run it must reproduce the complete `phi=0x0042` 59,254-system HS1 partition set and every rank record-by-record.
+For **each** equality representative:
+
+```text
+feasible total : 57,804
+rank21 / h=0  : 57,777
+rank18 / h=1  :     27
+rank15 / h=2  :      0
+```
+
+Result commit:
+
+```text
+223e94d0fe3e1df45655104e2434d5c5323523b6
+```
+
+CYCLE2 is equality-only; these 57,804 systems are not claimed to avoid collinearity.
+
+## Current active direction — GEO3 direct 18-edge geometry
+
+The quarter-turn conjugacy can be strengthened at the indexed-word level.  For a target obtained by quarter-turn `k`, target canonical initial state `(0,0)` corresponds in the equality representative to initial state `(-k,0)`.
+
+Therefore all eight canonical 18-edge cocycles are tested exactly as
+
+```text
+2 equality representatives x 4 representative initial states
+```
+
+with a harmless horizontal quarter-turn, which preserves collinearity.
+
+GEO3 replays both complete 57,804-system equality streams and uses:
+
+- rank21: exact 3D interval-direction equality;
+- rank18: parameter-independent proportional `Xi` in the one-null-direction normal form.
+
+Prescribed witness horizon:
+
+```text
+max_n = 127
+```
+
+A found witness is exact. A finite-prefix survivor is not a construction.
 
 Task/runner:
 
-- `experiments/cycle_space/CYCLE2_TASK.md`
-- `experiments/cycle_space/search_cycle2_18edge.py`
+- `experiments/direct_geometry/GEO3_18EDGE_TASK.md`
+- `experiments/direct_geometry/search_geo3_18edge.py`
+
+Theory:
+
+- `docs/proofs/cycle_space_reduction.md`
+- `docs/proofs/rank15_cycle_exclusion.md`
+- `docs/proofs/five_step_step_space_normal_form.md`
+- `docs/proofs/quarter_turn_equality_equivalence.md`
+- `docs/proofs/quarter_turn_indexed_geometry_transport.md`
 
 See `docs/STATUS.md` and `docs/ROADMAP.md` for exact scope and stop conditions.
 
