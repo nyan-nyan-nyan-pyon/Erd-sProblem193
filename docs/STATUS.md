@@ -2,7 +2,7 @@
 
 Last structured update: 2026-09-13.
 
-This file is the authoritative snapshot of established results, open scope, and the next active task.
+This file is the authoritative snapshot of established results, open scope, and the next active direction.
 
 ## 1. Problem context
 
@@ -30,24 +30,7 @@ with
 d=((0,0),(-2,2),(-2,-1),(0,-3)),\qquad c=(0,8,5,13).
 \]
 
-Its eight state transitions collapse to exactly six physical steps:
-
-```text
-( 2,  2, 24)
-( 2, -1, 21)
-( 0,  1, 13)
-(-2, -2, 24)
-(-2,  1, 11)
-( 0, -1,  3)
-```
-
-The tagged lift satisfies
-
-\[
-\nu_2(|W_n-W_m|^2)=\nu_2(H_n-H_m),
-\]
-
-which excludes collinear triples by the standard 2-adic argument.
+It uses exactly six physical step vectors and satisfies the all-pairs 2-adic valuation identity that excludes collinear triples.
 
 Canonical sources:
 
@@ -62,13 +45,7 @@ For
 W_n=4Z_n+d_{j_n},\qquad H_n=16n+c_{j_n},
 \]
 
-with arbitrary integer tags, positive adjacent heights, and the same pairwise valuation certificate, no construction with at most five distinct adjacent steps exists.
-
-The reduced exact checker gives
-
-\[
-1050=184+164+675+27.
-\]
+with arbitrary integer tags, positive adjacent heights, and the pairwise valuation certificate, no construction with at most five distinct adjacent steps exists.
 
 Canonical sources:
 
@@ -78,39 +55,31 @@ Canonical sources:
 
 ## 4. Free-scale four-state <=5 impossibility — COMPLETE / FROZEN
 
-Family:
+For
 
 \[
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with \(A\in\mathbb Z[i]\setminus\{0\}\), \(M>0\), integral tags, positive adjacent heights, and
+with nonzero Gaussian integer `A`, `M>0`, integral tags, positive adjacent heights, and the all-pairs valuation certificate, same-state pairs force
 
 \[
-\nu_2(|W_n-W_m|^2)=\nu_2(H_n-H_m)\qquad(m<n).
+\nu_2(|A|^2)=\nu_2(M).
 \]
 
-Same-state endpoint pairs force
-
-\[
-\boxed{\nu_2(|A|^2)=\nu_2(M)}.
-\]
-
-All exact-5 equality systems split as
+All exact-five equality systems split as
 
 \[
 1050=184+839+27,
 \]
 
-where 184 are rationally inconsistent, all 839 rank-9 cases are eliminated by normalized pair tests, and all 27 rank-6 cases are eliminated by fixed-pair or scalar-pair valuation obstructions.
-
-Therefore
+and all rationally feasible rank-9 and rank-6 cases are eliminated by exact normalized valuation obstructions. Therefore
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside this free-scale four-state valuation-certified tagged-lift family.
+inside the complete free-scale four-state valuation-certified tagged-lift family.
 
 Canonical sources:
 
@@ -124,11 +93,12 @@ The project still does **not** establish:
 
 - a global lower bound of 6 for Erdős Problem 193;
 - global impossibility of 5 steps;
-- impossibility of a four-state tagged lift certified by a different non-collinearity invariant;
+- impossibility of tagged lifts certified by a different non-collinearity invariant;
 - impossibility for arbitrary hidden-state transducers;
+- impossibility for all binary cocycles;
 - impossibility for alternative base walks.
 
-Do not promote the family-specific theorems beyond these scopes.
+Do not promote family-specific theorems beyond their stated scopes.
 
 ## 6. Hidden-state model HS0 — COMPLETE / AUDITED STRUCTURE
 
@@ -146,44 +116,41 @@ phi = 0x0042
 
 Its exact reachable graph has 8 states and 16 directed edges.
 
-Canonical structural source:
+The next transition-count level is 18, attained by 8 gauge classes.
+
+Canonical structural sources:
 
 - `experiments/hidden_state/enumerate_binary_cocycles.py`
 - `experiments/hidden_state/README.md`
 
-## 7. HS1 exact linear prefilter — COMPLETE / AUDITED
+## 7. HS1 exact linear prefilter for `phi=0x0042` — COMPLETE / AUDITED
 
-Issue #2 and result commit:
+Result commit:
 
 ```text
 5647b093888e2158f4465cc613800474edface66
 ```
 
-The branch-and-prune exact rational search covers all
+All
 
 \[
 S(16,5)=1,096,190,550
 \]
 
-exact-5 partitions without brute-generating them.
-
-Audited result:
+exact-five partitions are covered by exact branch-and-prune rational algebra:
 
 \[
-1,096,190,550
-=1,096,131,296+59,254.
+1,096,190,550=1,096,131,296+59,254.
 \]
 
-The 59,254 rationally feasible partitions split as
+The 59,254 rationally feasible systems split as
 
 ```text
 rank 21 / dimension 0 : 59,135
 rank 18 / dimension 3 :    119
 ```
 
-Hidden-flip canonical orbit count: 30,690.
-
-Unresolved/error count: 0.
+with unresolved/error count 0.
 
 Canonical feasible-stream SHA-256:
 
@@ -191,57 +158,82 @@ Canonical feasible-stream SHA-256:
 6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b
 ```
 
-The same engine exactly reproduces the old four-state regression
-
-```text
-1050 total / 184 inconsistent / 866 feasible
-rank 9 = 839 / rank 6 = 27
-```
-
-HS1 is only a rational step-equality prefilter. It does not itself prove a construction or impossibility.
-
 Canonical sources:
 
 - `experiments/hidden_state/search_hs1_linear_partitions.py`
-- `data/hidden_state_hs1/summary.json`
-- `data/hidden_state_hs1/rank_distribution.csv`
+- `data/hidden_state_hs1/`
 
-## 8. Active task — HS2 normalized valuation sieve
+## 8. HS2 normalized valuation sieve for `phi=0x0042` — COMPLETE / AUDITED
 
-HS2 starts from all 59,254 audited HS1 survivors.
+Issue #3 result commit:
 
-For the canonical hidden cocycle,
+```text
+5913ffef6022e2f20424047992c6c40adf7ef1c6
+```
+
+For this cocycle,
 
 \[
 \sigma_0=\sigma_3=(0,0),
 \]
 
-so the tags cancel on pair `(0,3)` and again force
+so pair `(0,3)` forces
 
 \[
 \boxed{\nu_2(|A|^2)=\nu_2(M)}.
 \]
 
-Thus HS2 does not search arbitrary scale boxes. It works with normalized rational tags.
+HS2 replays HS1 exactly, including count, rank split, and feasible-stream hash, then applies exact normalized necessary conditions to all 59,254 HS1 survivors.
 
-For rank-21 cases, normalized tags are unique and HS2 searches exact endpoint-pair mismatches
+Audited reason counts:
+
+```text
+direct pair mismatch : 59,135
+fixed-pair mismatch  :    107
+scalar-pair mismatch :     12
+survivors            :      0
+unresolved/error     :      0
+```
+
+Thus every HS1 equality survivor is eliminated by a concrete exact obstruction. The endpoint search used `n<=127`, but this is not a theorem assumption: every candidate has an explicit finite witness inside that range.
+
+The 16-edge `phi=0x0042` family therefore admits no valuation-certified <=5-step lift. The audited four-state six-step lift embeds by choosing tags independent of the hidden bit, so
 
 \[
-\nu_2(|R_{m,n}|^2)\ne\nu_2(T_{m,n}).
+\boxed{\min |S|=6}
 \]
 
-For rank-18 cases, the normalized family has one common null direction and HS2 first checks exact positive-height feasibility, then fixed-pair and scalar-pair parameter-independent valuation obstructions.
+inside the `phi=0x0042` free-scale valuation-certified eight-state tagged-lift family.
 
-The committed default endpoint range `--max-n 127` is only a finite **witness-search range**. A found mismatch is an exact global obstruction for that partition; failure to find one is only an HS2 sieve survivor.
+Canonical classification SHA-256:
 
-Canonical task and runner:
+```text
+1601e92a77db7a9779109f909783d614351ba42de524188f8643cc87225b5d8c
+```
 
-- `experiments/hidden_state/HS2_NORMALIZED_VALUATION_TASK.md`
+Canonical sources:
+
+- `docs/proofs/hidden_state_phi0042_optimality.md`
 - `experiments/hidden_state/search_hs2_normalized_valuation.py`
+- `data/hidden_state_hs2/`
 
-Codex must run the self-test first, then the main HS2 command, push only small canonical results, and stop for ChatGPT audit in either outcome: survivors remain or all 59,254 cases are eliminated.
+## 9. Next active direction — broaden the binary-cocycle family
 
-## 9. Compute workflow
+The unique minimum-edge cocycle `0x0042` is now closed at six steps inside the valuation-certified family.
+
+The next natural target is the 8 gauge classes with 18 reachable transitions. This is **planning only** until a new exact task is committed.
+
+Before launching a large search:
+
+1. enumerate the 8 canonical 18-edge graphs and their exact automorphism/isomorphism relations;
+2. identify which classes are equivalent under hidden-label gauge, base rotation/Gaussian units, or graph relabeling relevant to the tagged-lift equations;
+3. determine whether the `(0,3)`-type same-state scale anchor persists in each class;
+4. estimate exact-five linear search complexity with branch-and-prune rather than brute partition enumeration;
+5. design a shared linear/valuation engine only after the symbolic quotient is fixed.
+
+Do not automatically run all 18-edge classes before this structural reduction.
+
+## 10. Compute workflow
 
 For substantial computation use the repository boundary:
 
@@ -249,16 +241,6 @@ For substantial computation use the repository boundary:
 2. Codex syncs `main`, records the base SHA, runs self-tests and the requested computation;
 3. Codex pushes only source fixes and small canonical summaries/results;
 4. Codex reports commands, environment, timings, counts, hashes, and unresolved status in the task issue;
-5. ChatGPT fetches and audits the pushed commit before any downstream claim or new search.
+5. ChatGPT fetches and audits the pushed commit before downstream claims or a new search.
 
 Large raw run trees/logs remain local.
-
-## 10. Stop conditions
-
-Stop and audit before continuing if:
-
-- any 5-step candidate/sieve survivor requires a stronger stage;
-- a candidate requires a different invariant than the searched one;
-- a search depends on an unjustified finite box;
-- a frozen result or HS1 replay is contradicted;
-- any timeout, unknown, assertion failure, or implementation error blocks completeness.
