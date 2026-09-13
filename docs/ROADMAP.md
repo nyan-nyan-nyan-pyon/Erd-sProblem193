@@ -6,99 +6,84 @@ This roadmap is conservative: each stage should produce a construction, an audit
 
 Status: **COMPLETE / FROZEN**.
 
-## Stage 1–2 — four-state old valuation-certified families
+## Stage 1–2 — four-state valuation/rho certificate stages
 
-Status: **COMPLETE / FROZEN**.
+Status: **SUPERSEDED BY DIRECT GEOMETRY / RETAINED FOR PROVENANCE**.
 
-The free-scale exact-five equality classification is
+The exact-five equality classification is
 
 \[
 1050=184+839+27.
 \]
 
-Six steps are optimal under the old all-pairs valuation certificate.
+The old valuation and later triangle-local rho stages both gave six-step optimality only inside certificate-defined subclasses.
 
-## Stage R — weaker rho certificate
+---
 
-Status: **COMPLETE / AUDITED for four states and `phi=0x0042`**.
+# Stage G — direct geometric collinearity
 
-Define
+## G1. Four-state direct geometry
+
+Status: **COMPLETE / AUDITED**.
+
+GEO1 tests the complete four-state exact-five equality classification with no non-collinearity certificate assumption.
+
+```text
+184 : rationally inconsistent
+839 : rank-9 exact genuine collinear triple
+ 27 : rank-6 parameter-independent genuine collinear triple
+```
+
+Survivors and unresolved cases are zero. Maximum witness endpoint is 64. Canonical classification SHA-256:
+
+```text
+f04d116fc9b3d6e4da7ac782f0a9a550835fa71bbd5d2c6044f88969c16af029
+```
+
+Therefore every at-most-five-step free-scale four-state triangular tagged lift contains three collinear visited points. The audited six-step construction supplies the upper bound, hence
 
 \[
-\rho_{mn}=\nu_2(|W_n-W_m|^2)-2\nu_2(H_n-H_m).
+\boxed{\min |S|=6}
 \]
 
-Collinearity implies a rho-monochromatic triangle.
+inside the complete free-scale four-state triangular tagged-lift family. This lower bound does not require positivity of adjacent height increments and does not depend on valuation/rho or any other certificate.
 
-### R1/R2 — four states
+Canonical proof:
 
-All 839 rank-9 systems and all 27 rank-6 affine families fail the triangle-local rho certificate. Hence six steps are optimal inside the free-scale four-state rho-certified family.
+- `docs/proofs/four_state_geometric_optimality.md`
 
-Canonical proof: `docs/proofs/four_state_rho_triangle_optimality.md`.
+## G2. Direct geometry for hidden cocycle `phi=0x0042`
 
-### HS3R — hidden cocycle `phi=0x0042`
+Status: **NEXT ACTIVE / PRIORITY**.
 
-HS1 has 59,254 exact-five equality survivors:
+HS1 leaves 59,254 feasible exact-five equality systems:
 
 ```text
 rank 21 / dimension 0 : 59,135
 rank 18 / dimension 3 :    119
 ```
 
-HS3R eliminates all of them under the weaker rho certificate:
+HS3R already gives proportional-`Xi` witnesses for all 119 rank-18 families. Those witnesses are stronger than rho failure: they force the actual three-dimensional displacements to be proportional for every free-parameter choice, hence they are genuine collinear triples.
 
-```text
-rank21 rho triangle                        : 59,135
-rank18 parameter-independent rho triangle :    119
-survivors                                  :      0
-maximum witness endpoint                   :     69
-```
-
-Therefore six steps are optimal inside the `phi=0x0042` free-scale eight-state rho-certified family.
-
-Canonical proof: `docs/proofs/hidden_state_phi0042_rho_optimality.md`.
-
----
-
-# Stage G — direct geometric collinearity in the four-state family
-
-Status: **NEXT ACTIVE / PRIORITY**.
-
-Goal: remove the remaining certificate caveat for the four-state triangular tagged-lift family.
-
-The exact-five equality classification is already complete. The 27 rank-6 systems need no new parameter search: their audited proportional-`Xi` witnesses imply the actual three-dimensional displacement vectors are rationally proportional for every free-parameter choice, hence they force genuine collinearity.
-
-For the 839 rank-9 systems, normalized vertical tags vanish and normalized horizontal tags are unique. Since multiplication by nonzero `A` in the horizontal plane and by positive `M` vertically is invertible real-linear, collinearity is scale-independent. Search exact normalized points
+The substantive new work is the 59,135 rank-21 systems. Their normalized tags are unique. Define exact normalized points
 
 \[
-U_n=(\Re(Z_n+\delta_{j_n}),\Im(Z_n+\delta_{j_n}),n)
+V_n=(\Re(Z_n+\delta_{\sigma_n}),\Im(Z_n+\delta_{\sigma_n}),n+\gamma_{\sigma_n}).
 \]
 
-for `a<b<c` satisfying
+Nonzero horizontal scale `A` and positive vertical scale `M` act by an invertible real-linear map, so direct collinearity of `V_n` is equivalent to actual collinearity.
 
-\[
-\frac{R_{ab}}{b-a}=\frac{R_{bc}}{c-b}.
-\]
+GEO2 should:
 
-## G1. GEO1 rank-9 direct geometry
-
-Required behavior:
-
-1. replay `1050=184+839+27` exactly;
-2. verify the audited RHO1/RHO2 hashes before using their canonical results;
-3. search every rank-9 system for an exact finite geometric collinearity witness;
-4. replay/reconstruct the 27 rank-6 proportional witnesses explicitly as actual collinearity;
-5. use exact rational arithmetic only;
+1. replay the HS1 feasible stream count/ranks/hash exactly;
+2. verify the audited HS3R lineage before reuse;
+3. reconstruct all 59,135 rank-21 unique normalized systems;
+4. search exact finite collinear triples directly, using rational arithmetic and an efficient slope/direction signature;
+5. replay the 119 rank-18 proportional-`Xi` witnesses as true geometric collinearity;
 6. stop after the prescribed finite horizon in either outcome;
-7. do not launch 18-edge searches, SMT, arbitrary parameter boxes, or larger horizons without a new audited task.
+7. avoid 18-edge expansion, parameter grids, or SMT until ChatGPT audits the result.
 
-If all 839 rank-9 systems obtain exact collinearity witnesses, then together with the 184 inconsistent and 27 parameter-independent rank-6 collinear families, the result upgrades to
-
-\[
-\boxed{\min |S|=6}
-\]
-
-inside the full free-scale four-state triangular tagged-lift family with positive heights, **without assuming any particular non-collinearity certificate**.
+If all 59,254 feasible systems receive genuine collinearity witnesses, then six steps are optimal inside the complete `phi=0x0042` free-scale eight-state tagged-lift family, with no certificate assumption.
 
 ---
 
@@ -106,15 +91,25 @@ inside the full free-scale four-state triangular tagged-lift family with positiv
 
 Status: **PAUSED**.
 
-There are 8 gauge classes with 18 reachable transitions. Resume only after GEO1 is audited. Before any large exact-five search, export the eight canonical graphs, quotient relevant graph/base/hidden symmetries, determine scale anchors, and estimate branch-and-prune complexity.
+There are 8 gauge classes with 18 reachable transitions. Resume only after GEO2 is audited.
+
+Before any large exact-five search, exploit cycle/potential constraints, graph/base/hidden symmetries, and color permutation symmetry. Prefer an algebraic five-step-feasibility sieve over raw enumeration of
+
+\[
+S(18,5)=28,958,095,545
+\]
+
+partitions per graph.
+
+A later alternative is to sieve all 4095 fully reachable binary cocycles first by whether five physical step values are algebraically feasible, and only then perform non-collinearity analysis on survivors.
 
 # Stage 4 — alternative base walks
 
-Use if the current triangular-base families become unproductive.
+Use if the current triangular-base finite-state families become unproductive.
 
 # Stage 5 — global lower-bound direction
 
-Logically separate from all tagged-lift searches. A global proof that five steps are impossible must handle arbitrary step sets and arbitrary infinite words.
+Logically separate from all tagged-lift searches. A global proof that five steps are impossible must handle arbitrary step sets and arbitrary infinite words, not only the triangular tagged-lift ansatz.
 
 ## Operational rule
 
