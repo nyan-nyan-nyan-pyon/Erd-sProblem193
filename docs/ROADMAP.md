@@ -1,16 +1,10 @@
 # Research roadmap
 
-This roadmap is intentionally conservative: each stage should either produce a construction, an auditable family-specific impossibility theorem, or a clear reason to broaden the model.
+This roadmap is conservative: each stage should produce a construction, an auditable family-specific impossibility theorem, or a clear reason to broaden the model.
 
 ## Stage 0 — preserve the 6-step construction
 
 Status: **complete / frozen**.
-
-Deliverables completed:
-
-- audited construction description;
-- proof source;
-- explicit six step vectors.
 
 ## Stage 1 — fixed-scale four-state optimality
 
@@ -22,11 +16,7 @@ W_n=4Z_n+d_{j_n},\qquad H_n=16n+c_{j_n}.
 
 Status: **complete / frozen**.
 
-Result: no valuation-certified \(\le5\)-step construction exists in this fixed-scale family, while a 6-step construction does.
-
-Canonical checker:
-
-- `scripts/certificates/verify_fixed_scale_reduced.py`
+Result: no valuation-certified <=5-step construction exists in this fixed-scale family; the audited 6-step lift attains the family minimum.
 
 ---
 
@@ -38,39 +28,23 @@ Family:
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with \(A\in\mathbb Z[i]\setminus\{0\}\), \(M>0\), four state tags, positive adjacent heights, and the same pairwise valuation certificate.
+with \(A\in\mathbb Z[i]\setminus\{0\}\), \(M>0\), integral tags, positive adjacent heights, and the all-pairs valuation certificate.
 
 Status: **complete / frozen**.
-
-## 2A. Scale normalization — COMPLETE
 
 Established:
 
 \[
-\nu_2(|A|^2)=\nu_2(M).
+\nu_2(|A|^2)=\nu_2(M),
 \]
 
-Equal-step rational consistency/rank is scale-independent: vertically \(M\) cancels and horizontally nonzero \(A\) divides out over \(\mathbb Q(i)\).
-
-## 2B. Universal partition classification — COMPLETE
-
-For all scales, the 1050 exact-5 partitions split as
+and exact-5 equality systems split universally as
 
 \[
-1050=184+839+27,
+1050=184+839+27.
 \]
 
-with 184 inconsistent, 839 rank 9, and 27 rank 6.
-
-All 839 rank-9 cases are eliminated scale-independently by the two pair tests \(P_{0,4}\) and \(P_{3,7}\).
-
-The 27 rank-6 cases form 8 rotation orbits. Each is eliminated by either a fixed-pair valuation mismatch or an even scalar relation between two endpoint-pair displacement triples.
-
-## 2C. Free-scale conclusion — COMPLETE
-
-No valuation-certified four-state free-scale construction uses at most five physical step vectors.
-
-The audited six-step construction belongs to this family, so six is optimal within the entire free-scale valuation-certified four-state family.
+All rank-9 and rank-6 feasible systems are eliminated by scale-free valuation obstructions. Therefore six steps are optimal inside the full free-scale four-state valuation-certified tagged-lift family.
 
 Canonical sources:
 
@@ -78,109 +52,130 @@ Canonical sources:
 - `scripts/certificates/verify_free_scale_four_state.py`
 - `experiments/free_scale/NORMALIZATION.md`
 
-Scope warning: this does not rule out a four-state tagged lift certified by a different non-collinearity invariant.
-
 ---
 
 # Stage 3 — hidden-state finite transducers
 
 Status: **ACTIVE**.
 
-Trigger: Stage 2 closed without a 5-step construction.
+Goal: retain the recursive triangular base walk while augmenting routing state so more internal transitions may collapse to <=5 physical steps.
 
-Goal: retain the recursive triangular base walk, but augment the finite state used for routing/tags so that more internal transitions may collapse to at most five physical 3D step vectors.
+## 3A. HS0 binary phase cocycle — COMPLETE
 
-## 3A. Define the first 8-state model before search
+State:
 
-Start with one extra binary routing/phase state in addition to the four base direction states.
+\[
+\sigma_n=(j_n,h_n),\qquad h_{4n+r}=h_n\oplus\phi(j_n,r).
+\]
 
-Before implementing a solver, derive:
+Exact gauge/carry enumeration gives 4096 cocycle classes. The minimum reachable adjacent-transition count among fully reachable eight-state classes is 16, achieved by a unique gauge class:
 
-1. the exact state recursion under radix-4 digit extension;
-2. the reachable 8-state transition graph;
-3. which state components affect horizontal/height tags;
-4. the intended valuation invariant and the conditions under which it survives;
-5. state relabeling, phase-complement, Gaussian-unit, and base-rotation symmetries;
-6. the correct notion of exact physical-step partition on reachable transitions.
+```text
+phi = 0x0042
+```
 
-Do not assume all \(8\times8\) transitions are reachable.
+## 3B. HS1 exact linear prefilter — COMPLETE / AUDITED
 
-## 3B. Structural prefilter
+The unique 16-edge graph has
 
-Once the 8-state family is precise:
+\[
+S(16,5)=1,096,190,550
+\]
 
-- enumerate reachable transitions;
-- enumerate/quotient candidate physical-step partitions targeting \(\le5\) step vectors;
-- solve equality constraints over exact rationals first;
-- identify generic ranks and low-dimensional exceptional families;
-- search for local valuation obstructions before SMT.
+exact-5 partitions.
 
-Preferred outcome: reduce the model to a small number of symbolic families before any large computation.
+Exact branch-and-prune rational classification gives:
 
-## 3C. Large computation handoff, only if needed
+```text
+rationally inconsistent : 1,096,131,296
+rationally feasible     :        59,254
+rank 21 / dimension 0   :        59,135
+rank 18 / dimension 3   :           119
+unresolved/error        :             0
+```
 
-If 3A/3B leave a substantial finite search, use the repository-mediated ChatGPT/Codex workflow in `AGENTS.md`.
+Canonical feasible-stream SHA-256:
 
-ChatGPT/planner must first commit:
+```text
+6f6ccbc59a358027881fa9b3bf38500b20adccbc156d57fb62f9881ce8af5f6b
+```
 
-- exact task scope;
-- search/checker code;
-- stop conditions;
-- expected machine-readable artifacts.
+Canonical sources:
 
-Codex then syncs `main`, records the base SHA, runs the computation, pushes small canonical results/summaries, and reports the result in the task issue. ChatGPT reviews the pushed commit before any claim is promoted.
+- `experiments/hidden_state/search_hs1_linear_partitions.py`
+- `data/hidden_state_hs1/`
 
-Stop immediately on a 5-step survivor.
+## 3C. HS2 normalized valuation sieve — ACTIVE
 
-## 3D. Candidate promotion
+For `phi=0x0042`, the pair `(0,3)` has the same hidden state at both endpoints, so
 
-Any 5-step survivor remains only a finite candidate until:
+\[
+\boxed{\nu_2(|A|^2)=\nu_2(M)}.
+\]
+
+HS2 therefore works with normalized rational tags rather than searching arbitrary scale boxes.
+
+Workflow:
+
+1. replay HS1 and match count/rank/hash exactly;
+2. enforce exact positive adjacent-height feasibility;
+3. rank-21 cases: search exact normalized pair valuation mismatches;
+4. rank-18 cases: search fixed-pair and scalar-pair parameter-independent obstructions;
+5. report any survivors without promoting them to constructions.
+
+Committed task and runner:
+
+- `experiments/hidden_state/HS2_NORMALIZED_VALUATION_TASK.md`
+- `experiments/hidden_state/search_hs2_normalized_valuation.py`
+
+Default `--max-n 127` is only a finite witness-search range. If all 59,254 cases receive exact finite witnesses, stop for audit before theorem promotion. If any survive, stop for audit before SMT, larger horizons, or broader families.
+
+## 3D. Stronger valuation solving — NOT YET ACTIVE
+
+Only if HS2 leaves survivors after audit, decide deliberately whether to use:
+
+- exact 2-adic residue/finite-modulus reasoning;
+- SMT as a candidate/certificate generator;
+- stronger symbolic relations among endpoint-pair triples;
+- integrality constraints.
+
+Do not start this stage automatically.
+
+## 3E. Candidate promotion
+
+Any eventual 5-step survivor remains only a candidate until:
 
 1. all physical steps are independently recomputed;
 2. the state recursion is proved;
-3. an infinite non-collinearity proof is supplied;
-4. a separate audit passes.
+3. all required integrality/positivity conditions are satisfied;
+4. an infinite non-collinearity proof is supplied;
+5. a separate audit passes.
 
 ---
 
 # Stage 4 — alternative base walks
 
-Parallel or later direction if Stage 3 is unproductive.
-
-Existing visual candidates (horseshoe, octal rosette, C-ring, coral) are **not proved constructions**. Any promoted candidate must receive the same treatment as the triangular six-step walk:
-
-1. exact recursion;
-2. valuation lemma;
-3. synchronization/tag construction;
-4. finite step-set derivation;
-5. independent audit.
+Use only if the current hidden-state line becomes unproductive. Existing visual candidates are not proved constructions. Promotion requires exact recursion, a valuation/invariant lemma, synchronization/tag construction, finite step-set derivation, and independent audit.
 
 ---
 
 # Stage 5 — global lower-bound direction
 
-This is logically separate from construction search.
+Logically separate from the tagged-lift searches. A global proof that 4 or 5 steps are impossible must handle arbitrary step sets and arbitrary infinite words, not only the structured families above.
 
-A global proof that 4 or 5 steps are impossible must treat arbitrary step sets and arbitrary infinite words, not only tagged-lift families.
+Possible tools include prefix-count/Parikh-vector geometry, additive combinatorics on partial sums, rank reductions for small step sets, and combinatorics on infinite words.
 
-Possible language:
-
-- prefix-count / Parikh-vector geometry;
-- additive combinatorics on partial sums;
-- rank reductions for four or five vectors in \(\mathbb Z^3\);
-- combinatorics on infinite words.
-
-Do not infer a global lower bound from exhaustive searches inside a structured family.
+Do not infer a global lower bound from family-specific exhaustive searches.
 
 ---
 
 # Operational milestones
 
-A stage is considered closed only when:
+A stage closes only when:
 
-- the exact family is documented;
+- the mathematical family is explicit;
 - code is reproducible;
-- unresolved solver statuses are zero, or explicitly documented as blockers;
-- successful candidates have an infinite proof;
-- negative results have an independent certificate/checker when feasible;
-- `docs/STATUS.md` is updated.
+- unresolved statuses are zero or explicitly documented;
+- candidates have an infinite proof before construction promotion;
+- negative results have independent certificate/audit when feasible;
+- `docs/STATUS.md` is updated after review.
