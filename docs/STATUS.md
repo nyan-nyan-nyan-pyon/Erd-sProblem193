@@ -16,13 +16,13 @@ has an audited four-state tagged lift using exactly six physical step vectors. C
 
 ## 2. Four-state exact-five classification
 
-For free-scale four-state tagged lifts
+For positive-height free-scale four-state tagged lifts
 
 \[
 W_n=A Z_n+d_{j_n},\qquad H_n=Mn+c_{j_n},
 \]
 
-with nonzero Gaussian `A`, `M>0`, and integral state tags, the frozen exact-five physical-step equality classification is
+with nonzero Gaussian `A`, `M>0`, integral state tags, and positive adjacent height increments, the frozen exact-five physical-step equality classification is
 
 \[
 1050=184+839+27,
@@ -30,7 +30,7 @@ with nonzero Gaussian `A`, `M>0`, and integral state tags, the frozen exact-five
 
 with 184 rationally inconsistent systems, 839 rank-9 / dimension-0 systems, and 27 rank-6 / dimension-3 systems.
 
-The older valuation and rho stages are retained for provenance, but GEO1 now gives the strongest four-state result.
+The old valuation and rho stages are retained for provenance, but GEO1 now gives the strongest four-state result.
 
 ## 3. GEO1 direct four-state geometry — COMPLETE / AUDITED
 
@@ -72,17 +72,15 @@ For rank 6, a proportional relation
 \Xi_{bc}=s\Xi_{ab},\qquad s>0,
 \]
 
-forces the full actual normalized three-dimensional displacement on `bc` to be `s` times that on `ab` for every free horizontal/vertical parameter choice. Hence these are genuine collinear triples, not merely rho-certificate failures.
+forces the full actual normalized three-dimensional displacement on `bc` to be `s` times that on `ab` for every free horizontal/vertical parameter choice. For an admissible member of the family, positive adjacent height increments make these displacement vectors nonzero, so the three visited points are distinct and genuinely collinear.
 
-Therefore every at-most-five-step lift in the complete free-scale four-state triangular tagged-lift family contains a collinear triple. The audited six-step construction supplies the upper bound, so
+Therefore every at-most-five-step lift in the stated positive-height free-scale four-state triangular tagged-lift family contains a collinear triple. The audited six-step construction supplies the upper bound, so
 
 \[
 \boxed{\min |S|=6}
 \]
 
-inside the full free-scale four-state triangular tagged-lift family.
-
-The lower-bound proof does not use positivity of adjacent height increments.
+inside this full positive-height four-state tagged-lift family.
 
 Canonical proof: `docs/proofs/four_state_geometric_optimality.md`.
 
@@ -142,7 +140,7 @@ Thus six steps are optimal inside the `phi=0x0042` rho-certified family. Canonic
 
 Before launching the much larger 18-edge searches, ask whether the certificate caveat can also be removed for `phi=0x0042`.
 
-The 119 rank-18 HS3R proportional-`Xi` witnesses already imply genuine geometric collinearity for every free-parameter choice. The substantive remaining target is the 59,135 rank-21 systems. Their normalized tags are unique, so actual points are an invertible real-linear image of exact normalized three-dimensional points
+The 119 rank-18 HS3R proportional-`Xi` witnesses already imply genuine geometric collinearity for every admissible positive-height free-parameter choice. The substantive remaining target is the 59,135 rank-21 systems. Their normalized tags are unique, so actual points are an invertible real-linear image of exact normalized three-dimensional points
 
 \[
 V_n=(\Re(Z_n+\delta_{\sigma_n}),\Im(Z_n+\delta_{\sigma_n}),n+\gamma_{\sigma_n}).
