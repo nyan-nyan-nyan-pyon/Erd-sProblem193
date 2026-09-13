@@ -1,0 +1,340 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newcommand{\vTwo}{\nu_2}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\PPair}[2]{P_{#1,#2}}
+
+\title{A Reduced Finite Certificate for the Six-Step Optimum\\
+within a Fixed Four-State Tagged-Lift Family}
+\author{Erd\H{o}s Problem 193 research note}
+\date{13 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the radix-four triangular Gaussian walk used in a six-step construction for
+Erd\H{o}s Problem 193, we consider all four-state integer tagged lifts of the
+fixed form
+\[
+  W_n=4Z_n+d_{j_n},\qquad H_n=16n+c_{j_n},
+\]
+with arbitrary $d_j\in\ZZ^2$ and positive adjacent height increments. We give
+a transparent computer-assisted finite proof that any such lift satisfying the
+required $2$-adic valuation identity uses at least six distinct adjacent step
+vectors. The certificate is solver-independent: it uses only exact rational
+and integer arithmetic plus a complete residue enumeration modulo $16$.
+The exhaustive classification reduces the $1050=S(8,5)$ exact five-block
+partitions to
+\[
+  1050=184+164+675+27,
+\]
+and the final $27$ affine families are represented by only eight state-rotation
+orbits.
+\end{abstract}
+
+\section{Setup}
+Let
+\[
+ a=(1,i,-i,1),\qquad q_0=1,\qquad q_{4n+r}=a_rq_n,
+ \qquad Z_n=\sum_{t<n}q_t.
+\]
+Write $q_n=i^{j_n}$, where $j_n\in\{0,1,2,3\}$. The adjacent state transitions
+that occur are
+\[
+E=\bigl((0,1),(0,2),(1,2),(1,3),(2,3),(2,0),(3,0),(3,1)\bigr).
+\]
+We number these edges $e_0,\dots,e_7$ in the displayed order. Put
+\[
+ u_0=(1,0),\quad u_1=(0,1),\quad u_2=(-1,0),\quad u_3=(0,-1).
+\]
+For integer tags $d_j\in\ZZ^2$ and $c_j\in\ZZ$, with the gauge $d_0=(0,0)$
+and $c_0=0$, define
+\[
+ W_n=4Z_n+d_{j_n},\qquad H_n=16n+c_{j_n}.
+\]
+If $j_n=j$ and $j_{n+1}=k$, the adjacent three-dimensional step is
+\begin{equation}\label{eq:edge-step}
+ S_{j,k}=\bigl(4u_j+d_k-d_j,\;16+c_k-c_j\bigr)\in\ZZ^3.
+\end{equation}
+We call the lift \emph{admissible} if every adjacent height increment is
+positive and
+\begin{equation}\label{eq:valuation}
+ \vTwo\!\left(|W_n-W_m|^2\right)=\vTwo(H_n-H_m)\qquad(m<n).
+\end{equation}
+For convenience, $\PPair{m}{n}$ denotes the equality in \eqref{eq:valuation}
+for the pair $(m,n)$.
+
+\begin{lemma}[Automatic height-tag bound]\label{lem:c-bound}
+Every lift with positive adjacent height increments satisfies
+\[
+ |c_j|\le30\qquad(j=0,1,2,3).
+\]
+\end{lemma}
+\begin{proof}
+For every transition $j\to k$ in $E$, $16+c_k-c_j\ge1$, hence
+$c_k-c_j\ge-15$. The directed transition graph has diameter $2$. Thus a path
+of length at most $2$ from $0$ to $j$ gives $c_j\ge-30$, while a path from
+$j$ to $0$ gives $c_j\le30$.
+\end{proof}
+
+\begin{lemma}[Reduction to exactly five blocks]\label{lem:five-block}
+To exclude all admissible lifts using at most five distinct steps, it suffices
+to exclude all partitions of $E$ into exactly five blocks.
+\end{lemma}
+\begin{proof}
+A lift using $k\le5$ step values induces a partition of the eight edges into at
+most five equality classes. If $k<5$, split equality classes until exactly five
+blocks remain. Splitting removes equality constraints, so the original lift
+remains a solution of the refined five-block system.
+\end{proof}
+
+There are $S(8,5)=1050$ such partitions. We encode a partition by its
+restricted-growth string $(\ell_0,\dots,\ell_7)$, written compactly as eight
+digits; equal digits mean equal steps. State rotation $j\mapsto j+1\pmod4$
+acts by $e_r\mapsto e_{r+2\bmod8}$ followed by canonical relabeling.
+
+\section{The reduced certificate}
+After the gauge choice there are nine unknown tag coordinates,
+\[
+(d_{1x},d_{2x},d_{3x},d_{1y},d_{2y},d_{3y},c_1,c_2,c_3).
+\]
+For any five-block partition, the equal-step conditions from
+\eqref{eq:edge-step} are affine linear equations over $\QQ$. Exact Gaussian
+elimination gives the following exhaustive split.
+
+\begin{proposition}[Exhaustive partition split]\label{prop:split}
+The $1050$ exact five-block partitions divide as follows:
+\[
+\begin{array}{c|r|l}
+\text{class} & \text{count} & \text{reason for exclusion}\\ \hline
+\text{linearly inconsistent}&184&\text{equal-step system inconsistent over }\QQ\\
+\text{rank }9\text{, nonintegral}&164&\text{unique rational tag solution is not integral}\\
+\text{rank }9\text{, integral}&675&\PPair{0}{4}\text{ or }\PPair{3}{7}\text{ fails}\\
+\text{rank }6&27&\text{complete mod-16 residue certificate}\\ \hline
+\text{total}&1050&
+\end{array}
+\]
+\end{proposition}
+
+\subsection{Linear obstructions}
+Among the $184$ inconsistent five-block systems, $114$ already coarsen one of
+eight inconsistent exact six-block systems. The eight six-block systems form
+two $C_4$-rotation orbits. The remaining $70$ new minimal five-block
+obstructions form twenty rotation orbits. Thus the linear part requires only
+$22$ representative types; they are listed in Appendix~\ref{app:linear}.
+
+\subsection{Full-rank systems}
+There are $839$ consistent rank-$9$ systems. Their rational solution is unique.
+Exactly $164$ have a nonintegral coordinate and are impossible for integer tags.
+The remaining $675$ are integer solutions. Direct exact evaluation of only two
+necessary valuation identities gives
+\[
+\begin{array}{c|r}
+\text{failure pattern}&\text{count}\\\hline
+\PPair{0}{4}\text{ and }\PPair{3}{7}\text{ both fail}&397\\
+\text{only }\PPair{0}{4}\text{ fails}&139\\
+\text{only }\PPair{3}{7}\text{ fails}&139\\
+\text{both survive}&0.
+\end{array}
+\]
+Hence no full-rank partition can be admissible.
+
+\subsection{The rank-six exceptional families}
+The remaining $27$ systems have rank $6$ and hence three affine degrees of
+freedom. Exact row reduction verifies in every case that their integer tag
+families have the common form
+\begin{equation}\label{eq:rank6-form}
+ d^x=p_x+Xv,\qquad d^y=p_y+Yv,\qquad c=Cv,
+\end{equation}
+for one three-vector $v$ and integer parameters $X,Y,C$, with the appropriate
+integrality congruences encoded by the affine system.
+
+By Lemma~\ref{lem:c-bound}, all valid height tags are finite. For the pairs used
+below, $m,n\in\{0,\dots,7\}$, so
+\[
+0<H_n-H_m\le16\cdot7+60=172<256,
+\]
+and therefore $\vTwo(H_n-H_m)\le7$. Consequently the horizontal coordinates
+need only be known modulo $16$. If $x,y$ are integers and
+$\alpha=\vTwo(x)$, $\beta=\vTwo(y)$, then
+\[
+\vTwo(x^2+y^2)=
+\begin{cases}
+2\min(\alpha,\beta),&\alpha\ne\beta,\\
+2\alpha+1,&\alpha=\beta,
+\end{cases}
+\]
+so residues modulo $16$ determine the norm valuation whenever it can equal a
+number at most $7$.
+
+The checker enumerates all valid horizontal tag residues modulo $16$ and all
+valid height tags, then imposes only
+\begin{equation}\label{eq:four-pairs}
+\PPair{2}{4},\qquad \PPair{1}{5},\qquad \PPair{1}{3},\qquad \PPair{0}{4}.
+\end{equation}
+Every one of the $27$ families is eliminated. Under state rotation they form
+only eight orbits, listed in Appendix~\ref{app:rank6}.
+
+\begin{theorem}[Six-step optimality in the fixed tagged-lift family]
+Among all admissible integer tagged lifts
+\[
+W_n=4Z_n+d_{j_n},\qquad H_n=16n+c_{j_n},
+\]
+with positive adjacent height increments, the number of distinct adjacent
+three-dimensional step vectors is at least six. The known six-step lift
+therefore attains the minimum within this family.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:five-block}, a lift using at most five steps would satisfy one
+of the $1050$ exact five-block equality systems. Proposition~\ref{prop:split}
+and the rank-$6$ residue argument exclude every such system. Conversely, the
+tags
+\[
+d_0=(0,0),\quad d_1=(-2,2),\quad d_2=(-2,-1),\quad d_3=(0,-3),
+\]
+\[
+c=(0,8,5,13)
+\]
+produce the six step vectors
+\[
+\begin{split}
+&(2,2,24),\quad (2,-1,21),\quad (0,1,13),\\
+&(-2,-2,24),\quad (-2,1,11),\quad (0,-1,3),
+\end{split}
+\]
+and satisfy the valuation identity for this construction. Hence the minimum is
+exactly six.
+\end{proof}
+
+\section{Verification protocol}
+The accompanying checker \texttt{verify\_erdos193\_reduced\_certificate.py}
+uses only the Python standard library. It regenerates all set partitions,
+forms the affine equal-step systems, performs exact row reduction with
+\texttt{fractions.Fraction}, evaluates the rank-$9$ cases exactly, and performs
+the complete rank-$6$ residue enumeration. No SMT solver, floating point
+arithmetic, random sampling, or precomputed certificate is required. A separate
+optional mode compares the regenerated $184$ linear contradictions against the
+earlier certificate file. An independent audit run completed in under one
+second on a desktop CPU.
+
+The proof should therefore be regarded as a transparent finite
+computer-assisted proof, not as a claim that the $1050$-case classification was
+performed by hand.
+
+\appendix
+\section{Linear obstruction representatives}\label{app:linear}
+The RGS strings below use the edge order
+\[
+(0,1),(0,2),(1,2),(1,3),(2,3),(2,0),(3,0),(3,1).
+\]
+The second column is the size of the representative's $C_4$ state-rotation
+orbit within the indicated obstruction set.
+
+\subsection*{Two exact six-block obstruction orbits}
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+RGS representative & orbit size\\
+\midrule
+00122345 & 4 \\
+01210345 & 4 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Their eight members are already inconsistent. Exactly $114$ inconsistent
+five-block systems are coarsenings of one of these eight systems.
+
+\subsection*{Twenty new minimal exact five-block obstruction orbits}
+\begin{center}
+\begin{longtable}{cc}
+\toprule
+RGS representative & orbit size\\
+\midrule
+\endfirsthead
+\toprule
+RGS representative & orbit size\\
+\midrule
+\endhead
+00012034 & 4 \\
+00112341 & 4 \\
+00112342 & 4 \\
+00121334 & 4 \\
+00121341 & 4 \\
+00121342 & 4 \\
+00123314 & 2 \\
+00123441 & 4 \\
+00123442 & 4 \\
+00123443 & 4 \\
+01022034 & 4 \\
+01022134 & 4 \\
+01023432 & 2 \\
+01102340 & 4 \\
+01120334 & 2 \\
+01122034 & 4 \\
+01201343 & 4 \\
+01203142 & 4 \\
+01230124 & 2 \\
+01230143 & 2 \\
+\bottomrule
+\end{longtable}
+\end{center}
+The orbit-member counts sum to $70$.
+
+\section{Rank-six orbit representatives}\label{app:rank6}
+For each representative, the final column records the number of residue states
+before any pair condition and after successively imposing
+\[
+\PPair{2}{4},\ \PPair{1}{5},\ \PPair{1}{3},\ \PPair{0}{4}.
+\]
+The initial state count equals $16^2$ times the number of valid height-tag
+vectors.
+
+\begin{center}
+\scriptsize
+\begin{tabular}{c c c c c}
+\toprule
+RGS & orbit & null vector $v$ & valid $c$ & residue-state progression\\
+\midrule
+00102343 & 4 & $(\frac{1}{2}, \frac{1}{2}, 1)$ & 23 & $5888\to2036\to0\to0\to0$ \\
+00123240 & 4 & $(1, 1, 0)$ & 31 & $7936\to2724\to0\to0\to0$ \\
+01012343 & 4 & $(\frac{1}{3}, \frac{2}{3}, 1)$ & 13 & $3328\to528\to2\to0\to0$ \\
+01023241 & 4 & $(-1, -2, 1)$ & 13 & $3328\to528\to2\to0\to0$ \\
+01123241 & 4 & $(0, -1, 1)$ & 23 & $5888\to2036\to2032\to2032\to0$ \\
+01203041 & 4 & $(\frac{1}{2}, \frac{-1}{2}, 1)$ & 13 & $3328\to1156\to0\to0\to0$ \\
+01213141 & 1 & $(1, 0, 1)$ & 31 & $7936\to0\to0\to0\to0$ \\
+01213424 & 2 & $(1, 0, 1)$ & 31 & $7936\to0\to0\to0\to0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Initial base data}
+The only base values used by the reduced local certificate are
+\[
+\begin{array}{c|c|c}
+n&Z_n&j_n\\\hline
+0&(0,0)&0\\
+1&(1,0)&1\\
+2&(1,1)&3\\
+3&(1,0)&0\\
+4&(2,0)&1\\
+5&(2,1)&2\\
+6&(1,1)&0\\
+7&(2,1)&1
+\end{array}
+\]
+
+\paragraph{Scope.}
+The theorem above is an optimality statement only inside the fixed
+$A=4$, $M=16$, four-state tagged-lift family. It does not assert that five
+steps are impossible for Erd\H{o}s Problem 193 in general.
+
+\end{document}
