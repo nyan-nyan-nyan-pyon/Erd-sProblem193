@@ -8,33 +8,15 @@ Status: **COMPLETE / FROZEN**.
 
 ## Stage G1 — four-state direct geometry
 
-Status: **COMPLETE / AUDITED**.
-
-The complete positive-height free-scale four-state triangular tagged-lift family has
-
-\[
-\boxed{\min |S|=6}.
-\]
+Status: **COMPLETE / AUDITED**. Minimum step count is six in the complete positive-height free-scale four-state triangular tagged-lift family.
 
 ## Stage G2 — minimal hidden-state direct geometry
 
-Status: **COMPLETE / AUDITED**.
-
-The unique fully reachable 16-edge binary-hidden class `phi=0x0042` has
-
-\[
-\boxed{\min |S|=6}.
-\]
+Status: **COMPLETE / AUDITED**. The unique fully reachable 16-edge binary-hidden class `phi=0x0042` has minimum six.
 
 ## Stage C — all 18-edge binary-hidden classes
 
-Status: **COMPLETE / AUDITED**.
-
-CYCLE1/CYCLE2/GEO3 close all eight 18-edge classes by exact equality census plus direct geometry. In each class,
-
-\[
-\boxed{\min |S|=6}.
-\]
+Status: **COMPLETE / AUDITED**. CYCLE1/CYCLE2/GEO3 close all eight 18-edge classes by exact equality census plus direct geometry; each has minimum six.
 
 ---
 
@@ -46,113 +28,94 @@ This is the final systematic test of the current triangular radix-4 base with on
 
 Status: **COMPLETE / AUDITED**.
 
-Result commit:
-
-```text
-eeeae590df6f6a2d68c87435c0717c3069ca24b8
-```
-
-Audited structural compression:
-
 ```text
 4095 anchored cocycles
  -> 1061 distinct labeled edge sets
  -> 129 equality graph types
 ```
 
-No global indexed-sequence quotient is asserted. For all 1061 edge sets and all 129 equality representatives,
+For all 1061 edge sets and 129 equality representatives,
 
 \[
-\operatorname{rank}D=7,
-\qquad
-\operatorname{rank}[D\ B]=10,
-\qquad
+\operatorname{rank}D=7,\qquad
+\operatorname{rank}[D\ B]=10,\qquad
 \operatorname{rank}(YB)=3.
 \]
 
-Therefore every exact-five feasible coloring satisfies `h<=2`.
+Hence every exact-five feasible coloring satisfies `h<=2`.
 
 ## BIN1A — exact h=2 / rank15 sieve
+
+Status: **COMPLETE / AUDITED**.
+
+Result commit `613dfa650ceef67f022fd33932c5d95758ad1217`.
+
+All 129 equality graph types are rank15-negative. Therefore throughout the complete 4095 binary-hidden universe,
+
+\[
+\boxed{h\in\{0,1\}}.
+\]
+
+Only tag ranks `21` and `18` remain. Canonical proof: `docs/proofs/all_binary_hidden_rank15_exclusion.md`.
+
+## BIN1B — general equality existence
 
 Status: **COMPLETE / AUDITED**.
 
 Result commit:
 
 ```text
-613dfa650ceef67f022fd33932c5d95758ad1217
+82efda1
 ```
 
-For each equality graph,
+All 129 equality graph types admit at least one exact-five equality system. The first independently replayed witness is `h=0` on all 129 types. Because the existence search stops at the first witness, this does not exclude additional `h=1` systems.
 
-\[
-U=\operatorname{col}[D\ B],\qquad \dim U=10.
-\]
+Consequently BIN1B provides no graph-type reduction before complete equality accounting.
 
-BIN1A exhausts all `2^10=1024` binary reconstructions per graph and all possible five-class exact covers from `U cap {0,1}^E`.
-
-Audited result:
-
-```text
-rank15 / h=2 present :   0 graph types
-rank15 / h=2 absent  : 129 graph types
-unresolved/error     :   0
-```
-
-Hence throughout the complete 4095 binary-hidden family,
-
-\[
-\boxed{h\in\{0,1\}},
-\]
-
-so only tag ranks `21` and `18` remain.
-
-Canonical proof: `docs/proofs/all_binary_hidden_rank15_exclusion.md`.
-
-## BIN1B — general equality existence
+## BIN2A — complete-census scaling pilot
 
 Status: **ACTIVE / PRIORITY**.
 
-Decide whether each of the 129 equality graph types admits at least one exact-five system.
-
-Use a generalized CYCLE2 exact cycle-space search:
-
-1. enumerate simple directed cycles and verify they span the full cycle space;
-2. assign exactly five nonempty colors in restricted-growth order;
-3. add completed cycle equations with exact rational arithmetic;
-4. prune exact inconsistencies immediately;
-5. use only the audited safe two-unassigned-edge lookahead;
-6. stop a positive graph at its first independently replayed witness;
-7. for a negative graph require exhaustive accounting against `S(E,5)`.
-
-Any positive witness must have
+Do not launch a blind full census over all 129 graph types yet. The raw partition spaces include
 
 ```text
-rank(YC)=5 -> h=0 / tag rank 21
-rank(YC)=4 -> h=1 / tag rank 18.
+S(20,5) = 749,206,090,500
+S(32,5) = 193,257,076,459,811,283,150
 ```
 
-A rank-three witness is a hard contradiction with BIN1A.
+For each edge count `20,22,24,26,28,30,32`, choose the graph with minimum BIN1B simple-cycle count (tie by graph ID), as a conservative weak-pruning proxy. Run complete CYCLE2-style enumeration with a deterministic `2,000,000` visited-node cap per graph.
+
+A graph marked `COMPLETE` must satisfy exact accounting
+
+\[
+\text{logical pruned}+\text{consistent leaves}=S(E,5)
+\]
+
+and gives a complete `h=0/h=1` census. A graph marked `LIMIT_HIT` is only a scaling signal and must not feed geometry.
 
 Canonical task/runner:
 
-- `experiments/binary_hidden/BIN1B_EQUALITY_EXISTENCE_TASK.md`
-- `experiments/binary_hidden/search_bin1b_equality_existence.py`
+- `experiments/binary_hidden/BIN2A_CENSUS_SCALING_PILOT_TASK.md`
+- `experiments/binary_hidden/search_bin2a_census_scaling.py`
 
-Stop after BIN1B output for ChatGPT audit.
+Self-test must reproduce the known 16-edge census exactly.
 
-## BIN2 — complete equality census
+Stop after BIN2A output for ChatGPT audit.
 
-Status: **BLOCKED ON BIN1B AUDIT**.
+## BIN2 — full equality census
 
-Completely enumerate feasible systems only on BIN1B-positive graph types. Record complete counts by `h=0,1`, deterministic stream hashes, logical search accounting, and unresolved/error count.
+Status: **BLOCKED ON BIN2A AUDIT**.
 
-The `h=2` branch is no longer part of BIN2.
+The strategy is chosen from BIN2A:
 
-If output volume is unexpectedly large, stop and audit before geometry.
+- if all pilot strata close comfortably, generalize the exact census across all 129 types;
+- if some strata hit the deterministic cap, do not simply raise it. First redesign the enumeration/pruning or seek a structural theorem.
+
+Only `h=0,1` can occur; `h=2` is globally excluded.
 
 ## BIN3 — indexed direct geometry
 
-Status: **BLOCKED ON BIN2 AUDIT**.
+Status: **BLOCKED ON COMPLETE EQUALITY ACCOUNTING**.
 
 Return from equality graph types to actual anchored cocycles. Equality graph equivalence alone is insufficient for indexed geometry.
 
@@ -161,11 +124,7 @@ Use exact direct geometry:
 - `h=0`: 3D interval-displacement proportionality;
 - `h=1`: 4D `Xi` proportionality.
 
-No 5D `h=2` branch remains after BIN1A.
-
-A found witness is exact. A finite-prefix survivor is not a construction.
-
-If every feasible system for all 4095 cocycles receives a genuine collinearity witness, promote the family-specific theorem that six steps are optimal throughout the complete positive-height free-scale binary-hidden triangular radix-4 tagged-lift family.
+A finite-prefix survivor is not a construction. If every feasible system for all 4095 cocycles receives a genuine collinearity witness, promote the family-specific theorem that six steps are optimal throughout the complete positive-height free-scale binary-hidden triangular radix-4 tagged-lift family.
 
 ---
 
@@ -173,7 +132,7 @@ If every feasible system for all 4095 cocycles receives a genuine collinearity w
 
 Status: **DEFERRED UNTIL BIN PROGRAM GATE**.
 
-BIN1A has already shown that higher transition complexity within the one-bit hidden model does not create a two-null-direction rank15 escape. After BIN1B/BIN2, compare the surviving equality volume with the cost of BIN3. If no useful new mechanism appears, change the base walk rather than enlarging the hidden-state model again.
+BIN1A already shows that higher transition complexity in the one-bit hidden model does not create the two-null-direction rank15 escape available to the successful six-step family. If BIN2A/BIN2 become computationally explosive without revealing a new mechanism, switch to theory-first compression or base-walk redesign rather than brute-force hidden-state enlargement.
 
 # Stage GLOBAL — global lower-bound direction
 
