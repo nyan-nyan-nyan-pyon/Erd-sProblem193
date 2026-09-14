@@ -1,0 +1,113 @@
+{
+  "cycle_rank_distribution_equality_types": {
+    "9": 1,
+    "11": 2,
+    "13": 26,
+    "15": 33,
+    "17": 37,
+    "19": 18,
+    "21": 9,
+    "23": 2,
+    "25": 1
+  },
+  "dependencies": "standard library only",
+  "distinct_edge_set_distribution": {
+    "16": 1,
+    "18": 8,
+    "20": 116,
+    "22": 243,
+    "24": 359,
+    "26": 237,
+    "28": 82,
+    "30": 14,
+    "32": 1
+  },
+  "distinct_labeled_edge_sets": 1061,
+  "edge_count_distribution": {
+    "16": 1,
+    "18": 8,
+    "20": 136,
+    "22": 344,
+    "24": 956,
+    "26": 1144,
+    "28": 1000,
+    "30": 424,
+    "32": 82
+  },
+  "equality_graph_type_distribution": {
+    "16": 1,
+    "18": 2,
+    "20": 26,
+    "22": 33,
+    "24": 37,
+    "26": 18,
+    "28": 9,
+    "30": 2,
+    "32": 1
+  },
+  "equality_graph_types": 129,
+  "fully_reachable_classes": 4095,
+  "gauge_classes": 4096,
+  "incidence_rank_distribution_distinct_edge_sets": {
+    "7": 1061
+  },
+  "incidence_rank_distribution_equality_types": {
+    "7": 129
+  },
+  "indexed_geometry_replay_units": 4095,
+  "indexed_sequence_quotient": "none asserted globally; anchored cocycles retained individually",
+  "known_16_mask": "0x0042",
+  "known_18_equality_graph_types": [
+    "EQ116",
+    "EQ121"
+  ],
+  "known_18_masks": [
+    "0x0002",
+    "0x0004",
+    "0x0020",
+    "0x0040",
+    "0x0046",
+    "0x0062",
+    "0x0200",
+    "0x0242"
+  ],
+  "python": "3.14.3",
+  "quarter_turn_nonclosure_regression": {
+    "k": 3,
+    "raw_result": "0x0001",
+    "result_phi_0_0": 1,
+    "source": "0x0010"
+  },
+  "r0_profile_distribution": {
+    "000": 511,
+    "001": 512,
+    "010": 512,
+    "011": 512,
+    "100": 512,
+    "101": 512,
+    "110": 512,
+    "111": 512
+  },
+  "raw_cocycles": 32768,
+  "reachable_state_distribution": {
+    "4": 1,
+    "8": 4095
+  },
+  "rhs_rank_distribution_distinct_edge_sets": {
+    "3": 1061
+  },
+  "rhs_rank_distribution_equality_types": {
+    "3": 129
+  },
+  "scope": "all 4095 fully reachable binary-hidden cocycles; structural census only",
+  "starting_git_sha": "5f7aea4585dc324a007e902aed62b1a425978164",
+  "status": "PASS",
+  "stream_sha256": {
+    "cocycle_map": "2e3da456ff2c71e7374c7f60a91a9e880b54a0682f9cf6c45b8a1c9224567e13",
+    "edge_count_census": "78f4613d3bfc5732002335006f39e44e4a9b48a293133ea759d8d58809a021ef",
+    "equality_graphs": "b60b86f5396398aa49e533dd71a50f287b83fb602979c3f579492316d8859fa8"
+  },
+  "universal_exact5_nullity_upper_bound": 2,
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 3.532055899995612
+}
