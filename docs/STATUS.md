@@ -75,6 +75,7 @@ Canonical theory includes:
 - `docs/proofs/positive_height_automatic.md`
 - `docs/proofs/binary_hidden_equality_graph_quotient.md`
 - `docs/proofs/rank15_binary_subspace_sieve.md`
+- `docs/proofs/all_binary_hidden_rank15_exclusion.md`
 
 ## 4. BIN0 v2 — COMPLETE / AUDITED
 
@@ -94,20 +95,6 @@ BIN0 treats all **4095 fully reachable anchored binary-hidden cocycle gauge clas
 
 The `129` quotient is equality-only. The original draft's global indexed quarter-turn quotient was rejected by self-test because `phi(j,0)` is gauge-invariant and quarter-turn can leave the anchored slice `phi(0,0)=0`. BIN3 therefore retains all 4095 actual anchored cocycles unless a subset-specific sequence conjugacy is separately proved.
 
-Exact edge-count census over the 4095 classes:
-
-```text
-16:1  18:8  20:136  22:344  24:956
-26:1144  28:1000  30:424  32:82
-```
-
-Equality graph types by edge count:
-
-```text
-16:1  18:2  20:26  22:33  24:37
-26:18  28:9  30:2  32:1
-```
-
 For every one of the 1061 labeled edge sets, and independently every one of the 129 equality representatives,
 
 \[
@@ -115,68 +102,112 @@ For every one of the 1061 labeled edge sets, and independently every one of the 
 \qquad
 \operatorname{rank}[D\ B]=10,
 \qquad
-\operatorname{rank}(YB)=3,
+\operatorname{rank}(YB)=3.
 \]
 
-where `B=(Re b, Im b, 1)`. Therefore every exact-five equality-feasible coloring throughout the complete binary-hidden universe satisfies
+Therefore every exact-five equality-feasible coloring satisfies
 
 \[
-\boxed{h=5-\operatorname{rank}(YC)\le2}.
+ h=5-\operatorname{rank}(YC)\le2.
 \]
 
 Canonical outputs: `data/bin0_binary_hidden/`.
 
-## 5. BIN1A — ACTIVE / PRIORITY
+## 5. BIN1A — COMPLETE / AUDITED
 
-BIN1A now isolates the only new nullity type not seen in the audited 16/18-edge families:
+Result commit:
+
+```text
+613dfa650ceef67f022fd33932c5d95758ad1217
+```
+
+BIN1A exhaustively tests the novel
 
 \[
-\boxed{h=2\quad/\quad \text{rank15}}.
+h=2\quad/\quad \text{tag rank }15
 \]
 
-For each of the 129 equality graph types define
+branch on all 129 equality graph types.
+
+For each graph,
 
 \[
-U=\operatorname{col}[D\ B]\subseteq\mathbb Q^E.
+U=\operatorname{col}[D\ B],\qquad \dim U=10,
 \]
 
-BIN0 proves `dim U=10`. Every color indicator in an h=2 feasible exact-five coloring must lie in
+and every rank15 color indicator must lie in
 
 \[
 U\cap\{0,1\}^E.
 \]
 
-Ten pivot edge coordinates therefore allow exhaustive reconstruction with exactly `2^10=1024` binary trials per graph. Five nonzero reconstructed indicators are then tested as an exact cover. Without constructing `Y`, the decisive rank is computed by
+The audited run reconstructs this binary intersection from all `2^10=1024` pivot assignments for each graph, for exactly
 
 \[
-\operatorname{rank}(YC)=\operatorname{rank}[D\ C]-7.
+129\cdot1024=132096
 \]
 
-A rank-three cover is an exact rank15 equality family. BIN1A may stop at the first witness for a positive graph, but must exhaust all covers for a negative graph.
+reconstruction trials. The result is
+
+```text
+rank15 / h=2 present graph types :   0
+rank15 / h=2 absent graph types  : 129
+witnesses                         :   0
+unresolved/error                  :   0
+```
+
+No complete five-class exact-cover leaf is reached on any graph. Therefore throughout the complete 4095 binary-hidden family every rationally feasible exact-five equality system satisfies
+
+\[
+\boxed{h\in\{0,1\}},
+\]
+
+or equivalently has tag rank
+
+\[
+\boxed{21\text{ or }18}.
+\]
+
+Canonical theorem note: `docs/proofs/all_binary_hidden_rank15_exclusion.md`.
+
+Canonical outputs: `data/bin1a_rank15/`.
+
+## 6. BIN1B — ACTIVE / PRIORITY
+
+BIN1B now decides **existence only** of an exact-five equality system on each of the 129 graph types. Since BIN1A is closed, every positive witness must be `h=0` or `h=1`.
+
+The runner generalizes the audited CYCLE2 cycle-space engine:
+
+- restricted-growth exact-five edge coloring;
+- exact `Fraction` cycle equations;
+- immediate inconsistency pruning;
+- safe two-unassigned-edge lookahead;
+- simple-cycle incidence spanning check for the full cycle space.
+
+For a positive graph, the first consistent exact-five leaf is independently replayed and retained as one witness; search then stops for that graph. For a negative graph, exhaustive logical accounting against `S(E,5)` is mandatory.
 
 Active task/runner:
 
-- `experiments/binary_hidden/BIN1A_RANK15_SIEVE_TASK.md`
-- `experiments/binary_hidden/search_bin1a_rank15.py`
+- `experiments/binary_hidden/BIN1B_EQUALITY_EXISTENCE_TASK.md`
+- `experiments/binary_hidden/search_bin1b_equality_existence.py`
 
-Known 16-edge and both 18-edge equality graph types are mandatory negative self-test regressions.
+The unique 16-edge graph and both 18-edge equality graph types are mandatory positive self-test regressions.
 
-## 6. BIN1B / BIN2 / BIN3
+## 7. BIN2 / BIN3
 
-- **BIN1B** — blocked on BIN1A audit. Decide whether any h=0/h=1 exact-five equality system exists on the remaining graph types, using a generalized CYCLE2 existence search.
-- **BIN2** — blocked on BIN1 audit. Completely enumerate equality-feasible systems on surviving graph types and record h=0,1,2 counts/hashes.
-- **BIN3** — blocked on BIN2 audit. Return to actual anchored cocycles and use exact 3D/4D/5D interval proportionality for h=0/1/2 respectively.
+- **BIN2** — blocked on BIN1B audit. Completely enumerate exact-five equality systems only on BIN1B-positive graph types. Only `h=0,1` can occur; `h=2` is globally excluded by BIN1A.
+- **BIN3** — blocked on BIN2 audit. Return to actual anchored cocycles. Use exact 3D interval proportionality for `h=0` and exact 4D `Xi` proportionality for `h=1`. No 5D `h=2` branch remains.
 
 A finite-prefix BIN3 survivor is not a construction and must trigger targeted infinite analysis. If every feasible system across all 4095 cocycles receives a genuine collinearity witness, six steps are optimal throughout the complete positive-height free-scale binary-hidden triangular radix-4 tagged-lift family. This remains family-specific, not a global Erdős Problem 193 lower bound.
 
-## 7. Deferred base-walk redesign
+## 8. Deferred base-walk redesign
 
-Changing the base walk is deferred until the BIN program gate. If BIN1/BIN2 reveal no genuinely new useful mechanism, especially no useful rank15 family, base-walk redesign is preferred over increasing hidden-state size again.
+Changing the base walk is deferred until the BIN program gate. BIN1A has now shown that increasing transition complexity inside the one-bit hidden model does **not** create the hoped-for two-null-direction rank15 mechanism. After BIN1B/BIN2, compare survivor volume against the cost of BIN3; if no new useful mechanism appears, base-walk redesign is preferred over increasing hidden-state size again.
 
-## 8. Scope warning
+## 9. Scope warning
 
 The project still does **not** establish a global lower bound of six for Erdős Problem 193, impossibility for arbitrary finite-state transducers, or impossibility for alternative base walks.
 
-## 9. Compute workflow
+## 10. Compute workflow
 
 Substantial computation uses the repository boundary: ChatGPT scopes and commits the exact task/runner; Codex syncs, self-tests, runs, commits only requested small canonical outputs, and reports exact commands/environment/counts/hashes; ChatGPT audits before theorem promotion or the next stage.
