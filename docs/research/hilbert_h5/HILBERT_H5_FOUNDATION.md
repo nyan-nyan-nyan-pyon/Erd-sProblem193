@@ -230,7 +230,7 @@ which is the corrected F formula because `N=2^L` and E supplies `e`.
 
 ## G. Scale lift
 
-The L+2 word for `16r` has two leading zero digits. Since `delta_0=I`,
+The L+2 base-4 word for `16r` is obtained from the L-digit word for `r` by appending two least-significant zero digits. Since `delta_0=I`,
 
 \[
 \chi_{L+2}(16r)=\chi_L(r).
