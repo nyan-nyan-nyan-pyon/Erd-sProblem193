@@ -60,9 +60,7 @@ Audited structural compression:
  -> 129 equality graph types
 ```
 
-No global indexed-sequence quotient is asserted. The original quarter-turn assumption failed because `phi(j,0)` is gauge-invariant and quarter-turn need not preserve the anchored slice `phi(0,0)=0`.
-
-For all 1061 edge sets and all 129 equality representatives,
+No global indexed-sequence quotient is asserted. For all 1061 edge sets and all 129 equality representatives,
 
 \[
 \operatorname{rank}D=7,
@@ -72,71 +70,83 @@ For all 1061 edge sets and all 129 equality representatives,
 \operatorname{rank}(YB)=3.
 \]
 
-Therefore every exact-five feasible coloring satisfies
-
-\[
-\boxed{h\le2}.
-\]
-
-Canonical output: `data/bin0_binary_hidden/`.
+Therefore every exact-five feasible coloring satisfies `h<=2`.
 
 ## BIN1A — exact h=2 / rank15 sieve
 
-Status: **ACTIVE / PRIORITY**.
+Status: **COMPLETE / AUDITED**.
 
-The novel branch is
+Result commit:
 
-\[
-h=2,\qquad \operatorname{rank}(YC)=3.
-\]
+```text
+613dfa650ceef67f022fd33932c5d95758ad1217
+```
 
-For each of the 129 equality graph types,
-
-\[
-U=\operatorname{col}[D\ B]
-\]
-
-has dimension 10. Every rank15 color indicator lies in
+For each equality graph,
 
 \[
-U\cap\{0,1\}^E.
+U=\operatorname{col}[D\ B],\qquad \dim U=10.
 \]
 
-Algorithm:
+BIN1A exhausts all `2^10=1024` binary reconstructions per graph and all possible five-class exact covers from `U cap {0,1}^E`.
 
-1. choose ten pivot edge coordinates;
-2. enumerate all `2^10=1024` binary pivot assignments;
-3. reconstruct the unique vector in `U` exactly;
-4. retain exactly the binary vectors;
-5. search exact covers by five nonzero retained vectors;
-6. accept a cover iff
+Audited result:
+
+```text
+rank15 / h=2 present :   0 graph types
+rank15 / h=2 absent  : 129 graph types
+unresolved/error     :   0
+```
+
+Hence throughout the complete 4095 binary-hidden family,
 
 \[
-\operatorname{rank}[D\ C]-7=3.
+\boxed{h\in\{0,1\}},
 \]
 
-For a positive graph, stop after one exact rank15 witness. For a negative graph, exhaustive exact-cover search is required.
+so only tag ranks `21` and `18` remain.
 
-Mandatory regression: the unique 16-edge equality graph and both 18-edge equality graph types must remain rank15-negative.
-
-Canonical task/runner:
-
-- `experiments/binary_hidden/BIN1A_RANK15_SIEVE_TASK.md`
-- `experiments/binary_hidden/search_bin1a_rank15.py`
-
-Stop after BIN1A output for ChatGPT audit.
+Canonical proof: `docs/proofs/all_binary_hidden_rank15_exclusion.md`.
 
 ## BIN1B — general equality existence
 
-Status: **BLOCKED ON BIN1A AUDIT**.
+Status: **ACTIVE / PRIORITY**.
 
-Use a generalized CYCLE2-style exact search to decide whether any exact-five `h=0` or `h=1` system exists on the equality graph types not already prioritized by rank15. Positive graphs may stop at the first witness; negative graphs require exhaustive accounting.
+Decide whether each of the 129 equality graph types admits at least one exact-five system.
+
+Use a generalized CYCLE2 exact cycle-space search:
+
+1. enumerate simple directed cycles and verify they span the full cycle space;
+2. assign exactly five nonempty colors in restricted-growth order;
+3. add completed cycle equations with exact rational arithmetic;
+4. prune exact inconsistencies immediately;
+5. use only the audited safe two-unassigned-edge lookahead;
+6. stop a positive graph at its first independently replayed witness;
+7. for a negative graph require exhaustive accounting against `S(E,5)`.
+
+Any positive witness must have
+
+```text
+rank(YC)=5 -> h=0 / tag rank 21
+rank(YC)=4 -> h=1 / tag rank 18.
+```
+
+A rank-three witness is a hard contradiction with BIN1A.
+
+Canonical task/runner:
+
+- `experiments/binary_hidden/BIN1B_EQUALITY_EXISTENCE_TASK.md`
+- `experiments/binary_hidden/search_bin1b_equality_existence.py`
+
+Stop after BIN1B output for ChatGPT audit.
 
 ## BIN2 — complete equality census
 
-Status: **BLOCKED ON BIN1 AUDIT**.
+Status: **BLOCKED ON BIN1B AUDIT**.
 
-Completely enumerate feasible systems only on surviving graph types. Record complete counts by `h=0,1,2`, deterministic stream hashes, logical search accounting, and unresolved/error count.
+Completely enumerate feasible systems only on BIN1B-positive graph types. Record complete counts by `h=0,1`, deterministic stream hashes, logical search accounting, and unresolved/error count.
+
+The `h=2` branch is no longer part of BIN2.
 
 If output volume is unexpectedly large, stop and audit before geometry.
 
@@ -149,8 +159,9 @@ Return from equality graph types to actual anchored cocycles. Equality graph equ
 Use exact direct geometry:
 
 - `h=0`: 3D interval-displacement proportionality;
-- `h=1`: 4D `Xi` proportionality;
-- `h=2`: 5D `Xi` proportionality with two null directions.
+- `h=1`: 4D `Xi` proportionality.
+
+No 5D `h=2` branch remains after BIN1A.
 
 A found witness is exact. A finite-prefix survivor is not a construction.
 
@@ -162,7 +173,7 @@ If every feasible system for all 4095 cocycles receives a genuine collinearity w
 
 Status: **DEFERRED UNTIL BIN PROGRAM GATE**.
 
-If BIN1/BIN2 reveal no genuinely new useful mechanism, especially no useful rank15 family, change the base walk rather than enlarging the hidden-state model again.
+BIN1A has already shown that higher transition complexity within the one-bit hidden model does not create a two-null-direction rank15 escape. After BIN1B/BIN2, compare the surviving equality volume with the cost of BIN3. If no useful new mechanism appears, change the base walk rather than enlarging the hidden-state model again.
 
 # Stage GLOBAL — global lower-bound direction
 
