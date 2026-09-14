@@ -1,0 +1,65 @@
+{
+  "bin0_equality_graphs_sha256": "b60b86f5396398aa49e533dd71a50f287b83fb602979c3f579492316d8859fa8",
+  "bin1a_results_sha256": "3c9e61cff63b5008218c8f7fdadca5b27ed9e220a21121c12a1eff08c7af26a2",
+  "classification_by_edge_count": {
+    "16": {
+      "feasible": 1,
+      "infeasible": 0
+    },
+    "18": {
+      "feasible": 2,
+      "infeasible": 0
+    },
+    "20": {
+      "feasible": 26,
+      "infeasible": 0
+    },
+    "22": {
+      "feasible": 33,
+      "infeasible": 0
+    },
+    "24": {
+      "feasible": 37,
+      "infeasible": 0
+    },
+    "26": {
+      "feasible": 18,
+      "infeasible": 0
+    },
+    "28": {
+      "feasible": 9,
+      "infeasible": 0
+    },
+    "30": {
+      "feasible": 2,
+      "infeasible": 0
+    },
+    "32": {
+      "feasible": 1,
+      "infeasible": 0
+    }
+  },
+  "dependencies": "standard library only; imports audited repository cycle-space modules",
+  "equality_feasible_graph_types": 129,
+  "equality_infeasible_graph_types": 0,
+  "first_witness_h_distribution": {
+    "0": 129
+  },
+  "graph_types_checked": 129,
+  "maximum_simple_cycle_count": 516,
+  "negative_graphs_exactly_accounted": 0,
+  "python": "3.14.3",
+  "scope": "BIN1B existence-only exact-five equality classification on all 129 BIN0 graph types",
+  "starting_git_sha": "52c2e254b9f166f04905dece3982ab7f026b3417",
+  "status": "PASS",
+  "stream_sha256": {
+    "results": "4990e102657ca9896a3373f08516afe7046a9c6dfa096bbce5204d0663305a99",
+    "witnesses": "cf931cb90b78f236f970084c8e2ae9840e5330ad2afabd27d1d27852e45fb896"
+  },
+  "total_inconsistent_prunes": 4418,
+  "total_lookahead_prunes": 700,
+  "total_nodes": 3461,
+  "unresolved_error_count": 0,
+  "wall_time_seconds": 21.733226499985904,
+  "witness_count": 129
+}
